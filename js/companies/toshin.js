@@ -47,7 +47,7 @@ window.companyData['toshin'] = {
         occupancyRate: { symbol: '◎', text: '99.5%' },
     },
 
-    overallRating: 4.8,
+    overallRating: 3.8,
 
     points: [
         { icon: 'fa-building-shield', title: '業界最高水準の入居率', text: '独自の管理システムで高い入居率を維持。' },

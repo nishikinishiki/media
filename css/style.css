@@ -89,7 +89,7 @@ body {
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
 }
-.faq-question.open .faq-answer {
+.faq-question.open + .faq-answer {
     max-height: 500px; /* 十分な高さを確保 */
 }
 

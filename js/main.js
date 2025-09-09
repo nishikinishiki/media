@@ -177,12 +177,12 @@ const App = {
             <tr class="${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b hover:bg-amber-50">
                 <td class="sticky-col px-4 py-4 font-medium text-gray-900 text-center align-middle">
                     ${this.helpers.getRankHTML(company.rank)}
-                    <img src="${company.logoUrl}" alt="${company.companyName}ロゴ" class="mx-auto my-2 h-10 object-contain">
+                    <img src="${company.logoUrl}" alt="${company.logoName}ロゴ" class="mx-auto my-2 h-10 object-contain">
                     <span class="block text-xs font-semibold">${company.companyName}</span>
                     <div class="mt-1 text-amber-500">${this.helpers.getStarRatingHTML(company.overallRating)}</div>
                 </td>
                 ${evaluationColumns.map(c => `<td class="px-6 py-4 text-center align-middle">${this.helpers.getEvaluationHTML.call(this.helpers, company.evaluations[c.key])}</td>`).join('')}
-                <td class="px-6 py-4 text-center align-middle"><a href="${company.detailsLink}" class="cta-button text-white font-bold py-2 px-4 rounded-full text-sm block">公式サイトで詳細を見る</a></td>
+                <td class="px-6 py-4 text-center align-middle"><a href="${company.detailsLink}" class="cta-button text-white font-bold py-2 px-4 rounded-full text-sm block">詳しく見る▽</a></td>
             </tr>`
         ).join('');
         this.elements.tableBody.innerHTML = bodyHTML;
@@ -193,18 +193,43 @@ const App = {
             <article id="${company.id}" class="bg-white p-6 sm:p-10 rounded-lg shadow-lg scroll-mt-20">
                 <div class="flex justify-center items-center gap-4 mb-6">
                     <div class="text-3xl font-bold text-gray-700">${this.helpers.getRankHTML(company.rank)}</div>
-                    <h3 class="text-3xl font-bold text-gray-800">${company.companyName}</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">${company.companyName}</h3>
                 </div>
                 <img src="${company.logoUrl}" alt="${company.companyName} ロゴ" class="mx-auto h-16 mb-6">
                 ${company.displayOptions?.showBanner1 ? `<img src="${company.bannerUrl1}" alt="${company.companyName} バナー1" class="w-full rounded-lg mb-8 shadow">` : ''}
-                <div class="text-center mb-10"><a href="${company.officialLink}" target="_blank" rel="noopener noreferrer" class="cta-button inline-block text-white font-bold py-4 px-10 rounded-full text-xl">公式サイトで無料相談 <i class="fas fa-external-link-alt ml-2"></i></a></div>
+                <div class="text-center mb-10"><a href="${company.officialLink}" target="_blank" rel="noopener noreferrer" class="cta-button inline-block text-white font-bold py-4 px-10 rounded-full text-x0.5">公式サイトで詳しく見る <i class="fas fa-external-link-alt ml-2"></i></a></div>
                 <h4 class="text-2xl font-bold text-center mb-6 border-b-2 border-amber-500 pb-2">おすすめポイント</h4>
-                <div class="grid md:grid-cols-3 gap-6 text-center mb-10">${(company.points || []).map(p=>`<div class="bg-gray-50 p-6 rounded-lg"><i class="fas ${p.icon} text-4xl text-amber-500 mb-3"></i><h5 class="font-bold text-lg mb-2">${p.title}</h5><p class="text-sm text-gray-600">${p.text}</p></div>`).join('')}</div>
+                
+                <div class="max-w-2xl mx-auto mb-10">
+                    <div class="space-y-8">
+                        ${(company.points || []).map((point, index) => `
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-amber-500 text-white font-bold text-lg mr-4">
+                                    ${index + 1}
+                                </div>
+                                <div class="text-left">
+                                    <h5 class="font-bold text-lg">${point.title}</h5>
+                                    <p class="text-gray-600">${point.text}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
                 <div class="overflow-x-auto rounded-lg border mb-10"><table class="w-full text-sm"><tbody>${(company.detailsTable || []).map((r, i) => `<tr class="${i < (company.detailsTable || []).length-1 ? 'border-b':''}"><th class="bg-gray-100 p-4 w-1/3 md:w-1/4">${r.label}</th><td class="p-4">${r.value}</td></tr>`).join('')}</tbody></table></div>
                 ${company.displayOptions?.showReasons ? `<h4 class="text-2xl font-bold text-center mb-6 border-b-2 border-amber-500 pb-2">${company.companyName}が選ばれる理由</h4><div class="space-y-6 mb-10">${(company.reasons||[]).map(r=>`<div class="flex items-start"><div class="flex-shrink-0"><i class="fas fa-check-circle text-2xl text-green-500 mr-4 mt-1"></i></div><div><h5 class="font-bold text-lg">${r.title}</h5><p class="text-gray-600">${r.text}</p></div></div>`).join('')}</div>` : ''}
                 ${company.displayOptions?.showReviews ? `<h4 class="text-2xl font-bold text-center mb-6 border-b-2 border-amber-500 pb-2">口コミ</h4><div class="flex overflow-x-auto space-x-6 pb-4 mb-10">${(company.reviews||[]).map(r=>`<div class="flex-none w-80 bg-gray-50 p-6 rounded-lg shadow"><div class="flex items-center mb-4"><i class="fas fa-user-circle text-4xl text-gray-400 mr-3"></i><div><p class="font-bold">${r.author}</p></div></div><p class="text-gray-700 italic">「${r.quote}」</p>${r.source ? `<p class="text-right text-xs text-gray-500 mt-4">- ${r.source}より引用</p>`:''}</div>`).join('')}</div>` : ''}
                 ${company.displayOptions?.showBanner2 ? `<img src="${company.bannerUrl2}" alt="${company.companyName} バナー2" class="w-full rounded-lg mb-10 shadow">` : ''}
-                <div class="text-center mt-10"><a href="${company.officialLink}" target="_blank" rel="noopener noreferrer" class="cta-button inline-block text-white font-bold py-4 px-10 rounded-full text-xl">公式サイトで詳細を見る <i class="fas fa-chevron-right ml-2"></i></a></div>
+                <div class="text-center mt-10"><a href="${company.officialLink}" target="_blank" rel="noopener noreferrer" class="cta-button inline-block text-white font-bold py-4 px-10 rounded-full text-x0.5">公式サイトで詳しく見る<i class="fas fa-external-link-alt ml-2"></i></a></div>
+                
+                <!-- ▼▼▼【追加箇所】注意書き表示 ▼▼▼ -->
+                ${(company.notes && company.notes.length > 0) ? `
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            ${company.notes.join('<br>')}
+                        </p>
+                    </div>
+                ` : ''}
             </article>`
         ).join('');
         this.elements.detailsContainer.innerHTML = detailsHTML;

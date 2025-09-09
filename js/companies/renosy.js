@@ -37,7 +37,7 @@ window.companyData['renosy'] = {
         supportSystem: { symbol: '◎', text: '24時間対応' },
         occupancyRate: { symbol: '◎', text: '99.7%' },
     },
-    overallRating: 4.8,
+    overallRating: 4.0,
     points: [
         { icon: 'fa-building-shield', title: '業界最高水準の入居率', text: '独自の管理システムで高い入居率を維持。' },
         { icon: 'fa-hand-holding-dollar', title: '少額から始められる', text: '自己資金10万円からでもスタート可能。' },
@@ -52,6 +52,10 @@ window.companyData['renosy'] = {
         { label: '従業員数', value: '150名' },
         { label: 'セミナー・個別相談', value: 'オンライン・対面で随時開催' },
         { label: '実績', value: '創業20年、取引実績5,000件以上' }
+    ],
+    notes: [
+        '※1 東京商工リサーチによる不動産投資の売上実績（2025年3月調べ）',
+        '※2 PayPayポイントはPayPayギフトカードで付与されます。出金と譲渡はできません、PayPay/PayPayカード公式ストアでも利用可能です。上限・条件あり。プレゼント適用条件は公式サイトでご確認ください。'
     ],
     displayOptions: {
         showBanner1: true,

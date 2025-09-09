@@ -64,6 +64,10 @@ window.companyData['jpreturns'] = {
         { label: 'セミナー・個別相談', value: 'オンライン・対面で随時開催' },
         { label: '実績', value: '創業20年、取引実績5,000件以上' }
     ],
+    notes: [
+        '※1 東京商工リサーチによる不動産投資の売上実績（2025年3月調べ）',
+        '※2 PayPayポイントはPayPayギフトカードで付与されます。出金と譲渡はできません、PayPay/PayPayカード公式ストアでも利用可能です。上限・条件あり。プレゼント適用条件は公式サイトでご確認ください。'
+    ],
 
     displayOptions: {
         showBanner1: true,
