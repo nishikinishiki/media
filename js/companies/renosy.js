@@ -10,12 +10,12 @@ window.companyData['renosy'] = {
     // おすすめセクション用のデータ
     featured: {
         tagline: 'AIによる資産価値の高い物件選定',
-        highlight: '不動産投資売上No.1(※1)',
+        highlight: '不動産投資売上No.1',
         imageUrl: 'images/banners/renosy_banner_1.jpg',
         catchphrase: '年収500万以上の方必見!!',
         campaign: {
             title: 'キャンペーン実施中！',
-            text: '初回無料WEB面談参加で<br>PayPayポイント<strong>5万</strong>円分もらえる!!'
+            text: '初回無料WEB面談参加でPayPayポイント5万円分もらえる!!'
         }
     },
 

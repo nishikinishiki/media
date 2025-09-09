@@ -139,19 +139,18 @@ const App = {
             <div class="featured-box max-w-2xl mx-auto">
                 <div class="featured-title-container">
                     <span class="month-badge">${currentMonth}月</span>
-                    <h2 class="featured-title">おすすめ不動産会社</h2>
+                    <h2 class="featured-title">今月のピックアップ</h2>
                 </div>
                 <p class="featured-tagline">${company.featured.tagline}</p>
                 <div class="featured-content-box">
                     <div class="featured-highlight">${company.featured.highlight}</div>
-                    <img src="${company.logoUrl}" alt="${company.companyName} ロゴ" class="mx-auto my-6 h-16 object-contain">
+                    <img src="${company.logoUrl}" alt="${company.companyName} ロゴ" class="mx-auto my-2 h-16 object-contain">
                     <div class="grid md:grid-cols-2 gap-6 items-center">
                         <div>
                             <img src="${company.featured.imageUrl}" alt="キャンペーン" class="w-full rounded-lg shadow-md">
                         </div>
-                        <div class="text-left space-y-3">
+                        <div class="text-center space-y-3">
                             <h3 class="text-xl font-bold">${company.featured.catchphrase}</h3>
-                            <p class="text-lg">入居率 <strong class="text-red-500 text-3xl font-bold">${company.evaluations.occupancyRate.text}</strong></p>
                             <div class="campaign-box">
                                 <h4 class="font-bold text-amber-800">${company.featured.campaign.title}</h4>
                                 <p class="text-sm">${company.featured.campaign.text}</p>

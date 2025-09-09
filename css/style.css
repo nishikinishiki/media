@@ -119,9 +119,10 @@ body {
     font-size: 1.25rem;
     border: 3px solid white;
     box-shadow: 0 0 0 3px #FBBF24;
+    flex-shrink: 0;
 }
 .featured-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #4B5563;
 }
@@ -143,9 +144,9 @@ body {
     color: #4A2E05;
     font-weight: bold;
     font-size: 1.25rem;
-    padding: 0.75rem;
+    padding: 0.75rem 0.5rem 0.75rem 0.5rem;
     border-radius: 0.5rem;
-    margin: -2.5rem -1.5rem 1.5rem -1.5rem;
+    margin: -2.5rem 1rem 0.5rem 1rem;
 }
 .campaign-box {
     background-color: #FEF3C7;
