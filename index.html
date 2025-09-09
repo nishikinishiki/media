@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【2025年最新】プロが選ぶ！おすすめ不動産投資会社ランキング</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- ファーストビュー -->
+        <section class="bg-gray-700 text-white text-center py-20 px-6" style="background-image: url('https://placehold.co/1200x400/374151/FFFFFF?text=FV+Image'); background-size: cover; background-position: center;">
+            <div class="bg-black bg-opacity-50 p-10 rounded-lg inline-block">
+                <h2 class="text-4xl font-bold mb-4">未来の安心を、今、カタチに。</h2>
+                <p class="text-lg mb-8">専門家が厳選した、信頼できる不動産投資会社をご紹介します。</p>
+                <a href="#ranking" id="hero-cta" class="cta-button text-white font-bold py-3 px-8 rounded-full text-lg">
+                    今すぐランキングを見る <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- 今月のおすすめ -->
+        <section id="featured" class="py-16">
+            <div class="container mx-auto px-6">
+                <div id="featured-container">
+                    <!-- ここにJavaScriptでおすすめ企業が描画されます -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- ランキング -->
+        <section id="ranking" class="bg-amber-50 py-16 scroll-mt-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-10">はじめてならここがおすすめ！人気の不動産会社TOP4</h2>
+                <div class="table-container bg-white rounded-lg shadow-lg">
+                    <table class="w-full text-sm text-left text-gray-500 ranking-table">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-100" id="ranking-table-head"></thead>
+                        <tbody id="ranking-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 個別紹介 -->
+        <section id="details" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-10">各社の詳細情報</h2>
+                <div id="details-container" class="space-y-16"></div>
+            </div>
+        </section>
+
+        <!-- よくある質問 -->
+        <section id="faq" class="bg-white py-16">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-3xl font-bold text-center mb-10">よくある質問</h2>
+                <div id="faq-container" class="space-y-4">
+                    <div class="border rounded-lg"><div class="faq-question cursor-pointer flex justify-between items-center p-6"><h3 class="font-bold text-lg">不動産投資はどのくらいの自己資金から始められますか？</h3><i class="fas fa-chevron-down faq-arrow transition-transform"></i></div><div class="faq-answer"><div class="overflow-hidden"><p class="p-6 pt-0 text-gray-600">物件価格の1割〜2割程度の自己資金が目安とされていますが、近年では頭金0円から始められるフルローンや、10万円程度の諸費用のみで始められるケースも増えています。まずは各社の個別相談でシミュレーションしてもらうことをお勧めします。</p></div></div></div>
+                    <div class="border rounded-lg"><div class="faq-question cursor-pointer flex justify-between items-center p-6"><h3 class="font-bold text-lg">知識が全くありませんが、大丈夫でしょうか？</h3><i class="fas fa-chevron-down faq-arrow transition-transform"></i></div><div class="faq-answer"><div class="overflow-hidden"><p class="p-6 pt-0 text-gray-600">はい、問題ありません。本ランキングで紹介している会社は、初心者向けのセミナーや個別相談が充実しており、専門のコンサルタントが基礎から丁寧にサポートしてくれます。安心して第一歩を踏み出してください。</p></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 不動産投資コラム -->
+        <section id="columns" class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-10">失敗しない不動産投資を始めるための豆知識</h2>
+                <div id="columns-container" class="grid md:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/articles-db.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/templating.js"></script>
+</body>
+</html>
+

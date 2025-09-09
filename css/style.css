@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 基本的なフォント設定など */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* ランキング表の横スクロール用コンテナ */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOSでのスムーズスクロール */
+}
+
+/* ランキング表 */
+.ranking-table {
+    min-width: 800px; /* 横スクロールを開始する最小幅 */
+}
+
+/* 共通のCTAボタンスタイル */
+.cta-button {
+    background: linear-gradient(to right, #FBBF24, #F59E0B);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px 0 rgba(251, 191, 36, 0.5);
+}
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(251, 191, 36, 0.6);
+}
+
+/* ランキングの王冠アイコンとテキストを重ねるためのスタイル */
+.rank-crown-container {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+}
+.rank-icon {
+    font-size: 3rem; /* 48px */
+}
+.rank-number-in-crown {
+    position: absolute;
+    color: white;
+    font-size: 0.875rem; /* 14px */
+    font-weight: bold;
+    top: 67%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.rank-text-only {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* 王冠の色 */
+.rank-1 { color: #FBBF24; } /* Gold */
+.rank-2 { color: #9CA3AF; } /* Silver */
+.rank-3 { color: #D97706; } /* Bronze */
+
+/* ランキング表の先頭列を固定するためのスタイル */
+.sticky-col {
+    position: -webkit-sticky; /* Safari対応 */
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: inherit; /* 親のtrの背景色を継承 */
+}
+
+/* ホバー時に固定列の背景色も変わるように */
+.ranking-table tr:hover .sticky-col {
+    background-color: #FFFBEB; /* amber-50 */
+}
+
+/* ヘッダーの固定列に背景色を適用し、重なりを防止 */
+.ranking-table thead .sticky-col {
+    background-color: #F3F4F6; /* gray-100 */
+}
+
+/* FAQアコーディオン */
+.faq-question.open .faq-arrow {
+    transform: rotate(180deg);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+.faq-question.open .faq-answer {
+    max-height: 500px; /* 十分な高さを確保 */
+}
+
+/* --- 今月のおすすめセクション --- */
+.featured-box {
+    text-align: center;
+}
+.featured-title-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-image: linear-gradient(to top, #fff, #fff 50%, #fef3c7);
+    border-radius: 9999px;
+    padding: 0.5rem 2rem;
+    border: 2px solid #fde68a;
+}
+.month-badge {
+    background-color: #FBBF24;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px #FBBF24;
+}
+.featured-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4B5563;
+}
+.featured-tagline {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+.featured-content-box {
+    background-color: white;
+    border: 4px solid #FBBF24;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+}
+.featured-highlight {
+    background-color: #FBBF24;
+    color: #4A2E05;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin: -2.5rem -1.5rem 1.5rem -1.5rem;
+}
+.campaign-box {
+    background-color: #FEF3C7;
+    border: 2px dashed #FDE047;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+.campaign-box strong {
+    color: #DC2626;
+    font-size: 2.25rem;
+}
+.cta-button-featured {
+    display: inline-block;
+    background: linear-gradient(to right, #F97316, #EA580C);
+    color: white;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding: 1rem 3rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 15px 0 rgba(249, 115, 22, 0.5);
+    transition: all 0.3s ease;
+}
+.cta-button-featured:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(249, 115, 22, 0.6);
+}
+
