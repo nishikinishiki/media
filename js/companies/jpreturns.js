@@ -44,15 +44,19 @@ window.companyData['jpreturns'] = {
         initialCost: { symbol: '△', text: '1万円~' },
         easeOfManagement: { symbol: '〇', text: 'アプリで完結' },
         supportSystem: { symbol: '◎', text: '24時間対応' },
-        occupancyRate: { symbol: '◎', text: '99.5%' }, 
+        occupancyRate: { symbol: '◎', text: '99.5%' },
+        propertyArea: { symbol: '◎', text: '都心' },
+        interviewBonus: { symbol: '◎', text: 'あり' },
+        companyScale: { symbol: '〇', text: '中規模' },
+        trackRecord: { symbol: '◎', text: '20年' },
     },
 
     overallRating: 4.8,
 
     points: [
-        { icon: 'fa-building-shield', title: '業界最高水準の入居率', text: '独自の管理システムで高い入居率を維持。' },
-        { icon: 'fa-hand-holding-dollar', title: '少額から始められる', text: '自己資金10万円からでもスタート可能。' },
-        { icon: 'fa-headset', title: '充実のサポート体制', text: '購入後も安心のオーナーサポートを提供。' }
+        { title: '年収500万以上の方必見!!手厚いサポートで手間なく運用できる', text: 'AIによる価値の高い物件選定や、専用アプリで物件の管理から確定申告までをサポートしてくれるため、普段忙しいサラリーマンや公務員、医師の方におすすめ※7' },
+        { title: '入居率99.7%の賃貸管理サービス', text: '空室になる心配がほとんどない優良物件を厳選しているため、不動産投資の最大のリスクである空室リスクが低いのが魅力。' },
+        { title: '面倒で不透明な契約手続きも 最短1週間・簡単でスムーズ', text: '不動産投資ローンの申込・審査手続きのオンライン完結を実現！最大98%の項目を自動で入力することが可能。' }
     ],
     detailsTable: [
         { label: '所有物件エリア', value: '東京都心、横浜、川崎' },

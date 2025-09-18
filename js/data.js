@@ -14,6 +14,10 @@ window.appData = {
         { key: 'easeOfManagement', name: '管理のしやすさ' },
         { key: 'supportSystem', name: 'サポート体制' },
         { key: 'occupancyRate', name: '入居率' },
+        { key: 'propertyArea', name: '物件エリア' },
+        { key: 'interviewBonus', name: '面談特典' },
+        { key: 'companyScale', name: '会社規模' },
+        { key: 'trackRecord', name: '実績' },
     ],
 
     /**
