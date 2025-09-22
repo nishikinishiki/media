@@ -131,9 +131,9 @@ const App = {
             let starsHTML = '<i class="fas fa-star"></i>'.repeat(Math.floor(rating));
             if (rating % 1 >= 0.5) starsHTML += '<i class="fas fa-star-half-alt"></i>';
             starsHTML += '<i class="far fa-star"></i>'.repeat(5 - Math.ceil(rating));
-            const scoreHTML = `<span class="block text-gray-700 font-bold text-sm">${rating.toFixed(1)}</span>`;
-            const starsContainerHTML = `<div class="text-xs">${starsHTML}</div>`;
-            return `${scoreHTML}${starsContainerHTML}`;
+            const scoreHTML = `<span class="rating-score">${rating.toFixed(1)}</span>`;
+            const starsContainerHTML = `<span class="rating-stars">${starsHTML}</span>`;
+            return `<div class="rating-wrapper">${scoreHTML}${starsContainerHTML}</div>`;
         },
         getRankHTML(rank) {
             const map = { 1: 'rank-1', 2: 'rank-2', 3: 'rank-3' };
@@ -166,10 +166,10 @@ const App = {
                 <p class="featured-tagline">${company.featured.tagline}</p>
                 <div class="featured-content-box">
                     <div class="featured-highlight">${company.featured.highlight}</div>
-                    <img src="${company.logoUrl}" alt="${company.companyName} ロゴ" class="mx-auto my-2 h-16 object-contain">
+                    <img src="${company.logoUrl}" alt="${company.companyName} ロゴ" class="mx-auto my-2 h-16 object-contain" width="200" height="64">
                     <div class="grid md:grid-cols-2 gap-6 items-center">
                         <div>
-                            <img src="${company.featured.imageUrl}" alt="キャンペーン" class="w-full rounded-lg shadow-md">
+                            <img src="${company.featured.imageUrl}" alt="キャンペーン" class="w-full rounded-lg shadow-md" width="500" height="500">
                         </div>
                         <div class="text-center space-y-3">
                             <h3 class="featured-catchphrase text-xl font-bold">${company.featured.catchphrase}</h3>
@@ -199,9 +199,9 @@ const App = {
             <tr class="${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b hover:bg-amber-50">
                 <td class="sticky-col px-4 py-4 font-medium text-gray-900 text-center align-middle">
                     ${this.helpers.getRankHTML(company.rank)}
-                    <img src="${company.logoUrl}" alt="${company.logoName}ロゴ" class="mx-auto my-2 h-10 object-contain">
-                    <span class="block text-xs font-semibold">${company.companyName}</span>
-                    <div class="mt-1 text-amber-500">${this.helpers.getStarRatingHTML(company.overallRating)}</div>
+                    <img src="${company.logoUrl}" alt="${company.logoName}ロゴ" class="company-logo" width="120" height="40">
+                    <span class="company-name">${company.companyName}</span>
+                    <div class="company-rating">${this.helpers.getStarRatingHTML(company.overallRating)}</div>
                 </td>
                 ${evaluationColumns.map(c => `<td class="px-6 py-4 text-center align-middle">${this.helpers.getEvaluationHTML.call(this.helpers, company.evaluations[c.key])}</td>`).join('')}
                 <td class="px-6 py-4 text-center align-middle"><a href="${company.detailsLink}" class="cta-button text-white font-bold py-2 px-4 rounded-full text-sm block whitespace-nowrap">詳しく見る↓</a></td>
@@ -218,9 +218,9 @@ const App = {
                         <div class="details-rank text-3xl font-bold text-gray-700">${this.helpers.getRankHTML(company.rank)}</div>
                         <h3 class="details-company-name text-3xl font-bold text-gray-800">${company.companyName}</h3>
                     </div>
-                    <img src="${company.logoUrl}" alt="${company.companyName} ロゴ" class="mx-auto h-16 mb-6">
+                    <img src="${company.logoUrl}" alt="${company.companyName} ロゴ" class="mx-auto h-16 mb-6" width="200" height="64">
                     
-                    ${company.displayOptions?.showBanner1 ? `<img src="${company.bannerUrl1}" alt="${company.companyName} バナー1" class="details-banner w-full rounded-lg mb-8 shadow">` : ''}
+                    ${company.displayOptions?.showBanner1 ? `<img src="${company.bannerUrl1}" alt="${company.companyName} バナー1" class="details-banner w-full rounded-lg mb-8 shadow" width="800" height="450">` : ''}
                     
                     <div class="text-center mb-10"><a href="${company.officialLink}" target="_blank" rel="noopener noreferrer" class="details-cta cta-button inline-block text-white font-bold py-4 px-10 rounded-full text-xl whitespace-nowrap">公式サイトで無料相談 <i class="fas fa-external-link-alt ml-2"></i></a></div>
                     
@@ -244,9 +244,23 @@ const App = {
                         
                         ${company.displayOptions?.showReasons ? `<h4 class="details-section-title text-2xl font-bold text-center mb-6 border-b-2 border-amber-500 pb-2">${company.companyName}が選ばれる理由</h4><div class="space-y-6 mb-10">${(company.reasons||[]).map(r=>`<div class="flex items-start"><div class="flex-shrink-0"><i class="fas fa-check-circle text-2xl text-green-500 mr-4 mt-1"></i></div><div><h5 class="font-bold text-lg">${r.title}</h5><p class="text-gray-600">${r.text}</p></div></div>`).join('')}</div>` : ''}
                         
-                        ${company.displayOptions?.showReviews ? `<h4 class="details-section-title text-2xl font-bold text-center mb-6 border-b-2 border-amber-500 pb-2">口コミ</h4><div class="review-card-container overflow-x-auto space-x-6 pb-4 mb-10">${(company.reviews||[]).map(r=>`<div class="review-card flex-none w-80 bg-gray-50 p-6 rounded-lg shadow"><div class="flex items-center mb-4"><i class="fas fa-user-circle text-4xl text-gray-400 mr-3"></i><div><p class="font-bold">${r.author}</p></div></div><p class="text-gray-700 italic">「${r.quote}」</p>${r.source ? `<p class="text-right text-xs text-gray-500 mt-4">- ${r.source}より引用</p>`:''}</div>`).join('')}</div>` : ''}
+                        ${company.displayOptions?.showReviews ? `
+                            <h4 class="details-section-title text-2xl font-bold text-center mb-6 border-b-2 border-amber-500 pb-2">口コミ</h4>
+                            <div class="review-card-container mb-10">
+                                ${(company.reviews||[]).map(r=>`
+                                    <div class="review-card">
+                                        <div class="review-author-section">
+                                            <i class="fas fa-user-circle"></i>
+                                            <div><p class="font-bold">${r.author}</p></div>
+                                        </div>
+                                        <p class="italic">「${r.quote}」</p>
+                                        ${r.source ? `<p class="review-source">- ${r.source}より引用</p>`:''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
                         
-                        ${company.displayOptions?.showBanner2 ? `<img src="${company.bannerUrl2}" alt="${company.companyName} バナー2" class="details-banner w-full rounded-lg mb-10 shadow">` : ''}
+                        ${company.displayOptions?.showBanner2 ? `<img src="${company.bannerUrl2}" alt="${company.companyName} バナー2" class="details-banner w-full rounded-lg mb-10 shadow" width="800" height="450">` : ''}
                         
                         <div class="text-center mt-10"><a href="${company.officialLink}" target="_blank" rel="noopener noreferrer" class="details-cta cta-button inline-block text-white font-bold py-4 px-10 rounded-full text-xl whitespace-nowrap">公式サイトで詳細を見る <i class="fas fa-chevron-right ml-2"></i></a></div>
                         
