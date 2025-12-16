@@ -3,7 +3,7 @@
 window.companyData = window.companyData || {};
 
 window.companyData['jpreturns'] = {
-    companyName: 'J.P.Returns株式会社',
+    companyName: 'JPリターンズ',
     logoUrl: 'images/logos/jpreturns_logo.png',
     officialLink: 'https://chatbot.jpreturns.com/ebook_consultingsoudanB/',
     bannerUrl1: 'images/banners/jpreturns_banner_1.png',

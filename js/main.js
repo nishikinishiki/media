@@ -136,10 +136,15 @@ const App = {
             return `<div class="rating-wrapper">${scoreHTML}${starsContainerHTML}</div>`;
         },
         getRankHTML(rank) {
-            const map = { 1: 'rank-1', 2: 'rank-2', 3: 'rank-3' };
-            if (rank <= 3) return `<div class="rank-crown-container"><i class="fas fa-crown rank-icon ${map[rank] || ''}"></i><span class="rank-number-in-crown">${rank}位</span></div>`;
-            return `<div class="rank-text-only">${rank}位</div>`;
-        },
+            // 1, 2, 3 はそのまま、4以上はすべて 'rank-4' を使用
+            const rankClass = rank <= 3 ? `rank-${rank}` : 'rank-4';
+            
+            return `
+                <div class="rank-crown-container">
+                    <i class="fas fa-crown rank-icon ${rankClass}"></i>
+                    <span class="rank-number-in-crown">${rank}</span>
+                </div>`;
+        }
     },
 
     renderFeaturedSection() {
@@ -195,7 +200,7 @@ const App = {
             <tr class="${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b hover:bg-amber-50">
                 <td class="sticky-col px-4 py-4 font-medium text-gray-900 text-center align-middle">
                     ${this.helpers.getRankHTML(company.rank)}
-                    <img src="${company.logoUrl}" alt="${company.logoName}ロゴ" width="120" height="40" class="mx-auto my-2 h-10 object-contain">
+                    <img src="${company.logoUrl}" alt="${company.logoName}ロゴ" width="120" height="40" class="mx-auto mb-2 h-10 object-contain">
                     <span class="block text-xs font-semibold">${company.companyName}</span>
                     <div class="company-rating">${this.helpers.getStarRatingHTML(company.overallRating)}</div>
                 </td>
@@ -242,7 +247,7 @@ const App = {
                         
                         ${company.displayOptions?.showReviews ? `<h4 class="details-section-title text-2xl font-bold text-center mb-6 border-b-2 border-amber-500 pb-2">口コミ</h4><div class="review-card-container">${(company.reviews||[]).map(r=>`<div class="review-card"><div class="flex items-center mb-4"><i class="fas fa-user-circle text-4xl text-gray-400 mr-3"></i><div><p class="font-bold">${r.author}</p></div></div><p class="text-gray-700 italic">「${r.quote}」</p>${r.source ? `<p class="text-right text-xs text-gray-500 mt-4">- ${r.source}より引用</p>`:''}</div>`).join('')}</div>` : ''}
                         
-                        ${company.displayOptions?.showBanner2 ? `<img src="${company.bannerUrl2}" alt="${company.companyName} バナー2" width="800" height="450" class="details-banner w-full rounded-lg mb-10 shadow">` : ''}
+                        ${company.displayOptions?.showBanner2 ? `<img src="${company.bannerUrl2}" alt="${company.companyName} バナー2" width="800" height="450" class="details-banner w-full rounded-lg my-10 shadow">` : ''}
                         
                         <div class="text-center mt-10"><a href="${company.officialLink}" target="_blank" rel="noopener noreferrer" class="details-cta cta-button inline-block text-white font-bold py-4 px-10 rounded-full text-xl whitespace-nowrap">公式サイトで詳細を見る <i class="fas fa-chevron-right ml-2"></i></a></div>
                         

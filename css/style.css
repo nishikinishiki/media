@@ -51,16 +51,14 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
 }
 .rank-icon {
-    font-size: 3rem; /* 48px */
+    font-size: 2.5rem; /* 48px */
 }
 .rank-number-in-crown {
     position: absolute;
     color: white;
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.75rem; /* 14px */
     font-weight: bold;
     top: 67%; 
     left: 50%;
@@ -76,6 +74,7 @@ body {
 .rank-1 { color: #FBBF24; } /* Gold */
 .rank-2 { color: #9CA3AF; } /* Silver */
 .rank-3 { color: #D97706; } /* Bronze */
+.rank-4 { color: #053a8a; } /* Bronze */
 
 /* ランキング表の星評価レイアウト */
 .company-rating {
