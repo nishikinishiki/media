@@ -30,9 +30,15 @@ body {
 
 /* 共通のCTAボタンスタイル */
 .cta-button {
+    display: inline-block;
     background: linear-gradient(to right, #FBBF24, #F59E0B);
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px 0 rgba(251, 191, 36, 0.5);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
 }
 .cta-button:hover {
     transform: translateY(-2px);
@@ -71,36 +77,19 @@ body {
 .rank-2 { color: #9CA3AF; } /* Silver */
 .rank-3 { color: #D97706; } /* Bronze */
 
-/* ランキング表の会社情報セルのスタイル */
-.company-logo {
-    margin: 0.25rem auto; /* my-1 */
-    height: 2.5rem; /* h-10 */
-    object-fit: contain;
-}
-.company-name {
-    display: block;
-    font-size: 0.75rem; /* text-xs */
-    font-weight: 600; /* font-semibold */
-}
+/* ランキング表の星評価レイアウト */
 .company-rating {
-    margin-top: 0.25rem; /* mt-1 */
-    color: #FBBF24; /* text-amber-400 */
+    margin-top: 0.25rem;
 }
 .rating-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.25rem; /* gap-1 */
-}
-.rating-score {
-    color: #4B5563; /* text-gray-600 */
-    font-weight: 700; /* font-bold */
-    font-size: 0.875rem; /* text-sm */
+    gap: 0.5rem; /* 数字と星の間隔 */
 }
 .rating-stars {
-    font-size: 0.75rem; /* text-xs */
+    color: #FBBF24; /* amber-400 */
 }
-
 
 /* ランキング表の先頭列を固定するためのスタイル */
 .sticky-col {
@@ -134,86 +123,76 @@ body {
     max-height: 500px; /* 十分な高さを確保 */
 }
 
-/* --- 今月のおすすめセクション --- */
-.featured-box {
-    text-align: center;
+/* --- 今月のおすすめセクション (完全リニューアル版) --- */
+.featured-redesigned-card {
+    background-color: #FFFFFF;
+    border-radius: 0.75rem; /* 12px */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
-.featured-title-container {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background-image: linear-gradient(to top, #fff, #fff 50%, #fef3c7);
-    border-radius: 9999px;
-    padding: 0.5rem 2rem;
-    border: 2px solid #fde68a;
-}
-.month-badge {
-    background-color: #FBBF24;
-    color: white;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+.featured-redesigned-header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    border: 3px solid white;
-    box-shadow: 0 0 0 3px #FBBF24;
-    flex-shrink: 0;
+    gap: 0.75rem; /* 12px */
+    padding: 0.75rem 1.5rem; /* 12px 24px */
+    background-color: #F3F4F6; /* gray-100 */
+    border-bottom: 1px solid #E5E7EB; /* gray-200 */
 }
-.featured-title {
-    font-size: 1.5rem;
+.featured-redesigned-month {
+    background-color: #111827; /* gray-900 */
+    color: #FFFFFF;
     font-weight: bold;
-    color: #4B5563;
-}
-.featured-tagline {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-}
-.featured-content-box {
-    background-color: white;
-    border: 4px solid #FBBF24;
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
-}
-.featured-highlight {
-    background-color: #FBBF24;
-    color: #4A2E05;
-    font-weight: bold;
-    font-size: 1.25rem;
-    padding: 0.75rem 0.5rem 0.75rem 0.5rem;
-    border-radius: 0.5rem;
-    margin: -2.5rem 1rem 0.5rem 1rem;
-}
-.campaign-box {
-    background-color: #FEF3C7;
-    border: 2px dashed #FDE047;
-    border-radius: 0.5rem;
-    padding: 1rem;
-}
-.campaign-box strong {
-    color: #DC2626;
-    font-size: 2.25rem;
-}
-.cta-button-featured {
-    display: inline-block;
-    background: linear-gradient(to right, #F97316, #EA580C);
-    color: white;
-    font-weight: bold;
-    font-size: 1.25rem;
-    padding: 1rem 3rem;
     border-radius: 9999px;
-    box-shadow: 0 4px 15px 0 rgba(249, 115, 22, 0.5);
-    transition: all 0.3s ease;
+    padding: 0.25rem 0.75rem; /* 4px 12px */
+    font-size: 0.875rem; /* 14px */
 }
-.cta-button-featured:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px 0 rgba(249, 115, 22, 0.6);
+.featured-redesigned-title {
+    font-size: 1.125rem; /* 18px */
+    font-weight: bold;
+    color: #1F2937; /* gray-800 */
 }
+.featured-redesigned-body {
+    padding: 1.5rem; /* 24px */
+}
+.featured-redesigned-content {
+    text-align: center;
+    margin-top: 1.5rem; /* 24px */
+}
+.featured-redesigned-logo {
+    height: 40px;
+    object-fit: contain;
+    margin: 0 auto 1rem; /* 16px */
+}
+.featured-redesigned-point {
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    color: #111827; /* gray-900 */
+    line-height: 1.4;
+}
+.featured-redesigned-target {
+    font-size: 1rem; /* 16px */
+    color: #4B5563; /* gray-600 */
+    margin-top: 0.5rem; /* 8px */
+}
+.featured-redesigned-campaign {
+    background-color: #FEF2F2; /* red-50 */
+    border: 2px solid #F87171; /* red-400 */
+    border-radius: 0.5rem; /* 8px */
+    padding: 1rem; /* 16px */
+    margin: 1.5rem 0; /* 24px */
+}
+.featured-redesigned-campaign-text {
+    color: #B91C1C; /* red-700 */
+    font-weight: bold;
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5;
+}
+.featured-redesigned-cta {
+    font-size: 1.125rem; /* 18px */
+    padding: 0.75rem 2rem; /* 12px 32px */
+    width: 100%;
+}
+
 
 /* --- 選び方ガイドセクション --- */
 .choose-number {
@@ -242,54 +221,29 @@ body {
     margin-bottom: 1rem;
 }
 
-/* --- 口コミセクションのスタイル --- */
+/* --- 口コミセクション --- */
 .review-card-container {
     display: flex;
-    overflow-x: auto; /* 横スクロールを有効化 */
-    gap: 1rem; /* カード間のスペース */
-    padding-bottom: 1rem; /* スクロールバーが見切れないように余白を追加 */
-    -webkit-overflow-scrolling: touch; /* iOSでのスムーズな慣性スクロール */
-    scroll-snap-type: x mandatory; /* スクロール完了時にカードの先頭でスナップさせる */
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
 }
-
-/* 横スクロールバーの見た目を控えめに調整 */
-.review-card-container::-webkit-scrollbar {
-    height: 8px;
-}
-.review-card-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-.review-card-container::-webkit-scrollbar-thumb {
-    background-color: #d1d5db; /* gray-300 */
-    border-radius: 10px;
-}
-
 .review-card {
-    background-color: #F9FAFB; /* bg-gray-50 */
-    padding: 1.5rem; /* p-6 */
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); /* shadow */
-    width: 85%; /* カードの幅を画面の85%に設定 */
-    flex-shrink: 0; /* カードがコンテナに合わせて縮むのを防ぐ */
-    scroll-snap-align: start; /* スナップの基点をカードの左端に設定 */
-}
-.review-card .review-author-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem; /* mb-4 */
-}
-.review-card .review-author-section i {
-    font-size: 2.5rem; /* text-4xl */
-    color: #9CA3AF; /* text-gray-400 */
-    margin-right: 0.75rem; /* mr-3 */
-}
-.review-card .review-source {
-    text-align: right;
-    font-size: 0.75rem; /* text-xs */
-    color: #6B7280; /* text-gray-500 */
-    margin-top: 1rem; /* mt-4 */
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    background-color: #F9FAFB;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+/* --- レイアウトシフト(CLS)対策 --- */
+#featured-container {
+    min-height: 500px; /* スマートフォンでの表示を想定した最低限の高さを確保 */
+}
 
 /* --- レスポンシブ対応 --- */
 @media (min-width: 768px) {
@@ -298,29 +252,52 @@ body {
     .hero-subtitle { font-size: 1.25rem; }
     .section-padding { padding-top: 6rem; padding-bottom: 6rem; }
     .section-title { font-size: 2.25rem; }
-    .featured-title { font-size: 2rem; }
-    .featured-catchphrase { font-size: 1.5rem; }
+
+    /* 口コミ */
+    .review-card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+    .review-card {
+        width: 100%;
+    }
+    
     .details-article { padding: 3rem; }
     .details-rank { font-size: 2.25rem; }
     .details-company-name { font-size: 2.25rem; }
     .details-section-title { font-size: 1.875rem; }
     .details-cta { font-size: 1.5rem; }
-    
-    .review-card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        overflow-x: visible; /* PCでは横スクロール不要 */
-        padding-bottom: 0;
-    }
 
-    .review-card {
-        width: auto; /* PCでは幅を自動調整 */
-    }
-    
     .details-banner {
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    /* おすすめセクション PC (完全リニューアル版) */
+    .featured-redesigned-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); /* 右カラムを少し広く */
+        gap: 2.5rem;
+        align-items: center;
+        padding: 2.5rem;
+    }
+    .featured-redesigned-content {
+        text-align: left;
+        margin-top: 0;
+    }
+    .featured-redesigned-logo {
+        margin: 0 0 1rem;
+    }
+    .featured-redesigned-cta {
+        width: auto;
+    }
+
+    /* CLS対策 PC */
+    #featured-container {
+        min-height: 450px;
     }
 }
 
