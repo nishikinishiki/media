@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【2025年最新】プロが選ぶ！おすすめ不動産投資会社ランキング</title>
+    
+    <!-- Preconnect to Google Fonts and Font Awesome servers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome: Asynchronous loading to prevent render-blocking -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div id="header"></div>
+
+    <main>
+        <!-- ファーストビュー -->
+        <section id="hero" class="bg-white">
+            <div class="container mx-auto">
+                <a href="#ranking">
+                    <img src="images/banners/firstview.png" alt="初心者・会社員におすすめ 不動産投資 オススメ会社ランキング 2024年最新版" class="w-full h-auto" width="1280" height="720">
+                </a>
+            </div>
+        </section>
+
+        <!-- 今月のおすすめ -->
+        <section id="featured" class="section-padding py-16">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div id="featured-container">
+                        <!-- ここにJavaScriptでおすすめ企業が描画されます -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ランキング -->
+        <section id="ranking" class="section-padding bg-amber-50 py-16 scroll-mt-16">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="section-title text-3xl font-bold text-center mb-10">はじめてならここがおすすめ！人気の不動産会社TOP4</h2>
+                    <div class="table-container bg-white rounded-lg shadow-lg">
+                        <table class="w-full text-sm text-left text-gray-500 ranking-table">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-100" id="ranking-table-head"></thead>
+                            <tbody id="ranking-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 選び方ガイド -->
+        <section id="how-to-choose" class="bg-white py-16">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="section-title text-3xl font-bold text-center mb-10">絶対に知っておきたい不動産投資会社の選び方</h2>
+                    <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
+                        <!-- Point 1 -->
+                        <div class="choose-item text-center">
+                            <div class="choose-number">1</div>
+                            <h3 class="text-xl font-bold mb-2">実績と信頼性</h3>
+                            <p class="text-gray-600">長年の運営実績や顧客からの評判、口コミを確認しましょう。信頼できる会社は透明性が高く、リスクについても正直に説明してくれます。</p>
+                        </div>
+                        <!-- Point 2 -->
+                        <div class="choose-item text-center">
+                            <div class="choose-number">2</div>
+                            <h3 class="text-xl font-bold mb-2">サポート体制</h3>
+                            <p class="text-gray-600">購入後の物件管理や入居者募集、確定申告のサポートなど、どこまで支援してくれるかを確認することが重要です。特に初心者の方は手厚いサポートがある会社を選びましょう。</p>
+                        </div>
+                        <!-- Point 3 -->
+                        <div class="choose-item text-center">
+                            <div class="choose-number">3</div>
+                            <h3 class="text-xl font-bold mb-2">物件の質とエリア</h3>
+                            <p class="text-gray-600">将来的に価値が下がりにくい、都心部や主要駅に近い物件を扱っているかがポイントです。独自の基準で厳選された物件を提供している会社が理想です。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 複数社問い合わせ推奨セクション -->
+        <section id="multiple-inquiries" class="bg-amber-50 py-16">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="section-title text-3xl font-bold text-center mb-4">3社以上の問い合わせがおすすめ！</h2>
+                    <p class="text-center text-gray-600 mb-10 md:text-lg">なぜなら、比較することで「あなたに最適な会社」が見つかるからです。</p>
+                    <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
+                        <!-- Reason 1 -->
+                        <div class="inquiry-item">
+                            <div class="inquiry-icon-box">
+                                <i class="fas fa-balance-scale text-4xl text-amber-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">提案内容を比較できる</h3>
+                            <p class="text-gray-600">会社ごとに提案内容や強みは様々。物件の種類や資金計画、サポート体制を比べることで、本当に自分に合ったプランが見つかります。</p>
+                        </div>
+                        <!-- Reason 2 -->
+                        <div class="inquiry-item">
+                            <div class="inquiry-icon-box">
+                                <i class="fas fa-search-dollar text-4xl text-amber-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">客観的な相場観が養われる</h3>
+                            <p class="text-gray-600">1社だけの話では情報が偏る可能性も。複数の専門家から話を聞くことで、客観的な判断が可能になり、リスクを抑えられます。</p>
+                        </div>
+                        <!-- Reason 3 -->
+                        <div class="inquiry-item">
+                            <div class="inquiry-icon-box">
+                                <i class="fas fa-handshake text-4xl text-amber-500"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">相性の良い担当者に出会える</h3>
+                            <p class="text-gray-600">不動産投資は担当者との長い付き合いに。信頼して相談できるパートナーを見つけることが、成功への一番の近道です。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 個別紹介 -->
+        <section id="details" class="section-padding py-16">
+            <div class="container mx-auto px-6">
+                 <div class="max-w-5xl mx-auto">
+                    <h2 class="section-title text-3xl font-bold text-center mb-10">不動産投資会社ランキング！TOP7</h2>
+                </div>
+                <div id="details-container" class="space-y-16"></div>
+            </div>
+        </section>
+
+        <!-- よくある質問 -->
+        <section id="faq" class="bg-white py-16">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="section-title text-3xl font-bold text-center mb-10">よくある質問</h2>
+                    <div id="faq-container" class="space-y-4">
+                        <div class="border rounded-lg"><div class="faq-question cursor-pointer flex justify-between items-center p-6"><h3 class="font-bold text-lg">不動産投資はどのくらいの自己資金から始められますか？</h3><i class="fas fa-chevron-down faq-arrow transition-transform"></i></div><div class="faq-answer"><div class="overflow-hidden"><p class="p-6 pt-0 text-gray-600">物件価格の1割〜2割程度の自己資金が目安とされていますが、近年では頭金0円から始められるフルローンや、10万円程度の諸費用のみで始められるケースも増えています。まずは各社の個別相談でシミュレーションしてもらうことをお勧めします。</p></div></div></div>
+                        <div class="border rounded-lg"><div class="faq-question cursor-pointer flex justify-between items-center p-6"><h3 class="font-bold text-lg">知識が全くありませんが、大丈夫でしょうか？</h3><i class="fas fa-chevron-down faq-arrow transition-transform"></i></div><div class="faq-answer"><div class="overflow-hidden"><p class="p-6 pt-0 text-gray-600">はい、問題ありません。本ランキングで紹介している会社は、初心者向けのセミナーや個別相談が充実しており、専門のコンサルタントが基礎から丁寧にサポートしてくれます。安心して第一歩を踏み出してください。</p></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 不動産投資コラム -->
+        <section id="columns" class="section-padding py-16">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="section-title text-3xl font-bold text-center mb-10">失敗しない不動産投資を始めるための豆知識</h2>
+                    <div id="columns-container" class="columns-grid grid md:grid-cols-3 gap-8"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/articles-db.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/load-header-footer.js"></script>
+
+</body>
+</html>
+

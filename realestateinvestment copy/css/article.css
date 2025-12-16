@@ -1,0 +1,62 @@
+/* 記事本文のスタイルを定義します */
+/* `.prose`というクラスがついた要素内の h2, p, ul などの見た目を一括で設定します */
+.prose {
+    color: #374151; /* 基本の文字色 (gray-700) */
+    line-height: 1.75; /* 行間を広めにして読みやすくする */
+}
+
+/* 見出し2 */
+.prose h2 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #FBBF24; /* amber-400 */
+}
+
+/* 見出し3 */
+.prose h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 700;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+}
+
+/* 段落 */
+.prose p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+}
+
+/* 箇条書きリスト */
+.prose ul {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.5em;
+    list-style-type: disc; /* 黒丸のリストマーカー */
+}
+.prose ul li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* 引用 */
+.prose blockquote {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding-left: 1em;
+    border-left: 4px solid #E5E7EB; /* gray-200 */
+    font-style: italic;
+    color: #4B5563; /* gray-600 */
+}
+
+/* 下層ページの定義リスト (dl, dt, dd) */
+.prose dl dt {
+    font-weight: bold;
+    margin-top: 1.25em;
+}
+.prose dl dd {
+    margin-left: 1.5em;
+}
+

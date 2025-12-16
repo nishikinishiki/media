@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 基本的なフォント設定など */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* --- ファーストビュー --- */
+#hero {
+    /* 必要に応じて背景色などを設定できます */
+}
+#hero img {
+    max-width: 1280px; /* PCでの最大幅を指定 */
+    margin: 0 auto; /* 中央揃え */
+}
+
+
+/* ランキング表の横スクロール用コンテナ */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOSでのスムーズスクロール */
+}
+
+/* ランキング表 */
+.ranking-table {
+    min-width: 1200px; /* PC表示での最小幅を調整 */
+}
+
+/* 共通のCTAボタンスタイル */
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(to right, #FBBF24, #F59E0B);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px 0 rgba(251, 191, 36, 0.5);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+}
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(251, 191, 36, 0.6);
+}
+
+/* ランキングの王冠アイコンとテキストを重ねるためのスタイル */
+.rank-crown-container {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.rank-icon {
+    font-size: 2.5rem; /* 48px */
+}
+.rank-number-in-crown {
+    position: absolute;
+    color: white;
+    font-size: 0.75rem; /* 14px */
+    font-weight: bold;
+    top: 67%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.rank-text-only {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* 王冠の色 */
+.rank-1 { color: #FBBF24; } /* Gold */
+.rank-2 { color: #9CA3AF; } /* Silver */
+.rank-3 { color: #D97706; } /* Bronze */
+.rank-4 { color: #053a8a; } /* Bronze */
+
+/* ランキング表の星評価レイアウト */
+.company-rating {
+    margin-top: 0.25rem;
+}
+.rating-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* 数字と星の間隔 */
+}
+.rating-stars {
+    color: #FBBF24; /* amber-400 */
+}
+
+/* ランキング表の先頭列を固定するためのスタイル */
+.sticky-col {
+    position: -webkit-sticky; /* Safari対応 */
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: inherit; /* 親のtrの背景色を継承 */
+}
+
+/* ホバー時に固定列の背景色も変わるように */
+.ranking-table tr:hover .sticky-col {
+    background-color: #FFFBEB; /* amber-50 */
+}
+
+/* ヘッダーの固定列に背景色を適用し、重なりを防止 */
+.ranking-table thead .sticky-col {
+    background-color: #F3F4F6; /* gray-100 */
+}
+
+/* FAQアコーディオン */
+.faq-question.open .faq-arrow {
+    transform: rotate(180deg);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+.faq-question.open + .faq-answer {
+    max-height: 500px; /* 十分な高さを確保 */
+}
+
+/* --- 今月のおすすめセクション (完全リニューアル版) --- */
+.featured-redesigned-card {
+    background-color: #FFFFFF;
+    border-radius: 0.75rem; /* 12px */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+.featured-redesigned-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
+    padding: 0.75rem 1.5rem; /* 12px 24px */
+    background-color: #F3F4F6; /* gray-100 */
+    border-bottom: 1px solid #E5E7EB; /* gray-200 */
+}
+.featured-redesigned-month {
+    background-color: #111827; /* gray-900 */
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem; /* 4px 12px */
+    font-size: 0.875rem; /* 14px */
+}
+.featured-redesigned-title {
+    font-size: 1.125rem; /* 18px */
+    font-weight: bold;
+    color: #1F2937; /* gray-800 */
+}
+.featured-redesigned-body {
+    padding: 1.5rem; /* 24px */
+}
+.featured-redesigned-content {
+    text-align: center;
+    margin-top: 1.5rem; /* 24px */
+}
+.featured-redesigned-logo {
+    height: 40px;
+    object-fit: contain;
+    margin: 0 auto 1rem; /* 16px */
+}
+.featured-redesigned-point {
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    color: #111827; /* gray-900 */
+    line-height: 1.4;
+}
+.featured-redesigned-target {
+    font-size: 1rem; /* 16px */
+    color: #4B5563; /* gray-600 */
+    margin-top: 0.5rem; /* 8px */
+}
+.featured-redesigned-campaign {
+    background-color: #FEF2F2; /* red-50 */
+    border: 2px solid #F87171; /* red-400 */
+    border-radius: 0.5rem; /* 8px */
+    padding: 1rem; /* 16px */
+    margin: 1.5rem 0; /* 24px */
+}
+.featured-redesigned-campaign-text {
+    color: #B91C1C; /* red-700 */
+    font-weight: bold;
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5;
+}
+.featured-redesigned-cta {
+    font-size: 1.125rem; /* 18px */
+    padding: 0.75rem 2rem; /* 12px 32px */
+    width: 100%;
+}
+
+
+/* --- 選び方ガイドセクション --- */
+.choose-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FBBF24;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* --- 複数社問い合わせ推奨セクション --- */
+.inquiry-item {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+}
+.inquiry-icon-box {
+    margin-bottom: 1rem;
+}
+
+/* --- 口コミセクション --- */
+.review-card-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+.review-card {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    background-color: #F9FAFB;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* --- レイアウトシフト(CLS)対策 --- */
+#featured-container {
+    min-height: 500px; /* スマートフォンでの表示を想定した最低限の高さを確保 */
+}
+
+/* --- レスポンシブ対応 --- */
+@media (min-width: 768px) {
+    /* PC表示用のスタイル */
+    .hero-title { font-size: 3rem; }
+    .hero-subtitle { font-size: 1.25rem; }
+    .section-padding { padding-top: 6rem; padding-bottom: 6rem; }
+    .section-title { font-size: 2.25rem; }
+
+    /* 口コミ */
+    .review-card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+    .review-card {
+        width: 100%;
+    }
+    
+    .details-article { padding: 3rem; }
+    .details-rank { font-size: 2.25rem; }
+    .details-company-name { font-size: 2.25rem; }
+    .details-section-title { font-size: 1.875rem; }
+    .details-cta { font-size: 1.5rem; }
+
+    .details-banner {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* おすすめセクション PC (完全リニューアル版) */
+    .featured-redesigned-body {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); /* 右カラムを少し広く */
+        gap: 2.5rem;
+        align-items: center;
+        padding: 2.5rem;
+    }
+    .featured-redesigned-content {
+        text-align: left;
+        margin-top: 0;
+    }
+    .featured-redesigned-logo {
+        margin: 0 0 1rem;
+    }
+    .featured-redesigned-cta {
+        width: auto;
+    }
+
+    /* CLS対策 PC */
+    #featured-container {
+        min-height: 450px;
+    }
+}
+
