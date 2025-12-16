@@ -20,7 +20,6 @@ const App = {
             return;
         }
         try {
-            this.initializeTemplating(); // ヘッダー・フッターを読み込む
             await this.loadCompanyData();
             this.buildDisplayData();
             this.renderAllSections();
@@ -28,25 +27,6 @@ const App = {
         } catch (error) {
             console.error('アプリケーションの初期化に失敗しました:', error);
         }
-    },
-    
-    initializeTemplating() {
-        const depth = window.location.pathname.includes('/articles/') ? '../' : '';
-        const loadAndProcessHTML = async (element, url) => {
-            if (!element) return;
-            try {
-                const response = await fetch(depth + url);
-                if (!response.ok) throw new Error(`File not found: ${url}`);
-                let data = await response.text();
-                data = data.replace(/{{BASE_PATH}}/g, depth);
-                element.innerHTML = data;
-            } catch (error) {
-                console.error(`Error loading ${url}:`, error);
-            }
-        };
-
-        loadAndProcessHTML(this.elements.headerPlaceholder, "_partials/header.html");
-        loadAndProcessHTML(this.elements.footerPlaceholder, "_partials/footer.html");
     },
 
     loadCompanyData() {
