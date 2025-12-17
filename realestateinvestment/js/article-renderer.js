@@ -1,30 +1,22 @@
-// このスクリプトが、各記事ページでタイトルなどを articles-db.js から自動で設定します。
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. このページのIDを取得 (例: "guide-for-beginners")
-    const path = window.location.pathname;
-    const filename = path.split('/').pop();
-    const articleId = filename.replace('.html', '');
+function renderTopArticles(containerId, count = 4) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-    // 2. 記事データベースとDOM要素が存在するか確認
-    const db = window.articlesDB;
-    const titleEl = document.getElementById('article-title');
-    const categoryEl = document.getElementById('article-category');
-    const dateEl = document.getElementById('article-date');
+    articles.slice(0, count).forEach(article => {
+        const articleEl = document.createElement("div");
+        articleEl.className = "article-card p-4 bg-white rounded-lg shadow mb-6";
 
-    if (!db || !db[articleId]) {
-        console.error(`記事ID "${articleId}" のデータがarticles-db.jsに見つかりません。`);
-        if(titleEl) titleEl.textContent = "記事が見つかりません";
-        return;
-    }
+        articleEl.innerHTML = `
+            <a href="${article.file}">
+                <img src="${article.thumbnail}" alt="${article.title}" class="mb-4 w-full h-48 object-cover rounded">
+                <span class="text-sm text-amber-600 font-bold">${article.category}</span>
+                <h2 class="text-xl font-bold mt-1">${article.title}</h2>
+            </a>
+        `;
+        container.appendChild(articleEl);
+    });
+}
 
-    // 3. データベースから記事情報を取得
-    const article = db[articleId];
-
-    // 4. ページ内の要素に情報を設定
-    if (titleEl) titleEl.textContent = article.title;
-    if (categoryEl) categoryEl.textContent = article.category;
-    if (dateEl) dateEl.textContent = article.date;
-
-    // 5. ブラウザのタブに表示されるタイトルも設定
-    document.title = `${article.title} | おすすめ不動産投資会社ランキング`;
+document.addEventListener("DOMContentLoaded", function() {
+    renderTopArticles("top-articles");
 });

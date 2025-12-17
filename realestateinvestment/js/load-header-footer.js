@@ -10,6 +10,6 @@ function loadHTML(id, url) {
 
 // ページが読み込まれたら自動で挿入
 document.addEventListener("DOMContentLoaded", function() {
-    loadHTML("header", "header.html");
-    loadHTML("footer", "footer.html");
+    loadHTML("header", "/realestateinvestment/components/header.html");
+    loadHTML("footer", "/realestateinvestment/components/footer.html");
 });
