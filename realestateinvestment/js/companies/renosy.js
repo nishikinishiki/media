@@ -5,7 +5,7 @@ window.companyData = window.companyData || {};
 window.companyData['renosy'] = {
     companyName: 'リノシー',
     logoUrl: 'images/logos/renosy_logo.png',
-    officialLink: 'https://inquiry.renosy.com/special/asset22_pp/?utm_source=aa_canny&utm_medium=af&utm_campaign=cpa&affnmsid=8850e891772d2488c312936018cfc63d2334a2ad',
+    officialLink: 'https://inquiry.renosy.com/special/asset22_pp/',
     
     // おすすめセクション用のデータ
     featured: {

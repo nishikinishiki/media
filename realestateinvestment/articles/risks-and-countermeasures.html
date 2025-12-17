@@ -5,33 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>記事タイトル | おすすめ不動産投資会社ランキング</title>
 
-    <!-- Preconnect to Google Fonts and Font Awesome servers -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome: Asynchronous loading to prevent render-blocking -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/article.css">
-</head>
-<body class="bg-gray-50 text-gray-800">
+    <link rel="stylesheet" href="/realestateinvestment/css/article.css">
+    <link rel="stylesheet" href="/realestateinvestment/css/legal-pages.css"> </head>
+<body>
 
-    <div id="header-placeholder"></div>
+    <div id="header"></div>
 
-    <main class="container mx-auto px-6 py-12 max-w-3xl">
-        <article class="bg-white p-8 sm:p-12 rounded-lg shadow-lg">
-            <div class="mb-8">
-                <span id="article-category" class="text-amber-600 font-bold">カテゴリ</span>
-                <h1 id="article-title" class="text-4xl font-bold my-2">記事のタイトルがここに入ります</h1>
-                <time id="article-date" class="text-gray-500">2025/09/09</time>
+    <main class="article-main">
+        <article class="article-card">
+            <div class="article-header">
+                <span id="article-category" class="article-category-label">カテゴリ</span>
+                <h1 id="article-title" class="article-title">記事のタイトルがここに入ります</h1>
+                <time id="article-date" class="article-date">2025/09/09</time>
             </div>
 
-            <div class="prose max-w-none">
+            <div class="article-content">
                 <p>「不動産投資」と聞くと、空室や家賃下落といったリスクを心配される方も多いかもしれません。しかし、リスクは正しく理解し、適切な対策を講じることで、十分にコントロールすることが可能です。ここでは代表的なリスクとその対策について解説します。</p>
 
                 <h2>リスク1：空室リスク</h2>
@@ -77,10 +72,11 @@
         </article>
     </main>
     
-    <div id="footer-placeholder"></div>
+    <div id="footer"></div>
 
-    <script src="../js/articles-db.js"></script>
-    <script src="../js/article-renderer.js"></script>
-    <script src="../js/templating.js"></script>
+    <script src="/realestateinvestment/js/articles-db.js"></script>
+    <script src="/realestateinvestment/js/article-renderer.js"></script>
+    <script src="/realestateinvestment/js/load-header-footer.js"></script>
+
 </body>
 </html>
