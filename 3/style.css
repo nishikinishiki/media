@@ -1,0 +1,223 @@
+/* =========================================
+   1. Configuration (設定・変数)
+   ここを変えるだけでサイト全体のデザインが変わります
+   ========================================= */
+:root {
+    /* Colors: 不動産らしい信頼感のある配色 */
+    --color-primary: #0f4c81;    /* メインの濃い青 */
+    --color-primary-dark: #09355c; /* ホバー用 */
+    --color-secondary: #e6b422;  /* CVボタンなどのアクセント（ゴールド） */
+    --color-text-main: #333333;  /* 本文 */
+    --color-text-light: #666666; /* 補足テキスト */
+    --color-bg-body: #f4f6f8;    /* 全体の背景色（薄いグレー） */
+    --color-bg-card: #ffffff;    /* カードの背景 */
+    --color-border: #e0e0e0;     /* 境界線 */
+
+    /* Typography */
+    --font-base: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    --line-height-base: 1.8;     /* 読みやすさ重視 */
+    --size-h1: 2rem;
+    --size-h2: 1.75rem;
+    --size-h3: 1.25rem;
+    --size-p: 1rem;
+
+    /* Spacing & Layout */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 3rem;
+    --radius-card: 8px;          /* 角丸の統一 */
+    --width-container: 1100px;   /* コンテンツ最大幅 */
+}
+
+/* =========================================
+   2. Reset & Base Styles (基本設定)
+   HTMLタグ自体に共通ルールを持たせ、クラス記述を減らす
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-base);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-body);
+    line-height: var(--line-height-base);
+}
+
+/* コンテンツ幅の制御 */
+.container {
+    max-width: var(--width-container);
+    margin: 0 auto;
+    padding: 0 var(--space-sm);
+}
+
+/* タイポグラフィの共通設定 */
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: var(--space-sm);
+}
+
+h1 { font-size: var(--size-h1); }
+h2 { 
+    font-size: var(--size-h2);
+    border-bottom: 2px solid var(--color-primary); /* 見出しの下線 */
+    padding-bottom: var(--space-xs);
+    margin-top: var(--space-lg);
+}
+h3 { font-size: var(--size-h3); }
+
+p {
+    font-size: var(--size-p);
+    margin-bottom: var(--space-md);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+a:hover { opacity: 0.8; }
+
+ul {
+    list-style: none;
+    margin-bottom: var(--space-md);
+}
+
+blockquote {
+    border-left: 4px solid var(--color-primary);
+    background-color: #eef4fa;
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    font-style: italic;
+    color: var(--color-text-light);
+}
+
+/* =========================================
+   3. Layout Structure (レイアウト)
+   添付画像の「メイン＋サイドバー」構成
+   ========================================= */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* スマホは1カラム */
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+/* PCサイズ (画面幅が広い時) */
+@media (min-width: 768px) {
+    .layout-grid {
+        grid-template-columns: 2fr 1fr; /* 左2 : 右1 の比率 */
+    }
+}
+
+.hero-section {
+    background-color: #222; /* 仮の暗い背景、本来は画像 */
+    color: #fff;
+    padding: var(--space-lg) 0;
+    text-align: center;
+}
+.hero-meta {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+/* =========================================
+   4. Components (部品)
+   再利用可能なパーツ
+   ========================================= */
+
+/* カード (Card) - 白背景・影・角丸 */
+.card {
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-card);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* 控えめでモダンな影 */
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--color-border);
+}
+
+/* ランキング専用カード */
+.ranking-card {
+    position: relative;
+    border: 2px solid transparent; /* 境界線分の余白確保 */
+}
+.ranking-card:hover {
+    border-color: var(--color-primary); /* ホバー時に青枠 */
+}
+
+/* ランキングバッジ */
+.ranking-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-secondary);
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
+}
+.rank-1 { background-color: #e6b422; /* Gold */ }
+.rank-2 { background-color: #9ea1a3; /* Silver */ }
+
+/* ボタン (Button) */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 50px; /* 丸みのあるボタン */
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: #fff;
+    width: 100%; /* モバイルは幅いっぱい */
+}
+.btn-white {
+    background-color: #fff;
+    color: var(--color-primary);
+}
+.full-width {
+    width: 100%;
+    display: block;
+}
+
+/* リスト装飾 */
+.feature-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.feature-list li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: bold;
+}
+
+/* ユーティリティ */
+.text-white { color: #fff; }
+.text-sm { font-size: 0.875rem; }
+.bg-accent { background-color: var(--color-primary); } /* サイドバーの青背景カード用 */
+
+.micro-copy {
+    font-size: 0.8rem;
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}

@@ -58,13 +58,6 @@ const App = {
                 detailsLink: `#${id}`,
             };
         });
-        this.data.columnsData = (this.data.displayColumns || []).map(id => {
-            if (!this.articlesDB || !this.articlesDB[id]) {
-                console.error(`記事ID '${id}' のデータがarticles-db.jsに見つかりません。`);
-                return null;
-            }
-            return this.articlesDB[id];
-        }).filter(Boolean);
     },
 
     renderAllSections() {
@@ -246,19 +239,51 @@ const App = {
     },
     
     renderColumnsSection() {
-        const columnsHTML = (this.data.columnsData || []).map(article => `
-            <a href="${article.link}" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+        const articleIds = [
+            'guide-for-beginners',
+            'common-mistakes',
+            'risks-and-countermeasures'
+        ];
+
+        const columnsHTML = articleIds.map(articleId => `
+            <a href="articles/article.html?id=${articleId}" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-2 text-xs text-gray-500">
-                        <span class="bg-amber-100 text-amber-800 font-semibold px-2 py-1 rounded-full">${article.category}</span>
-                        <time>${article.date}</time>
+                        <span class="bg-amber-100 text-amber-800 font-semibold px-2 py-1 rounded-full" id="category-${articleId}">カテゴリ</span>
+                        <time id="date-${articleId}">2025/09/09</time>
                     </div>
-                    <h4 class="font-bold text-lg text-gray-800 mb-2 leading-tight group-hover:text-amber-600 transition-colors">${article.title}</h4>
-                    <p class="text-sm text-gray-600">${article.description}</p>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2 leading-tight group-hover:text-amber-600 transition-colors" id="title-${articleId}">記事のタイトル</h4>
+                    <p class="text-sm text-gray-600" id="desc-${articleId}">記事の説明</p>
                 </div>
             </a>`
         ).join('');
+        
         this.elements.columnsContainer.innerHTML = columnsHTML;
+        
+        // 各記事のメタデータを動的に埋める
+        this.populateArticleMetadata(articleIds);
+    },
+
+    /**
+     * 記事のメタデータをDOMに埋める
+     */
+    populateArticleMetadata(articleIds) {
+        articleIds.forEach(articleId => {
+            fetch(`/realestateinvestment/articles/data/${articleId}.json`)
+                .then(res => res.ok ? res.json() : Promise.reject(`Failed to load ${articleId}`))
+                .then(article => {
+                    const categoryEl = document.getElementById(`category-${articleId}`);
+                    const dateEl = document.getElementById(`date-${articleId}`);
+                    const titleEl = document.getElementById(`title-${articleId}`);
+                    const descEl = document.getElementById(`desc-${articleId}`);
+                    
+                    if (categoryEl) categoryEl.textContent = article.category;
+                    if (dateEl) dateEl.textContent = article.date;
+                    if (titleEl) titleEl.textContent = article.title;
+                    if (descEl) descEl.textContent = article.description;
+                })
+                .catch(err => console.error(err));
+        });
     }
 };
 
