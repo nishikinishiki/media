@@ -1,4 +1,3 @@
-// このファイルでトップページに表示する内容（ランキング順位、表示するコラムなど）をすべて管理します。
 window.appData = {
     /**
      * @type {string} featuredCompanyId - 「今月のおすすめ」セクションに表示する企業のIDを指定します。
@@ -7,7 +6,6 @@ window.appData = {
 
     /**
      * @type {Array<Object>} evaluationColumns - ランキング表の評価項目を定義します。
-     * 表示したい項目の順番で並べてください。
      */
     evaluationColumns: [
         { key: 'initialCost', name: '初期費用' },
@@ -22,18 +20,16 @@ window.appData = {
 
     /**
      * @type {Array<string>} rankingOrder - 表示したい企業のIDをランキング順に並べます。
-     * この配列の順番がそのままLPのランキングになります。
      */
     rankingOrder: [
-        'jpreturns',
         'renosy',
+        'jpreturns',
         'toshin',
         'shinoken'
     ],
     
     /**
      * @type {Array<string>} displayColumns - トップページに表示したいコラム記事のIDをリストアップします。
-     * 記事の詳細は articles-db.js から自動で読み込まれます。
      */
     displayColumns: [
         'guide-for-beginners',

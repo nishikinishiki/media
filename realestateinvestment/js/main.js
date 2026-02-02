@@ -164,21 +164,23 @@ const App = {
 
     renderRankingTable() {
         const { evaluationColumns, rankingData } = this.data;
-        let headHTML = '<tr><th scope="col" class="sticky-col px-4 py-3 w-40 text-center">会社情報</th>';
-        evaluationColumns.forEach(c => headHTML += `<th scope="col" class="px-6 py-3 text-center">${c.name}</th>`);
-        headHTML += '<th scope="col" class="px-6 py-3 w-40 text-center">公式サイト</th></tr>';
+        let headHTML = '<tr><th scope="col" class="sticky-col px-4 py-2 w-40 text-center">会社情報</th>';
+        evaluationColumns.forEach(c => headHTML += `<th scope="col" class="px-6 py-2 text-center">${c.name}</th>`);
+        headHTML += '<th scope="col" class="px-6 py-2 w-40 text-center">公式サイト</th></tr>';
         this.elements.tableHead.innerHTML = headHTML;
 
         const bodyHTML = rankingData.map((company, i) => `
             <tr class="${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b hover:bg-amber-50">
-                <td class="sticky-col px-4 py-4 font-medium text-gray-900 text-center align-middle">
-                    ${this.helpers.getRankHTML(company.rank)}
-                    <img src="${company.logoUrl}" alt="${company.logoName}ロゴ" width="120" height="40" class="mx-auto mb-2 h-10 object-contain">
-                    <span class="block text-xs font-semibold">${company.companyName}</span>
+                <td class="sticky-col px-4 py-2 font-medium text-gray-900 text-center align-middle">
+                    <div class="flex justify-center items-center gap-1">
+                        <div class="details-rank">${this.helpers.getRankHTML(company.rank)}</div>
+                        <h3 class="details-company-name text-xs font-semibold">${company.companyName}</h3>
+                    </div>                
+                    <img src="${company.logoUrl}" alt="${company.logoName}ロゴ" width="120" height="40" class="mx-auto h-10 object-contain">
                     <div class="company-rating">${this.helpers.getStarRatingHTML(company.overallRating)}</div>
                 </td>
-                ${evaluationColumns.map(c => `<td class="px-6 py-4 text-center align-middle">${this.helpers.getEvaluationHTML.call(this.helpers, company.evaluations[c.key])}</td>`).join('')}
-                <td class="px-6 py-4 text-center align-middle"><a href="${company.detailsLink}" class="cta-button text-white font-bold py-2 px-4 rounded-full text-sm block whitespace-nowrap">詳しく見る↓</a></td>
+                ${evaluationColumns.map(c => `<td class="px-6 py-2 text-center align-middle">${this.helpers.getEvaluationHTML.call(this.helpers, company.evaluations[c.key])}</td>`).join('')}
+                <td class="px-6 py-2 text-center align-middle"><a href="${company.detailsLink}" class="cta-button text-white font-bold py-2 px-4 rounded-full text-sm block whitespace-nowrap">詳しく見る↓</a></td>
             </tr>`
         ).join('');
         this.elements.tableBody.innerHTML = bodyHTML;
@@ -186,7 +188,7 @@ const App = {
 
     renderDetailsSection() {
         const detailsHTML = this.data.rankingData.map(company => `
-            <article id="${company.id}" class="details-article bg-white p-6 sm:p-10 rounded-lg shadow-lg scroll-mt-20">
+            <article id="${company.id}" class="details-article bg-white p-5 sm:p-10 rounded-lg shadow-lg scroll-mt-20">
                 <div class="max-w-4xl mx-auto">
                     <div class="flex justify-center items-center gap-4 mb-6">
                         <div class="details-rank text-3xl font-bold text-gray-700">${this.helpers.getRankHTML(company.rank)}</div>

@@ -1,0 +1,1025 @@
+/* 証券のミカタ LP - https://shoken-mikata.com/ranking/general */
+/* 色は :root で定義し、要素で var() により参照 */
+
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-mine-shaft: #333333;
+  --color-dove-gray: #666666;
+  --color-alto: #dddddd;
+  --color-crimson: #ee1e3d;
+  --color-fun-blue: #1d4ab0;
+  --color-matisse: #1f4693;
+  --color-hero-blue: #277aff;
+  --color-gallery: #dbedfe;
+  --color-french-pass: #bfe0fe;
+  --color-pampas: #f6f5f2;
+  --color-button: #e9254c;
+  --color-button-shadow: rgba(165, 15, 37, 1);
+  --color-emerald: #46c657;
+  --color-bunting: #172a54;
+  --color-international-orange: #ff5500;
+  --color-golden-tainoi: #ffcc5d;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-mine-shaft);
+  background-color: var(--color-white);
+}
+
+.page {
+  max-width: 1920px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========== Header ========== */
+.header {
+  width: 100%;
+  border-bottom: 1px solid var(--color-alto);
+  background-color: var(--color-white);
+}
+
+.header-inner {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 48px;
+}
+
+.header-logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-mine-shaft);
+  text-decoration: none;
+}
+
+.header-logo:hover {
+  opacity: 0.8;
+}
+
+.header-link {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 17px;
+  border: 1px solid var(--color-alto);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-mine-shaft);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.header-link:hover {
+  opacity: 0.8;
+}
+
+.header-link-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  background-color: var(--color-emerald);
+  color: var(--color-white);
+  border-radius: 4px;
+}
+
+/* ========== Main ========== */
+.main {
+  flex: 1;
+  width: 100%;
+}
+
+.main-inner {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.meta-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.meta-date {
+  margin: 0;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-mine-shaft);
+}
+
+.meta-promo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-promo-icon {
+  width: 12px;
+  height: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-style: italic;
+  color: var(--color-mine-shaft);
+  border: 1px solid var(--color-mine-shaft);
+  border-radius: 50%;
+}
+
+.meta-promo-text {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--color-mine-shaft);
+}
+
+/* ========== Hero ========== */
+.hero-section {
+  width: 100%;
+  padding: 24px 16px;
+  background-color: var(--color-hero-blue);
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 9%, transparent 9%);
+  text-align: center;
+}
+
+.hero-title {
+  margin: 0 0 16px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-title-badge {
+  display: inline-block;
+  padding: 4px 24px;
+  background-color: var(--color-fun-blue);
+  border-radius: 22px;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.hero-title-line {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+/* ========== Tabs ========== */
+.tabs-section {
+  width: 100%;
+}
+
+.tabs-main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--color-crimson);
+}
+
+.tab-btn {
+  width: 313px;
+  max-width: 100%;
+  padding: 14px 17px;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--color-gallery);
+  color: var(--color-dove-gray);
+}
+
+.tab-btn--active {
+  padding: 16px 17px 15px;
+  background-color: var(--color-white);
+  color: var(--color-crimson);
+  border: 1px solid var(--color-crimson);
+  border-bottom: 1px solid var(--color-white);
+  margin-bottom: -1px;
+}
+
+.tabs-sub-wrap {
+  border-bottom: 2px solid var(--color-french-pass);
+}
+
+.tabs-sub {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 2px;
+  flex-wrap: wrap;
+}
+
+.tab-sub-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 14px 8px;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--color-gallery);
+  color: var(--color-dove-gray);
+}
+
+.tab-sub-btn--active {
+  background-color: var(--color-gallery);
+  color: var(--color-matisse);
+  border-bottom: 2px solid var(--color-gallery);
+  margin-bottom: -2px;
+}
+
+/* ========== Table ========== */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--color-alto);
+  background-color: var(--color-white);
+  vertical-align: middle;
+}
+
+.comparison-table thead th {
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-mine-shaft);
+  background-color: var(--color-pampas);
+}
+
+.col-broker { width: 140px; text-align: left; }
+.col-fee { width: 100px; text-align: center; }
+.col-products { width: 100px; text-align: center; }
+.col-cc { width: 100px; text-align: center; }
+.col-points { min-width: 180px; text-align: left; }
+.col-official { width: 140px; text-align: center; }
+
+.broker-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.broker-rank {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-white);
+  border-radius: 50%;
+}
+
+.broker-rank--1 { background-color: var(--color-crimson); }
+.broker-rank--2 { background-color: #b32d2d; }
+.broker-rank--3 { background-color: #e9522e; }
+.broker-rank--4 { background-color: var(--color-fun-blue); }
+.broker-rank--5 { background-color: #1a1a1a; }
+
+.broker-logo {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+}
+
+.data-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+}
+
+.data-icon {
+  color: var(--color-emerald);
+  font-size: 12px;
+}
+
+.points-cell {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+}
+
+.points-cell--red {
+  color: var(--color-crimson);
+}
+
+.table-more {
+  margin: 16px 0 0;
+  text-align: center;
+}
+
+.table-more a {
+  color: var(--color-fun-blue);
+  text-decoration: underline;
+}
+
+/* ========== Buttons ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-white);
+  background-color: var(--color-button);
+  box-shadow: 0 2px 0 0 var(--color-button-shadow);
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn--site {
+  min-width: 100px;
+}
+
+.btn--large {
+  padding: 12px 24px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* ========== Section ========== */
+.section {
+  width: 100%;
+}
+
+.section-title {
+  margin: 0 0 16px;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-mine-shaft);
+}
+
+.section-note {
+  margin: -8px 0 16px;
+  font-size: 12px;
+  color: var(--color-dove-gray);
+}
+
+.section-more {
+  margin: 16px 0 0;
+  text-align: center;
+}
+
+.section-more a {
+  color: var(--color-fun-blue);
+  text-decoration: underline;
+}
+
+/* ========== Broker cards (TOP5) ========== */
+.section--top5 {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.broker-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-alto);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.broker-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  background-color: var(--color-fun-blue);
+}
+
+.broker-card-rank-badge {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-white);
+  background-color: var(--color-crimson);
+  border-radius: 50%;
+}
+
+.broker-card-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-white);
+}
+
+.broker-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  background-color: var(--color-pampas);
+  border-bottom: 1px solid var(--color-alto);
+}
+
+.broker-card-meta-label {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-bunting);
+}
+
+.broker-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.broker-card-rating-value {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-international-orange);
+}
+
+.broker-card-banner {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  background: linear-gradient(135deg, var(--color-gallery) 0%, var(--color-french-pass) 100%);
+  text-decoration: none;
+}
+
+.broker-card-banner--small {
+  min-height: 80px;
+  margin: 12px 0;
+}
+
+.broker-card-point {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-crimson);
+}
+
+.broker-card-point-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-bottom: 8px;
+  background-color: var(--color-crimson);
+  border-radius: 32px;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--color-white);
+}
+
+.broker-card-point-heading {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-crimson);
+}
+
+.broker-card-supervisor {
+  padding: 24px;
+  background-color: var(--color-golden-tainoi);
+  border-radius: 16px;
+  margin: 24px;
+}
+
+.broker-card-supervisor-title {
+  margin: 0 0 16px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-fun-blue);
+}
+
+.broker-card-feature {
+  margin-bottom: 20px;
+}
+
+.broker-card-feature:last-child {
+  margin-bottom: 0;
+}
+
+.broker-card-feature-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-international-orange);
+}
+
+.broker-card-feature-text {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-mine-shaft);
+}
+
+.broker-card-cta {
+  padding: 24px;
+  text-align: center;
+}
+
+.broker-card-cta .btn {
+  margin-bottom: 12px;
+}
+
+.link-underline {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+  text-decoration: underline;
+}
+
+.broker-card-reviews {
+  padding: 24px;
+  border-top: 1px solid var(--color-alto);
+}
+
+.broker-card-reviews-title {
+  margin: 0 0 16px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-fun-blue);
+}
+
+.broker-card-reviews-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.broker-card-review {
+  padding: 16px;
+  border: 1px solid var(--color-alto);
+  border-radius: 16px;
+  background-color: var(--color-white);
+}
+
+.broker-card-review-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+}
+
+.broker-card-review-rating {
+  font-size: 14px;
+  color: var(--color-international-orange);
+  margin-bottom: 4px;
+}
+
+.broker-card-review-rating-value {
+  font-weight: 700;
+}
+
+.broker-card-review-user {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--color-dove-gray);
+}
+
+.broker-card-review-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-mine-shaft);
+}
+
+.broker-card-campaign {
+  padding: 24px;
+  border-top: 1px solid var(--color-alto);
+}
+
+.broker-card-campaign-label {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: var(--color-crimson);
+}
+
+.broker-card-campaign-title {
+  margin: 0 0 12px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-mine-shaft);
+}
+
+/* ========== Purpose cards ========== */
+.purpose-cards-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.purpose-cards {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
+  min-width: min-content;
+}
+
+.purpose-card {
+  flex: 0 0 280px;
+  padding: 24px;
+  border: 1px solid var(--color-alto);
+  border-radius: 8px;
+  background-color: var(--color-white);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.purpose-card:hover {
+  border-color: var(--color-fun-blue);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.purpose-card-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-fun-blue);
+}
+
+.purpose-card-logo {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-mine-shaft);
+}
+
+.purpose-card-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-mine-shaft);
+  flex: 1;
+}
+
+.purpose-card-link {
+  font-size: 14px;
+  color: var(--color-fun-blue);
+  text-decoration: underline;
+}
+
+/* ========== Supervisor ========== */
+.supervisor-card {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid var(--color-alto);
+  border-radius: 8px;
+  background-color: var(--color-pampas);
+}
+
+.supervisor-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-alto);
+  flex-shrink: 0;
+}
+
+.supervisor-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.supervisor-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-mine-shaft);
+}
+
+.supervisor-role {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--color-dove-gray);
+}
+
+.supervisor-bio {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-mine-shaft);
+}
+
+/* ========== Link list ========== */
+.link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-list a {
+  color: var(--color-fun-blue);
+  text-decoration: underline;
+}
+
+.link-list--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+/* ========== Column list ========== */
+.column-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.column-list a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-mine-shaft);
+  text-decoration: none;
+}
+
+.column-list a:hover {
+  text-decoration: underline;
+}
+
+.column-tag {
+  font-size: 12px;
+  color: var(--color-dove-gray);
+  flex-shrink: 0;
+}
+
+/* ========== Search form ========== */
+.search-form {
+  padding: 24px;
+  border: 1px solid var(--color-alto);
+  border-radius: 8px;
+  background-color: var(--color-pampas);
+}
+
+.search-row {
+  margin-bottom: 20px;
+}
+
+.search-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.search-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+}
+
+.search-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.search-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+  cursor: pointer;
+}
+
+.search-submit {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* ========== Pickup ========== */
+.section--pickup .section-title {
+  margin-bottom: 16px;
+}
+
+.pickup-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.pickup-card {
+  flex: 1;
+  min-width: 280px;
+  padding: 24px;
+  border: 1px solid var(--color-alto);
+  border-radius: 8px;
+  background-color: var(--color-white);
+}
+
+.pickup-card-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-mine-shaft);
+}
+
+.pickup-card-rating {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--color-dove-gray);
+}
+
+.pickup-card-point {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-mine-shaft);
+}
+
+.pickup-card .btn {
+  margin-top: 12px;
+}
+
+.pickup-links {
+  margin-bottom: 24px;
+}
+
+.pickup-links-title {
+  margin: 0 0 12px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-mine-shaft);
+}
+
+/* ========== Ranking3 ========== */
+.ranking3-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ranking3-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 24px;
+  border: 1px solid var(--color-alto);
+  border-radius: 8px;
+  background-color: var(--color-white);
+}
+
+.ranking3-rank {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-white);
+  background-color: var(--color-crimson);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ranking3-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ranking3-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-mine-shaft);
+}
+
+.ranking3-rating {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: var(--color-dove-gray);
+}
+
+.ranking3-point {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-mine-shaft);
+}
+
+/* ========== Footer ========== */
+.footer {
+  width: 100%;
+  margin-top: auto;
+  border-top: 1px solid var(--color-alto);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding: 24px 16px;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--color-mine-shaft);
+  text-decoration: underline;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.footer-copy {
+  padding: 12px;
+  background-color: var(--color-fun-blue);
+  text-align: center;
+}
+
+.footer-copy p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-white);
+}
