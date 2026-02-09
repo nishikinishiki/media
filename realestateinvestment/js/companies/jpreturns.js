@@ -62,8 +62,8 @@ window.companyData['jpreturns'] = {
         { label: '所有物件エリア', value: '東京都心、横浜、川崎' },
         { label: '対象物件', value: '中古ワンルームマンション' },
         { label: '入居率', value: '99.5%' },
-        { label: '投資額', value: '100万円〜' },
-        { label: '資本金', value: '1億円' },
+        { label: '投資額', value: '1万円〜' },
+        { label: '資本金', value: '9000万円' },
         { label: '従業員数', value: '150名' },
         { label: 'セミナー・個別相談', value: 'オンライン・対面で随時開催' },
         { label: '実績', value: '創業20年、取引実績5,000件以上' }
