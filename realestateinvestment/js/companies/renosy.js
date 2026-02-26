@@ -11,7 +11,7 @@ window.companyData['renosy'] = {
     featured: {
         tagline: 'AIによる資産価値の高い物件選定',
         highlight: '不動産投資売上No.1',
-        imageUrl: 'images/banners/renosy_banner_1.png',
+        imageUrl: 'images/banners/renosy_banner_3.png',
         catchphrase: '年収500万以上の方必見!!',
         campaign: {
             title: 'キャンペーン実施中！',
@@ -35,7 +35,7 @@ window.companyData['renosy'] = {
         initialCost: { symbol: '◎', text: '1万円~' },
         easeOfManagement: { symbol: '〇', text: 'アプリで完結' },
         supportSystem: { symbol: '◎', text: '24時間対応' },
-        occupancyRate: { symbol: '◎', text: '99.7%' },
+        occupancyRate: { symbol: '◎', text: '99.6%' },
         propertyArea: { symbol: '◎', text: '都心' },
         interviewBonus: { symbol: '◎', text: 'あり' },
         companyScale: { symbol: '◎', text: '大手' },
@@ -44,13 +44,13 @@ window.companyData['renosy'] = {
     overallRating: 4.0,
     points: [
         { title: '年収500万円以上の会社員/公務員/医師/士業の方におすすめ', text: 'AIによる価値の高い物件選定や、専用アプリで物件の管理から確定申告までをサポートしてくれるため、普段忙しいサラリーマンや公務員、医師の方におすすめ※7' },
-        { title: '入居率99.7%の賃貸管理サービス', text: '空室になる心配がほとんどない優良物件を厳選しているため、不動産投資の最大のリスクである空室リスクが低いのが魅力。' },
+        { title: '入居率99.6%（2025年10月時点。）の賃貸管理サービス', text: '空室になる心配がほとんどない優良物件を厳選しているため、不動産投資の最大のリスクである空室リスクが低いのが魅力。' },
         { title: '面倒で不透明な契約手続きも 最短1週間・簡単でスムーズ', text: '不動産投資ローンの申込・審査手続きのオンライン完結を実現！最大98%の項目を自動で入力することが可能。' }
     ],
     detailsTable: [
         { label: '所有物件エリア', value: '東京23区/川崎/横浜/大阪/神戸/京都/福岡/海外' },
         { label: '対象物件', value: '区分新築・中古マンション、一棟新築・中古マンション、オフィス、戸建て' },
-        { label: '入居率', value: '99.7%' },
+        { label: '入居率', value: '99.6%（2025年10月時点。）' },
         { label: '投資額', value: '10万円〜' },
         { label: '資本金', value: '99億6,295万3,856円（2025年10月末時点）' },
         { label: '従業員数', value: '1,665人（2025年10月末時点、グループ会社を含む）' },
