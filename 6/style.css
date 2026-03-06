@@ -1,4 +1,3 @@
-/* style.css フルコード */
 /* Base Reset & Variables */
 :root {
     --primary-blue: #1e3a8a; /* blue-900 */
@@ -249,7 +248,7 @@ a {
 }
 
 .table-container table {
-    min-width: 900px; /* ← スマホでもこの幅をキープするため、はみ出してスクロールできるようになります */
+    min-width: 1000px; /* ← スマホでもこの幅をキープするため、はみ出してスクロールできるようになります */
 }
 
 table {
@@ -272,6 +271,7 @@ th, td {
 }
 
 td:nth-child(2),
+td:nth-child(4),
 td:nth-child(5) {
     white-space: nowrap;
     min-width: 90px;
@@ -358,10 +358,10 @@ td:nth-child(5) {
 .rank-3-bg { background-color: #c2410c; }
 .rank-4-bg { background-color: var(--primary-blue); }
 
-.highlight-text { color: var(--red); font-weight: 700; }
+.highlight-text { color: var(--red); font-weight: 600; }
 
 .annotation-text {
-    font-size: 10px;
+    font-size: 7px;
     color: var(--slate-400);
     margin-left: 0.25rem;
     margin-top: 0.5rem;
@@ -385,8 +385,7 @@ td:nth-child(5) {
 }
 
 .eval-mark {
-    font-size: 1.5rem;      /* 記号を少し大きくして目立たせる */
-    font-weight: 700;
+    font-size: 1.5rem; 
 }
 
 /* 各記号の色設定 */
@@ -396,7 +395,7 @@ td:nth-child(5) {
 
 /* 評価テキスト部分（必要に応じて少し小さく） */
 .eval-text {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--slate-700);
 }
 
