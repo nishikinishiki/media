@@ -1,10 +1,12 @@
 /* Base Reset & Variables */
+
 :root {
     --primary-blue: #1e3a8a; /* blue-900 */
     --accent-blue: #2563eb;  /* blue-600 */
     --yellow: #facc15;       /* yellow-400 */
     --red: #ef4444;          /* red-500 */
     --red-hover: #dc2626;    /* red-600 */
+    --orange: #f59e0b;       /* orange-500 */
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
@@ -14,6 +16,10 @@
     --slate-900: #0f172a;
     --gold: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
     --silver: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+    --bronze: linear-gradient(135deg, #dca77c 0%, #9a6032 100%);
+    --default: linear-gradient(135deg, #4775ea 0%, var(--primary-blue) 100%);
+    --check-green: #22c55e;
+    --shadow: var(--shadow);
 }
 
 * {
@@ -27,7 +33,7 @@ body {
     background-color: var(--slate-50);
     color: var(--slate-900);
     line-height: 1.6;
-    overflow-x: hidden; /* ← ページ全体の横揺れ・横スクロールを防止 */
+    overflow-x: clip;
 }
 
 a {
@@ -46,9 +52,6 @@ a {
 .header {
     background-color: #fff;
     border-bottom: 1px solid var(--slate-200);
-    position: sticky;
-    top: 0;
-    z-index: 50;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
@@ -248,12 +251,13 @@ a {
 }
 
 .table-container table {
-    min-width: 1000px; /* ← スマホでもこの幅をキープするため、はみ出してスクロールできるようになります */
+    min-width: 900px; /* ← スマホでもこの幅をキープするため、はみ出してスクロールできるようになります */
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     font-size: 0.75rem;
     text-align: center;
 }
@@ -266,29 +270,35 @@ thead {
 }
 
 th, td {
-    padding: 0.7rem;
+    padding: 0.5rem 0.2rem;
     border-bottom: 1px solid var(--slate-200);
+    min-width: 90px;
 }
 
 td:nth-child(2),
 td:nth-child(4),
 td:nth-child(5) {
     white-space: nowrap;
-    min-width: 90px;
 }
+
+/* --- 1列目 --- */
 
 .sticky-col {
     position: sticky;
     left: 0;
     z-index: 20;
     background-color: #fff;
-    border-right: 1px solid var(--slate-200);
-    min-width: 120px;
+    box-shadow: inset -1px 0 0 0 var(--slate-200);
 }
 
-/* --- 会社名セル（参考デザイン風）用追加CSS --- */
+th.sticky-col,td.sticky-col {
+    padding: 0.5rem 0.2rem;
+}
 
-/* ロゴとバッジの親要素 */
+th.sticky-col {
+    background-color: var(--slate-50);
+}
+
 .company-logo-wrapper {
     position: relative;
     display: inline-block;
@@ -312,28 +322,24 @@ td:nth-child(5) {
     position: relative;
     width: 100px;
     padding: 0.35rem 1rem 0.35rem 0.35rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px var(--shadow);
     transition: 0.2s;
     background-color: var(--red);
     color: #fff;
     border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.65rem;
+    font-weight: 600;
 }
 
 .btn-table:hover { background-color: var(--red-hover); }
 
-/* 新規タブアイコン*/
 .external-icon {
     position: absolute;
-    right: 1px;
-    width: 22px;
-    height: 22px;
+    right: 0.5px;
+    width: 20px;
+    height: 20px;
     filter: brightness(0) invert(1);
 }
-
-.rank-1-text { font-weight: 700; color: var(--primary-blue); }
-.rank-other-text { font-weight: 700; color: var(--slate-600); }
 
 /* バッジ */
 .rank-badge {
@@ -353,22 +359,21 @@ td:nth-child(5) {
     box-shadow: 0 2px 2px rgba(0,0,0,0.15);
 }
 
-.rank-1-bg { background-color: #eab308; }
-.rank-2-bg { background-color: #94a3b8; }
-.rank-3-bg { background-color: #c2410c; }
-.rank-4-bg { background-color: var(--primary-blue); }
+.rank-1-bg { background: var(--gold); }
+.rank-2-bg { background: var(--silver); }
+.rank-3-bg { background: var(--bronze); }
+.rank-4-bg { background: var(--default); }
 
 .highlight-text { color: var(--red); font-weight: 600; }
 
 .annotation-text {
-    font-size: 7px;
+    font-size: 7.25px;
     color: var(--slate-400);
     margin-left: 0.25rem;
-    margin-top: 0.5rem;
 }
 
 .annotation-mark {
-    font-size: 8px;
+    font-size: 7.25px;
     color: var(--slate-500);
     vertical-align: super;
     margin-left: 2px;
@@ -377,10 +382,10 @@ td:nth-child(5) {
 /* --- 評価記号（◎、〇、△）のスタイル --- */
 .eval-item {
     display: flex;
-    flex-direction: column; /* 縦並びにする魔法のコード */
-    align-items: center;    /* 左右中央揃え */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 4px;               /* 記号とテキストの隙間 */
+    gap: 2px;
     line-height: 1.2;
 }
 
@@ -390,10 +395,9 @@ td:nth-child(5) {
 
 /* 各記号の色設定 */
 .eval-a { color: var(--red); }       /* ◎の色 */
-.eval-b { color: #f59e0b; }          /* 〇の色（星と同じゴールド系） */
+.eval-b { color: var(--orange); }          /* 〇の色（星と同じゴールド系） */
 .eval-c { color: var(--slate-400); } /* △の色 */
 
-/* 評価テキスト部分（必要に応じて少し小さく） */
 .eval-text {
     font-size: 0.7rem;
     color: var(--slate-700);
@@ -472,12 +476,10 @@ td:nth-child(5) {
     border-radius: 1rem;
     overflow: hidden;
     margin-bottom: 2rem;
-    background-color: #fff;
-    border: 1px solid var(--slate-200);
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow);
+    border: 2px solid transparent;
+    --rank-theme: var(--slate-200);
 }
-
-.rank-card-1 { border: 2px solid var(--yellow); }
 
 /* --- 詳細カード内のバナー画像 --- */
 .rank-card-banner-img {
@@ -494,10 +496,37 @@ td:nth-child(5) {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--rank-theme);
 }
 
-.header-gold { background: var(--gold); }
-.header-silver { background: var(--slate-400); }
+/* ランク定義 */
+.rank-1 {
+    --rank-theme: var(--gold);
+    background: 
+      linear-gradient(#fff, #fff) padding-box,
+      var(--gold) border-box; 
+}
+
+.rank-2 {
+    --rank-theme: var(--silver);
+    background: 
+      linear-gradient(#fff, #fff) padding-box,
+      var(--silver) border-box; 
+}
+
+.rank-3 {
+    --rank-theme: var(--bronze);
+    background: 
+      linear-gradient(#fff, #fff) padding-box,
+      var(--bronze) border-box; 
+}
+
+.rank-4 {
+    --rank-theme: var(--default);
+    background: 
+      linear-gradient(#fff, #fff) padding-box,
+      var(--default) border-box; 
+}
 
 .rank-label { font-weight: 700; letter-spacing: 0.1em; font-size: 1.125rem; }
 .rating-label { font-size: 0.875rem; }
@@ -560,7 +589,7 @@ td:nth-child(5) {
     margin-bottom: 0.25rem;
 }
 
-.check-icon { color: #22c55e; font-weight: 700; }
+.check-icon { color: var(--check-green); font-weight: 700; }
 
 .user-voice {
     margin-top: 1.5rem;
@@ -603,7 +632,7 @@ td:nth-child(5) {
     font-weight: 700;
     padding: 1rem;
     border-radius: 0.75rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px var(--shadow);
     transition: 0.2s;
 }
 
@@ -666,10 +695,10 @@ td:nth-child(5) {
 .profile-job { font-size: 10px; color: var(--slate-500); line-height: 1; }
 .profile-desc { font-size: 0.75rem; color: var(--slate-600); }
 
-.article-list { display: flex; flex-direction: column; gap: 1rem; }
+.article-list { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .article-item { display: flex; gap: 0.75rem; align-items: center; }
-.article-thumb { width: 4rem; height: 3rem; background-color: var(--slate-200); border-radius: 4px; overflow: hidden; }
+.article-thumb { width: 5rem; height: 3rem; background-color: var(--slate-200); border-radius: 4px; overflow: hidden; }
 
 .article-title { font-size: 0.75rem; font-weight: 700; line-height: 1.25; transition: 0.2s; }
 .article-item:hover .article-title { color: var(--accent-blue); }
@@ -762,7 +791,6 @@ td:nth-child(5) {
     background-color: var(--slate-50);
     padding: 1.25rem;
     border-radius: 0.75rem;
-    margin-bottom: 1rem;
     border: 1px solid var(--slate-100);
 }
 
@@ -780,7 +808,7 @@ td:nth-child(5) {
 }
 
 .review-stars {
-    color: #f59e0b; /* 星の色（ゴールド） */
+    color: var(--orange);
     font-size: 0.8125rem;
 }
 
@@ -789,4 +817,83 @@ td:nth-child(5) {
     color: var(--slate-600);
     line-height: 1.7;
     margin: 0; /* 既存のpタグマージンをリセット */
+}
+
+/* --- 口コミスライダー--- */
+
+.review-slider {
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.review-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* 自然な動き */
+    gap: 1rem;
+    padding: 10px 0;
+}
+
+/*スマホ：1枚表示 */
+.review-item {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+}
+
+/*PC：3枚表示*/
+@media (min-width: 1024px) {
+    .review-item {
+        flex: 0 0 calc((100% - 2rem) / 3); 
+    }
+}
+
+/* ナビゲーションボタン */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid var(--slate-200);
+    box-shadow: 0 2px 4px var(--shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--slate-600);
+    transition: 0.2s;
+}
+
+.slider-btn:hover {
+    background-color: var(--slate-50);
+}
+
+.slider-btn.prev { left: 0px; }
+.slider-btn.next { right: 0px; }
+
+/* ドットインジケーター */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--slate-200);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.dot.active {
+    background-color: var(--accent-blue); /* 既存のアクセントカラーを活用 */
+    transform: scale(1.2);
 }
