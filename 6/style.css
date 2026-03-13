@@ -607,7 +607,7 @@ th.sticky-col {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     border: 1px solid var(--slate-200);
 }
 .company-info-table th {
