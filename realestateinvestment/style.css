@@ -1287,12 +1287,15 @@ th.sticky-col {
 .footer {
     background-color: var(--slate-900);
     color: var(--slate-400);
-    padding: 3rem 1rem;
-    font-size: 0.75rem;
+    padding: 1rem;
+    font-size: 0.7rem;
     text-align: center;
 }
 
-.disclaimer { margin-bottom: 1rem; }
+.disclaimer { 
+    margin-bottom: 1rem;
+    font-size: 0.5rem;
+ }
 
 .footer-links {
     display: flex;
@@ -1304,9 +1307,8 @@ th.sticky-col {
 .footer-links a:hover { color: #fff; }
 
 .copyright {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     border-top: 1px solid #1e293b;
-    margin-top: 1rem;
 }
 
 /* --- 口コミセクション専用スタイル --- */
