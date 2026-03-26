@@ -73,14 +73,10 @@ a {
     color: var(--primary-blue);
     display: flex;
     align-items: center;
-    gap: 0.25rem;
 }
 
 .logo-icon {
-    background-color: var(--primary-blue);
-    color: #fff;
-    padding: 0.125rem 0.4rem;
-    border-radius: 4px;
+    width: 25px;
 }
 
 .nav-links {
@@ -637,6 +633,24 @@ a {
     line-height: 1.4;
 }
 
+.top3-name-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem; /* テキストとアイコンの隙間 */
+    transition: 0.2s; /* ホバー時の変化を滑らかに */
+}
+
+/* マウスオーバー時（タップ時）にリンクであることを分かりやすくする */
+.top3-name-link:hover .top3-name {
+    color: var(--accent-blue);
+    text-decoration: underline;
+}
+
+.top3-external-icon {
+    width: 25px;
+    height: 25px;
+    filter: brightness(0) opacity(0.4); 
+}
 
 /* =========================================
    5. サイドバー配置時の .section-title-band の上書き（※PC表示時のみ適用）
