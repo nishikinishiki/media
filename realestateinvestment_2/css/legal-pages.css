@@ -1,0 +1,247 @@
+/* ページ全体の基本設定 */
+.legal-page-body {
+    background-color: #f9fafb;
+    color: #1f2937;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+}
+
+/* メイン部分の余白設定 */
+.legal-main-wrapper {
+    padding: 3rem 0;
+}
+
+@media (min-width: 640px) {
+    .legal-main-wrapper {
+        padding: 5rem 0;
+    }
+}
+
+.legal-page-container {
+    width: 100%;
+    max-width: 896px; /* 4xl相当 */
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+/* 白背景のコンテンツボックス */
+.legal-container {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+@media (min-width: 640px) {
+    .legal-container {
+        padding: 3rem;
+    }
+}
+
+/* ページタイトル */
+.legal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 2.5rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #d1d5db;
+    color: #111827;
+}
+
+@media (min-width: 640px) {
+    .legal-title {
+        font-size: 1.875rem;
+    }
+}
+
+/* 各項目セクション */
+.legal-section {
+    margin-bottom: 2.5rem;
+}
+
+/* セクションの見出し（黒い左線） */
+.legal-section-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-left: 4px solid #111827;
+    padding-left: 0.75rem;
+    margin: 0 0 1.25rem 0;
+    color: #111827;
+}
+
+/* 本文テキスト */
+.legal-text {
+    line-height: 1.8;
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .legal-text {
+        font-size: 1rem;
+    }
+}
+
+.legal-text p {
+    margin-bottom: 1rem;
+}
+
+/* 箇条書きリスト */
+.legal-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.legal-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* 注記・手順ボックス */
+.legal-notice-box {
+    background-color: #f3f4f6;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    margin: 2rem 0;
+}
+
+.legal-notice-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.legal-notice-box p {
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* --- 表（Table）コンポーネント --- */
+
+.legal-table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* スマホで表がはみ出すのを防ぐ */
+    margin: 1.5rem 0;
+}
+
+.legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+    .legal-table {
+        font-size: 1rem;
+    }
+}
+
+.legal-table th, 
+.legal-table td {
+    border: 1px solid #d1d5db;
+    padding: 1rem;
+    text-align: left;
+}
+
+.legal-table th {
+    background-color: #f3f4f6; /* 薄いグレー */
+    font-weight: 700;
+    color: #111827;
+    width: 30%; /* 項目名の幅を固定 */
+    white-space: nowrap;
+}
+
+.legal-table td {
+    background-color: #ffffff;
+    color: #374151;
+}
+
+/* リンクがある場合のスタイル */
+.legal-table a {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.legal-table a:hover {
+    text-decoration: none;
+}
+
+/* --- ヘッダー・フッター --- */
+
+/* ヘッダー */
+.site-header {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+}
+
+.header-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .header-title {
+        font-size: 1.5rem;
+    }
+}
+
+.header-title a {
+    color: #1f2937;
+    text-decoration: none;
+}
+
+/* フッター */
+.site-footer {
+    background-color: #1f2937; /* Gray-800相当 */
+    color: #ffffff;
+    margin-top: 5rem;
+    padding: 2.5rem 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* space-x-6相当 */
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap; /* スマホで折り返し許可 */
+}
+
+.footer-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+    color: #fbbf24; /* Amber-400相当 */
+}
+
+.footer-copy {
+    font-size: 0.875rem;
+    color: #9ca3af; /* Gray-400相当 */
+    margin: 0;
+}
