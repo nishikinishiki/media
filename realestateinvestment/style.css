@@ -76,7 +76,13 @@ a {
 }
 
 .logo-icon {
-    width: 25px;
+    max-width: 20px;
+    height: auto;
+}
+
+.logo-text {
+    line-height: 1;          /* 縦のズレを防ぐ */
+    margin-left: 0.2rem;
 }
 
 .nav-links {
@@ -124,7 +130,7 @@ a {
 @media (max-width: 767px) {
     .hero-meta-info {
         font-size: 0.625rem;
-        padding: 0.25rem 0.75rem;
+        padding: 0.25rem 0rem;
     }
     .hero-main-img {
         width: 140%;    /* 画像を元の幅の140%に拡大（左右が約20%ずつ切れる計算） */

@@ -2,12 +2,10 @@
   <style>
     .icon-color {
       fill: #2563EB;
-      stroke: #2563EB;
     }
     @media (prefers-color-scheme: dark) {
       .icon-color {
         fill: #FFFFFF;
-        stroke: #FFFFFF;
       }
     }
   </style>
