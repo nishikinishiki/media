@@ -7,13 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (wrapper && btn) {
         btn.addEventListener('click', function() {
-            wrapper.classList.toggle('is-open');
-            
-            if (wrapper.classList.contains('is-open')) {
-                btn.textContent = '× 閉じる';
-            } else {
-                btn.textContent = '＋ すべて見る';
-            }
+            // Write（DOM変更）のみなので、requestAnimationFrameで安全に処理
+            requestAnimationFrame(() => {
+                const isOpen = wrapper.classList.toggle('is-open');
+                btn.textContent = isOpen ? '× 閉じる' : '＋ すべて見る';
+            });
         });
     }
 
@@ -30,57 +28,93 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!track || items.length === 0) return;
 
         let currentIndex = 0;
+        let resizeTimer; // リサイズ時の連続発火を防ぐためのタイマー
 
         function getVisibleCount() {
             return window.innerWidth >= 1024 ? 3 : 1;
         }
 
-        function createDots() {
+        // ドットを生成する関数（DOM操作のみ）
+        function createDots(dotCount) {
             dotsContainer.innerHTML = '';
-            const dotCount = Math.ceil(items.length / getVisibleCount());
             for (let i = 0; i < dotCount; i++) {
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => { currentIndex = i; updateSlider(); });
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => { 
+                    currentIndex = i; 
+                    updateSlider(); 
+                });
                 dotsContainer.appendChild(dot);
             }
         }
 
-        function updateSlider() {
+        // スライダーの計算と描画を行うメイン関数
+        function updateSlider(forceRebuildDots = false) {
+            // ==========================================
+            // 【STEP 1: READ (読み取りフェーズ)】
+            // DOMを変更する「前」に、必要なサイズ情報をすべて取得する
+            // ==========================================
             const visibleCount = getVisibleCount();
             const dotCount = Math.ceil(items.length / visibleCount);
-            if (currentIndex >= dotCount) currentIndex = dotCount - 1;
+            
+            if (currentIndex >= dotCount) {
+                currentIndex = Math.max(0, dotCount - 1);
+            }
 
-            // 💡 修正ポイント：paddingに依存せず、カード1枚の実際の幅を取得
+            // 強制リフローの原因だった箇所！ DOM変更前に読み取ることで遅延がゼロになります。
             const itemWidth = items[0].offsetWidth; 
             const gap = 16; // CSSで指定した1rem(16px)
-            
-            // 移動距離 ＝ (カードの幅 + 隙間) × 移動枚数
             const moveDistance = (itemWidth + gap) * visibleCount;
-            track.style.transform = `translateX(-${currentIndex * moveDistance}px)`;
-            
-            const dots = dotsContainer.querySelectorAll('.dot');
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+
+            // ==========================================
+            // 【STEP 2: WRITE (書き込みフェーズ)】
+            // requestAnimationFrame内で一括でDOMを書き換える
+            // ==========================================
+            requestAnimationFrame(() => {
+                // 必要であればドットを再構築
+                if (forceRebuildDots) {
+                    createDots(dotCount);
+                }
+
+                // スライダーを動かす
+                track.style.transform = `translateX(-${currentIndex * moveDistance}px)`;
+                
+                // ドットのアクティブ状態を更新
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            });
         }
 
-        nextBtn?.addEventListener('click', () => {
-            const dotCount = Math.ceil(items.length / getVisibleCount());
-            currentIndex = (currentIndex + 1) % dotCount;
-            updateSlider();
-        });
+        // 初期化（初回はドットも生成する）
+        updateSlider(true);
 
-        prevBtn?.addEventListener('click', () => {
-            const dotCount = Math.ceil(items.length / getVisibleCount());
-            currentIndex = (currentIndex - 1 + dotCount) % dotCount;
-            updateSlider();
-        });
+        // クリックイベント
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const dotCount = Math.ceil(items.length / getVisibleCount());
+                currentIndex = (currentIndex + 1) % dotCount;
+                updateSlider();
+            });
+        }
 
-        createDots();
-        // リサイズ時は計算し直す
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const dotCount = Math.ceil(items.length / getVisibleCount());
+                currentIndex = (currentIndex - 1 + dotCount) % dotCount;
+                updateSlider();
+            });
+        }
+
+        // リサイズイベント（Debounce処理で連続発火を防止）
         window.addEventListener('resize', () => {
-            createDots();
-            updateSlider();
+            clearTimeout(resizeTimer);
+            // 画面幅の変更が終わってから100ms後に一度だけ処理を実行する
+            resizeTimer = setTimeout(() => {
+                updateSlider(true);
+            }, 100);
         });
     });
 });
