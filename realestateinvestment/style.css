@@ -133,9 +133,8 @@ a {
         padding: 0.25rem 0rem;
     }
     .hero-main-img {
-        width: 140%;    /* 画像を元の幅の140%に拡大（左右が約20%ずつ切れる計算） */
-        max-width: none; /* max-widthの制限を解除 */
-        margin-left: -20%; /* 拡大した画像を中央に配置するため、左に20%ずらす */
+        width: 100%;    /* 画像を元の幅の140%に拡大（左右が約20%ずつ切れる計算） */
+        height: auto;
     }
 }
 
