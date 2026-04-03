@@ -1,13 +1,13 @@
 /* Base Reset & Variables */
 
 :root {
-    --primary-blue: #1e3a8a; /* blue-900 */
-    --section-title-blue: #39439b;
-    --accent-blue: #2563eb;  
+    --primary-blue: #1d4ab0; /* blue-900 */
+    --accent-blue: #277aff;  
     --yellow: #facc15;       /* yellow-400 */
     --red: #ef4444;          /* red-500 */
     --red-hover: #dc2626;    /* red-600 */
     --orange: #f59e0b;       /* orange-500 */
+    --orange-text: #f50;
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
@@ -23,7 +23,6 @@
     --silver: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
     --bronze: linear-gradient(135deg, #dca77c 0%, #9a6032 100%);
     --default: linear-gradient(135deg, #4775ea 0%, var(--primary-blue) 100%);
-    --check-green: #22c55e;
     --shadow: var(--shadow);
 }
 
@@ -228,12 +227,12 @@ a {
 .section-title-band[data-badge]:not([data-badge=""])::before {
     content: attr(data-badge);
     position: absolute;
-    top: -16px;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--primary-blue); /* 濃いブルー */
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 700;
     padding: 0.25rem 1rem;
     border-radius: 9999px;
@@ -296,7 +295,7 @@ a {
   align-items: center;
   margin: 10px 0px; /* 下の三角形の分の余白を確保 */
   padding: 7px 20px;
-  color: var(--section-title-blue); /* テキストの濃い青色（画像に近似） */
+  color: var(--primary-blue); /* テキストの濃い青色（画像に近似） */
   font-size: 19px;
   font-weight: bold;
   letter-spacing: 0.05em;
@@ -331,6 +330,21 @@ a {
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .detail-section-title {
+        padding: 3px 15px;
+    }
+    .detail-section-title::after {
+        bottom: -6px;
+        border-top: 6px solid var(--slate-300);
+        border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
+    }
+    .detail-section-text {
+        font-size: 0.875rem;
+    }
+}
+
 /* =========================================
    2.5. 詳細カード内のレビュー
    ========================================= */
@@ -363,8 +377,8 @@ a {
   
   /* 方眼紙（グリッド）模様の背景 */
   background-image: 
-    linear-gradient(90deg, #f0f0f0 1px, transparent 1px),
-    linear-gradient(0deg, #f0f0f0 1px, transparent 1px);
+    linear-gradient(90deg, var(--grey-300) 1px, transparent 1px),
+    linear-gradient(0deg, var(--grey-300) 1px, transparent 1px);
   background-size: 20px 20px; /* マスの大きさ */
 }
 
@@ -380,10 +394,10 @@ a {
 .comment-title {
   display: flex;
   align-items: center;
-  color: #f16a22;
+  color: var(--orange-text);
   font-size: 18px;
   font-weight: bold;
-  border-bottom: 1px solid #e0601b; /* 下線 */
+  border-bottom: 1px solid var(--orange-text); /* 下線 */
   padding-bottom: 8px;
   margin-bottom: 12px;
 }
@@ -393,7 +407,7 @@ a {
   display: inline-block;
   width: 22px;
   height: 22px;
-  background-color: #f16a22;
+  background-color: var(--orange-text);
   border-radius: 50%;
   position: relative;
   margin-right: 8px;
@@ -417,6 +431,31 @@ a {
   line-height: 1.8;
   color: #333333;
   margin: 0;
+}
+@media (max-width: 768px) {
+    .comment-title {
+        font-size: 15px;
+        padding-bottom: 4px;
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+
+    .check-icon {
+        width: 17px;
+        height: 17px;
+        margin-right: 7px;
+        margin-bottom: 2px;
+    }
+    .check-icon::after {
+        top: 3px;
+        left: 6px;
+        width: 3px;
+        height: 7px;
+    }
+    .comment-text {
+        font-size: 13px;
+        line-height: 1.5;
+    }
 }
 
 /* --- 黄色い蛍光ペン風マーカー --- */
@@ -1016,6 +1055,10 @@ th.sticky-col {
 
 .rank-card-body { padding: 1.5rem; }
 
+@media (max-width: 768px) {
+    .rank-card-body { padding: 1rem; }
+}
+
 .company-layout {
     display: flex;
     flex-direction: column;
@@ -1077,8 +1120,6 @@ th.sticky-col {
     gap: 0.5rem;
     margin-bottom: 0.25rem;
 }
-
-.check-icon { color: var(--check-green); font-weight: 700; }
 
 .user-voice {
     margin-top: 1.5rem;
