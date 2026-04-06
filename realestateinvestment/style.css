@@ -8,17 +8,18 @@
     --red-hover: #dc2626;    /* red-600 */
     --orange: #f59e0b;       /* orange-500 */
     --orange-text: #f50;
+    --white: #ffffff;
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
-    --slate-300: #e8f2fc;
+    --slate-300: #dbedfe;
     --slate-400: #94a3b8;
     --slate-500: #64748b;
     --slate-600: #475569;
     --slate-900: #0f172a;
     --grey-300: #f6f5f2;
     --grey-200:#ddd;
-    --blue-350: #cce2fa;
+    --blue-350: #b7dbfd;
     --blue-600: #3b82f6;
     --gold: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
     --silver: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
@@ -41,7 +42,7 @@
 
 body {
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    background-color: var(--slate-50);
+    background-color: var(--white);
     color: var(--slate-900);
     line-height: 1.6;
     overflow-x: clip;
@@ -68,7 +69,7 @@ a {
 
 /* Header */
 .header {
-    background-color: #fff;
+    background-color: var(--white);
     border-bottom: 1px solid var(--slate-200);
     box-shadow: var(--shadow-sm);
 }
@@ -117,7 +118,7 @@ a {
 
 /* Hero Section*/
 .hero {
-    background-color: #fff; /* 既存のルート変数を使用 */
+    background-color: var(--white); /* 既存のルート変数を使用 */
     padding: 0; /* 画像を画面幅いっぱいに、またはスッキリ見せるために上下パディングをリセット */
     text-align: center;
     overflow: hidden; /* スマホで拡大した際、はみ出た画像を非表示にする */
@@ -140,9 +141,13 @@ a {
 }
 
 @media (max-width: 768px) {
+    .hero .max-w-6xl {
+        padding-left: 0;
+        padding-right: 0;
+    }
     .hero-meta-info {
         font-size: 0.625rem;
-        padding: 0.25rem 0rem;
+        padding: 0.25rem 0.75rem;
     }
 }
 
@@ -168,7 +173,7 @@ a {
 
 /* Cards & Sections */
 .card {
-    background-color: #fff;
+    background-color: var(--white);
     padding: 1.5rem;
     border-radius: 0.75rem;
     border: 1px solid var(--slate-200);
@@ -187,7 +192,7 @@ a {
 
 .section-title-icon {
     background-color: var(--accent-blue);
-    color: #fff;
+    color: var(--white);
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
@@ -216,13 +221,13 @@ a {
 .section-title-band {
     position: relative;
     background-color: var(--accent-blue); /* 明るいブルーの帯 */
-    color: #fff;
+    color: var(--white);
     text-align: center;
     padding: 1rem;
     border-radius: 4px;
     margin-top: 1.5rem; /* デフォルトの上の余白 */
     margin-bottom: 1.5rem;
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     font-weight: 700;
     display: block; /* 既存の flex を上書き */
 }
@@ -240,7 +245,7 @@ a {
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--primary-blue); /* 濃いブルー */
-    color: #fff;
+    color: var(--white);
     font-size: 0.95rem;
     font-weight: 700;
     padding: 0.25rem 1rem;
@@ -262,7 +267,7 @@ a {
 }
 
 .title-icon {
-    background-color: #fff;
+    background-color: var(--white);
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -312,10 +317,10 @@ a {
   /* 斜めストライプの背景 */
   background: repeating-linear-gradient(
     -45deg,
-    var(--slate-300),
-    var(--slate-300) 6px,
-    var(--blue-350) 6px,
-    var(--blue-350) 8px
+    var(--slate-300) 0px,
+    var(--slate-300) 4px,
+    var(--blue-350)  0px,
+    var(--blue-350)  5px
   );
 }
 
@@ -341,7 +346,7 @@ a {
 
 @media (max-width: 768px) {
     .detail-section-title {
-        padding: 3px 15px;
+        padding: 3px 30px;
     }
     .detail-section-title::after {
         bottom: -6px;
@@ -381,7 +386,7 @@ a {
 /* --- 内側の白いボックス --- */
 .reviewer-comment-inner {
   position: relative;
-  background-color: #ffffff;
+  background-color: var(--white);
   padding: 30px 20px 20px; /* 見出しが被るため上部の余白を広めにとる */
   
   /* 方眼紙（グリッド）模様の背景 */
@@ -429,8 +434,8 @@ a {
   left: 8px;
   width: 5px;
   height: 10px;
-  border-right: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
   transform: rotate(45deg); /* 四角の枠線を回転させてチェックマークにする */
 }
 
@@ -478,10 +483,10 @@ a {
    3. 今月のピックアップ企業（メインコンテンツ用）
    ========================================= */
 .pickup-card {
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 0.75rem;
     border: 1px solid var(--accent-blue); /* 目立つように青枠 */
-    box-shadow: var(--shadow-lg);
+    /* box-shadow: var(--shadow-lg); */
     overflow: hidden;
     margin-bottom: 2rem;
 }
@@ -494,7 +499,7 @@ a {
         var(--blue-600) 10px,
         var(--blue-600) 20px
     );
-    color: #fff;
+    color: var(--white);
     text-align: center;
     padding: 0.75rem;
     font-weight: 700;
@@ -562,6 +567,8 @@ a {
 /* --- 詳細カード内のバナー画像 --- */
 .pickup-img {
     display: block;
+    width: 100%;     /* コンテナの幅いっぱいに広げる */
+    margin: 0 auto;  /* 中央寄せ */
 }
 
 @media (max-width: 768px) {
@@ -581,7 +588,7 @@ a {
 }
 
 .top3-item {
-    background-color: #fff;
+    background-color: var(--white);
     border: 1px solid var(--slate-200);
     border-radius: 0.5rem;
     padding: 1rem;
@@ -603,7 +610,7 @@ a {
     justify-content: center;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
 }
 .top3-medal.rank-1 { background: var(--gold); }
 .top3-medal.rank-2 { background: var(--silver); }
@@ -731,8 +738,8 @@ a {
     position: relative;
     overflow-x: auto;
     border: 1px solid var(--slate-200);
-    border-radius: 0.75rem;
-    background-color: #fff;
+    border-radius: 0.5rem;
+    background-color: var(--white);
     width: 100%;
 }
 
@@ -774,7 +781,7 @@ th, td {
     position: sticky;
     left: 0;
     z-index: 20;
-    background-color: #fff;
+    background-color: var(--white);
     box-shadow: inset -1px 0 0 0 var(--slate-200);
 }
 
@@ -798,7 +805,7 @@ th.sticky-col {
     height: auto;
     border: 1px solid var(--slate-200);
     padding: 10px;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 4px;
 }
 
@@ -812,7 +819,7 @@ th.sticky-col {
     box-shadow: var(--shadow-lg);
     transition: 0.2s;
     background-color: var(--red);
-    color: #fff;
+    color: var(--white);
     border-radius: 4px;
     font-size: 0.65rem;
     font-weight: 600;
@@ -841,7 +848,7 @@ th.sticky-col {
     align-items: center;
     justify-content: center;
     font-size: 10px;
-    color: #fff;
+    color: var(--white);
     font-weight: 700;
     box-shadow: var(--shadow-md);
 }
@@ -939,7 +946,7 @@ th.sticky-col {
 
 /* ボタンのデザイン */
 .btn-expand {
-    background-color: #fff;
+    background-color: var(--white);
     border: 1px solid var(--slate-400);
     color: var(--slate-900);
     padding: 0.75rem 2rem;
@@ -959,7 +966,7 @@ th.sticky-col {
 
 /* Ranking Detail Cards */
 .rank-card {
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     margin-bottom: 2rem;
     box-shadow: var(--shadow-lg);
@@ -976,7 +983,7 @@ th.sticky-col {
 
 .rank-card-header {
     padding: 1rem 1.5rem;
-    color: #fff;
+    color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1035,7 +1042,7 @@ th.sticky-col {
 .company-logo {
     width: 50%;
     /* height: 7.25rem; */
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
@@ -1109,7 +1116,7 @@ th.sticky-col {
     text-align: center;
     position: relative;
     background-color: var(--red);
-    color: #fff;
+    color: var(--white);
     font-weight: 700;
     padding: 1rem;
     border-radius: 0.75rem;
@@ -1228,7 +1235,7 @@ th.sticky-col {
     margin-bottom: 1rem;
 }
 
-.footer-links a:hover { color: #fff; }
+.footer-links a:hover { color: var(--white); }
 
 .copyright {
     padding-top: 0.5rem;
@@ -1239,7 +1246,7 @@ th.sticky-col {
 .review-item {
     background-color: var(--grey-300);
     padding: 1.25rem;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     border: 1px solid var(--slate-100);
 }
 
@@ -1307,7 +1314,7 @@ th.sticky-col {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--white);
     border: 1px solid var(--slate-200);
     box-shadow: var(--shadow-md);
     cursor: pointer;
@@ -1406,7 +1413,7 @@ th.sticky-col {
 }
 
 .article-body {
-    background: #fff;
+    background: var(--white);
     padding: 2rem;
     border-radius: 0.75rem;
 }
@@ -1486,7 +1493,7 @@ th.sticky-col {
     border: 1px solid var(--slate-200);
     border-radius: 0.5rem;
     overflow: hidden;
-    background-color: #fff;
+    background-color: var(--white);
     transition: box-shadow 0.2s;
 }
 
@@ -1580,7 +1587,7 @@ details[open] .faq-question {
     font-size: 0.875rem;
     line-height: 1.8;
     color: var(--slate-700);
-    background-color: #fff;
+    background-color: var(--white);
     animation: fadeIn 0.3s ease-in-out; /* 開いた時のフワッと表示 */
 }
 
@@ -1601,5 +1608,75 @@ details[open] .faq-question {
     .faq-answer {
         font-size: 0.8125rem;
         padding: 1rem 0.875rem;
+    }
+}
+
+/* =========================================
+   無限スクロールロゴバー (Logo Ticker)
+   ========================================= */
+
+@media (max-width: 768px) {
+    .logo-ticker-wrapper {
+    background-color: var(--white);
+    padding: 10px 0px;
+    overflow: hidden; /* 画面外のはみ出しを防ぐ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .logo-ticker {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .logo-ticker-track {
+        display: flex;
+        width: max-content;
+        animation: ticker 30s linear infinite;
+    }
+
+    .logo-ticker-list {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .logo-ticker-list li {
+        padding: 0px 10px; /* ロゴ間の余白 */
+        flex-shrink: 0;
+    }
+
+    .logo-ticker-list img {
+        height: 20px; 
+        width: auto;
+        object-fit: contain;
+    }
+}
+
+/* アニメーションキーフレーム */
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* track全体の幅の半分（= 1リスト分）移動したらループ */
+        transform: translateX(-50%);
+    }
+}
+
+/* OSの設定で「視差効果を減らす」をオンにしているユーザーへの配慮（重要） */
+@media (prefers-reduced-motion: reduce) {
+    .logo-ticker-track {
+        animation-play-state: paused;
+    }
+}
+
+/* PC（1024px以上）ではロゴティッカーを非表示にする */
+@media (min-width: 769px) {
+    .logo-ticker-wrapper {
+        display: none;
     }
 }
