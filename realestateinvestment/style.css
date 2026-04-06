@@ -24,10 +24,13 @@
     --silver: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
     --bronze: linear-gradient(135deg, #dca77c 0%, #9a6032 100%);
     --default: linear-gradient(135deg, #4775ea 0%, var(--primary-blue) 100%);
-    --shadow: var(--shadow);
     --article-line-height: 1.8;
     --article-font-size: 1.05rem;
     --article-spacing: 1.5rem;
+    /* シャドウの階層定義 */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05); /* 微細な影 */
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);  /* 少し浮いた影 */
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12); /* しっかり浮いた影 */
 }
 
 * {
@@ -44,10 +47,17 @@ body {
     overflow-x: clip;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
 a {
     text-decoration: none;
     color: inherit;
 }
+
 
 /* Common Layout */
 .max-w-6xl {
@@ -60,7 +70,7 @@ a {
 .header {
     background-color: #fff;
     border-bottom: 1px solid var(--slate-200);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 .header-inner {
@@ -95,7 +105,7 @@ a {
     font-weight: 500;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .nav-links {
         display: flex;
     }
@@ -115,7 +125,6 @@ a {
 
 .hero-main-img {
     width: 100%;
-    height: auto;
     display: block;
     margin: 0 auto;
 }
@@ -130,14 +139,10 @@ a {
     color: var(--slate-600); /* 青背景に馴染む既存のカラー変数 */
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .hero-meta-info {
         font-size: 0.625rem;
         padding: 0.25rem 0rem;
-    }
-    .hero-main-img {
-        width: 100%;    /* 画像を元の幅の140%に拡大（左右が約20%ずつ切れる計算） */
-        height: auto;
     }
 }
 
@@ -167,7 +172,7 @@ a {
     padding: 1.5rem;
     border-radius: 0.75rem;
     border: 1px solid var(--slate-200);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
     margin-bottom: 2rem;
 }
 
@@ -241,7 +246,7 @@ a {
     padding: 0.25rem 1rem;
     border-radius: 9999px;
     white-space: nowrap;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
 }
 
 /* 吹き出しの「しっぽ」部分（文字がある場合のみ表示） */
@@ -268,7 +273,7 @@ a {
 /* =========================================
    スマホ表示時：見出し(h2)のフルワイド化
    ========================================= */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .section-title-band {
         /* 親要素の余白を無視して画面幅いっぱいに広げる */
         margin-left: calc(50% - 50vw);
@@ -469,49 +474,6 @@ a {
   font-weight: bold; /* マーカー部分は太字にして強調 */
 }
 
-@media (min-width: 1024px) {
-    .reviewer-comment-box {
-    position: relative;
-    background-color: #ffcc5d; /* 外枠の黄色 */
-    border-radius: 12px;
-    padding: 16px; /* 黄色い枠の太さになります */
-    margin: 40px 0px; /* 見出しが上に飛び出す分の余白 */
-    }
-
-    /* --- 見出しの配置調整 --- */
-    .reviewer-comment-box .detail-section-title {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%); /* 上部の中央に配置して半分はみ出させる */
-    margin-bottom: 0;
-    z-index: 2;
-    white-space: nowrap;
-    }
-
-    /* --- 内側の白いボックス --- */
-    .reviewer-comment-inner {
-    position: relative;
-    background-color: #ffffff;
-    padding: 30px 20px 20px; /* 見出しが被るため上部の余白を広めにとる */
-    
-    /* 方眼紙（グリッド）模様の背景 */
-    background-image: 
-        linear-gradient(90deg, #f0f0f0 1px, transparent 1px),
-        linear-gradient(0deg, #f0f0f0 1px, transparent 1px);
-    background-size: 20px 20px; /* マスの大きさ */
-    }
-
-    /* --- 各コメント項目のスタイル --- */
-    .comment-item {
-    margin-bottom: 30px;
-    }
-    .comment-item:last-child {
-    margin-bottom: 0;
-    }
-}
-
-
 /* =========================================
    3. 今月のピックアップ企業（メインコンテンツ用）
    ========================================= */
@@ -519,7 +481,7 @@ a {
     background-color: #fff;
     border-radius: 0.75rem;
     border: 1px solid var(--accent-blue); /* 目立つように青枠 */
-    box-shadow: 0 4px 6px -1px var(--shadow);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
     margin-bottom: 2rem;
 }
@@ -600,8 +562,6 @@ a {
 /* --- 詳細カード内のバナー画像 --- */
 .pickup-img {
     display: block;
-    width: 100%;
-    height: auto;
 }
 
 @media (max-width: 768px) {
@@ -738,7 +698,7 @@ a {
     font-size: 0.625rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .stats-grid {
         font-size: 0.875rem;
     }
@@ -849,7 +809,7 @@ th.sticky-col {
     position: relative;
     width: 100px;
     padding: 0.35rem 1rem 0.35rem 0.35rem;
-    box-shadow: 0 4px 6px var(--shadow);
+    box-shadow: var(--shadow-lg);
     transition: 0.2s;
     background-color: var(--red);
     color: #fff;
@@ -883,7 +843,7 @@ th.sticky-col {
     font-size: 10px;
     color: #fff;
     font-weight: 700;
-    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-md);
 }
 
 .rank-1-bg { background: var(--gold); }
@@ -934,7 +894,6 @@ th.sticky-col {
 .table-logo-img {
     display: block;
     max-width: 60px; /* 横幅の上限を設定 */
-    height: auto;
     margin: 5px auto; /* 上下のマージンと左右中央寄せ */
 }
 
@@ -988,7 +947,7 @@ th.sticky-col {
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
     transition: 0.2s;
     font-family: inherit;
 }
@@ -1003,7 +962,7 @@ th.sticky-col {
     border-radius: 1rem;
     overflow: hidden;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 6px -1px var(--shadow);
+    box-shadow: var(--shadow-lg);
     border: 2px solid transparent;
     --rank-theme: var(--slate-200);
 }
@@ -1012,7 +971,6 @@ th.sticky-col {
 .rank-card-banner-img {
     display: block;
     width: 90%;
-    height: auto;
     margin: 10px auto; /* 上下のマージンと左右中央寄せ */
 }
 
@@ -1070,7 +1028,7 @@ th.sticky-col {
     margin: 10px 0 40px 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .company-layout { flex-direction: row; }
 }
 
@@ -1125,17 +1083,6 @@ th.sticky-col {
     margin-bottom: 0.25rem;
 }
 
-.user-voice {
-    margin-top: 1.5rem;
-    background-color: #fffbeb;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid #fef3c7;
-    font-style: italic;
-    font-size: 0.875rem;
-    color: var(--slate-600);
-}
-
 /* 企業情報詳細テーブル */
 .company-info-table {
     width: 100%;
@@ -1166,7 +1113,7 @@ th.sticky-col {
     font-weight: 700;
     padding: 1rem;
     border-radius: 0.75rem;
-    box-shadow: 0 4px 6px var(--shadow);
+    box-shadow: var(--shadow-lg);
     transition: 0.2s;
 }
 
@@ -1204,7 +1151,7 @@ th.sticky-col {
     padding: 0.25rem 1rem;
     border-radius: 9999px;
     white-space: nowrap;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-md);
     z-index: 2;
 }
 
@@ -1221,33 +1168,6 @@ th.sticky-col {
     z-index: 2;
 }
 
-
-.bg-accent { background-color: var(--accent-blue); }
-
-.cta-note {
-    text-align: center;
-    font-size: 10px;
-    color: var(--slate-400);
-    margin-top: 0.5rem;
-}
-
-.rank-detail-title { 
-    color: var(--primary-blue); 
-    font-size: 1.25rem; 
-    margin-bottom: 1rem; 
-    font-weight: 700; 
-}
-
-.rank-stats-summary {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    font-size: 0.875rem;
-}
-
-.stat-box { background-color: var(--slate-50); padding: 0.75rem; border-radius: 4px; }
-
 /* Sidebar Articles & Profiles */
 .sidebar-title {
     font-size: 1.125rem;
@@ -1256,8 +1176,6 @@ th.sticky-col {
     border-bottom: 2px solid var(--slate-200);
     padding-bottom: 0.5rem;
 }
-
-.sidebar-title-white { border-color: rgba(255,255,255,0.2); color: #fff; }
 
 .profile-flex {
     display: flex;
@@ -1288,47 +1206,6 @@ th.sticky-col {
 
 .article-title { font-size: 0.75rem; font-weight: 700; line-height: 1.25; transition: 0.2s; }
 .article-item:hover .article-title { color: var(--accent-blue); }
-
-.all-articles-link {
-    display: block;
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.875rem;
-    color: var(--accent-blue);
-    font-weight: 700;
-    text-decoration: underline;
-}
-
-/* Search Widget */
-.search-widget { background-color: var(--primary-blue); color: #fff; }
-.search-form { font-size: 0.875rem; }
-.label-text { font-size: 0.75rem; color: #93c5fd; }
-
-.search-widget select {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 4px;
-    background-color: #1e40af;
-    border: 1px solid #1d4ed8;
-    color: #fff;
-    margin-top: 0.25rem;
-    outline: none;
-}
-
-.btn-search {
-    width: 100%;
-    margin-top: 1rem;
-    background-color: var(--yellow);
-    color: var(--primary-blue);
-    font-weight: 700;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-search:hover { background-color: #fbbf24; }
 
 /* Footer */
 .footer {
@@ -1432,7 +1309,7 @@ th.sticky-col {
     border-radius: 50%;
     background-color: #fff;
     border: 1px solid var(--slate-200);
-    box-shadow: 0 2px 4px var(--shadow);
+    box-shadow: var(--shadow-md);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1594,4 +1471,135 @@ th.sticky-col {
     height: auto;
     border-radius: 8px;
     margin: 1rem 0;
+}
+
+/* =========================================
+   FAQセクション（ネイティブアコーディオン）
+   ========================================= */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    border: 1px solid var(--slate-200);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+    transition: box-shadow 0.2s;
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    cursor: pointer;
+    background-color: var(--slate-50);
+    transition: background-color 0.2s;
+    list-style: none; /* デフォルトの三角マークを消す */
+}
+
+/* Safari向けのデフォルト三角マーク消去 */
+.faq-question::-webkit-details-marker {
+    display: none; 
+}
+
+.faq-question:hover {
+    background-color: var(--slate-100);
+}
+
+.faq-question-text {
+    flex: 1;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+}
+
+.q-icon {
+    color: var(--orange-text);
+    font-size: 1.125rem;
+    margin-right: 0.5rem;
+    font-weight: 900;
+}
+
+/* CSSのみで作る「＋/－」開閉アイコン */
+.faq-toggle-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+.faq-toggle-icon::before,
+.faq-toggle-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--primary-blue);
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 横線 */
+.faq-toggle-icon::before {
+    width: 14px;
+    height: 2px;
+}
+
+/* 縦線 */
+.faq-toggle-icon::after {
+    width: 2px;
+    height: 14px;
+}
+
+/* アコーディオンが開いた状態（縦線を消して「－」にする） */
+details[open] .faq-toggle-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 0;
+}
+
+/* 開いたときの質問背景色を変える（任意） */
+details[open] .faq-question {
+    background-color: var(--slate-100);
+    border-bottom: 1px dashed var(--slate-200);
+}
+
+.faq-answer {
+    padding: 1.25rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: var(--slate-700);
+    background-color: #fff;
+    animation: fadeIn 0.3s ease-in-out; /* 開いた時のフワッと表示 */
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .faq-question {
+        font-size: 0.875rem;
+        padding: 0.875rem;
+    }
+    .faq-answer {
+        font-size: 0.8125rem;
+        padding: 1rem 0.875rem;
+    }
 }
