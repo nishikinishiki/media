@@ -15,6 +15,17 @@
     --color-red-600:    #dc2626;
     --color-yellow-400: #facc15;
     --color-orange-500: #f59e0b;
+    --color-grey-300: #f6f5f2; /* 表のヘッダー用の絶妙なグレー */
+
+    /* ランキングメダル・バッジ用グラデーション（元コードを完全再現） */
+    --grad-gold:    linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    --grad-silver:  linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+    --grad-bronze:  linear-gradient(135deg, #dca77c 0%, #9a6032 100%);
+    --grad-default: linear-gradient(135deg, #4775ea 0%, var(--theme-primary) 100%);
+
+    /* 影の定義を元コードの rgba(0,0,0,0.05) に正確に合わせる */
+    --shadow-base:  0 1px 2px rgba(0,0,0,0.05); 
+    --shadow-btn:   0 4px 6px rgba(0,0,0,0.05);
 
     /* Semantic Theme */
     --theme-primary:    var(--color-blue-900);
@@ -282,3 +293,186 @@ img { max-width: 100%; height: auto; display: block; }
 @media (min-width: 1024px) {
     .c-sticky { position: sticky; top: var(--space-xl); z-index: 10; }
 }
+
+/* =========================================
+   Component: 比較表 (Comparison Table)
+   ========================================= */
+
+/* --- 全体ラッパーと展開機能 --- */
+.c-table-expand {
+    position: relative;
+    max-height: 550px;
+    overflow: hidden;
+    transition: max-height 0.1s;
+}
+.c-table-expand.is-open {
+    max-height: 2000px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+/* --- スクロール領域 --- */
+.c-table-expand__scroll {
+    position: relative;
+    overflow-x: auto;
+    border: 1px solid var(--color-slate-200);
+    border-radius: 0.75rem;
+    background-color: #fff;
+    width: 100%;
+}
+
+/* --- テーブル本体 --- */
+.c-comparison-table {
+    width: 100%;
+    min-width: 900px; /* PCレイアウトを維持しつつスマホでスクロールさせるキモ */
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/* ヘッダー */
+.c-comparison-table thead {
+    background-color: var(--color-grey-300);
+    color: var(--color-slate-600);
+    font-weight: 700;
+}
+
+/* セル共通 */
+.c-comparison-table th,
+.c-comparison-table td {
+    padding: 0.5rem 0.2rem;
+    border-right: 1px solid var(--color-slate-200);
+    border-bottom: 1px solid var(--color-slate-200);
+    min-width: 90px;
+}
+/* 改行させない列（確度の高さ、管理のしやすさ、投資額） */
+.c-comparison-table td:nth-child(2),
+.c-comparison-table td:nth-child(4),
+.c-comparison-table td:nth-child(5) {
+    white-space: nowrap;
+}
+
+/* 1列目（固定カラム） */
+.c-comparison-table__cell--sticky {
+    position: sticky;
+    left: 0;
+    z-index: 20;
+    background-color: #fff;
+    box-shadow: inset -1px 0 0 0 var(--color-slate-200);
+}
+th.c-comparison-table__cell--sticky {
+    background-color: var(--color-grey-300);
+}
+
+/* --- テーブル内の企業ロゴバッジ --- */
+.c-company-badge {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.1rem;
+}
+.c-company-badge__rank {
+    position: absolute;
+    top: -5px;
+    left: -13px;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+}
+.c-company-badge__rank--1 { background: var(--grad-gold); }
+.c-company-badge__rank--2 { background: var(--grad-silver); }
+.c-company-badge__rank--3 { background: var(--grad-bronze); }
+.c-company-badge__rank--4 { background: var(--grad-default); }
+
+.c-company-badge__logo {
+    display: block;
+    max-width: 100px;
+    height: auto;
+    border: 1px solid var(--color-slate-200);
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+/* --- テーブル内のボタン --- */
+.c-btn-table {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100px;
+    padding: 0.35rem 1rem 0.35rem 0.35rem;
+    box-shadow: var(--shadow-btn);
+    transition: 0.2s;
+    background-color: var(--theme-cv);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+.c-btn-table:hover { background-color: var(--theme-cv-hover); }
+.c-btn-table__icon {
+    position: absolute;
+    right: 0.5px;
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+/* --- 評価アイコン群 --- */
+.c-eval {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    line-height: 1.2;
+}
+.c-eval__mark { font-size: 1.5rem; }
+.c-eval__mark--a { color: var(--theme-cv); }
+.c-eval__mark--b { color: var(--color-orange-500); }
+.c-eval__mark--c { color: var(--color-slate-400); }
+.c-eval__text { font-size: 0.7rem; color: var(--color-slate-700); }
+
+/* --- 展開用グラデーション＆ボタン --- */
+.c-table-expand__fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 80%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 15px;
+    z-index: 30;
+}
+.c-table-expand.is-open .c-table-expand__fade {
+    position: static;
+    height: auto;
+    background: transparent;
+    padding-top: 1rem;
+    padding-bottom: 0;
+}
+.c-btn-expand {
+    background-color: #fff;
+    border: 1px solid var(--color-slate-400);
+    color: var(--theme-text-main);
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: 0.2s;
+    font-family: inherit;
+}
+.c-btn-expand:hover { background-color: var(--color-slate-50); }

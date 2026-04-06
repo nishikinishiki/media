@@ -58,55 +58,84 @@
                         </div>
                     </div>
                 </section>
-
+                
                 <section id="ranking" class="u-mb-xl">
-                    <h2 class="c-section-title" data-badge="おすすめの">主要5社の徹底比較表</h2>
-                    <div class="c-table-wrapper" id="tableExpandWrapper">
-                        <div class="c-table-wrapper__scroll">
+                    <h2 class="c-section-title" data-badge="おすすめの">
+                        主要5社の徹底比較表
+                    </h2>
+                    <div class="c-table-expand" id="tableExpandWrapper">
+                        <div class="c-table-expand__scroll">
                             <table class="c-comparison-table">
                                 <thead>
                                     <tr>
-                                        <th class="c-comparison-table__sticky">会社名</th>
+                                        <th class="c-comparison-table__cell--sticky">会社名</th>
                                         <th>確度の高さ</th>
                                         <th>面談特典</th>
                                         <th>管理のしやすさ</th>
                                         <th>投資額</th>
+                                        <th>ポイント</th>
                                         <th>公式サイト</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="c-comparison-table__sticky">
+                                        <td class="c-comparison-table__cell--sticky">
                                             <div class="c-company-badge">
                                                 <span class="c-company-badge__rank c-company-badge__rank--1">1</span>
-                                                <img src="/realestateinvestment/images/logos/renosy_logo.svg" alt="リノシー" class="c-company-badge__logo" loading="lazy">
+                                                <img src="/realestateinvestment/images/logos/renosy_logo.svg" alt="リノシー ロゴ" width="300" height="54" class="c-company-badge__logo" loading="lazy">
                                             </div>
-                                            <a href="..." class="c-btn-table" data-company="renosy">リノシー</a>
+                                            <a href="https://h.accesstrade.net/sp/cc?rk=0100prm100om8y" target="_blank" rel="noopener sponsored" class="c-btn-table" data-company="renosy">
+                                                リノシー
+                                                <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="c-btn-table__icon" loading="lazy">
+                                            </a>
                                         </td>
                                         <td>
-                                            <div class="c-eval"><span class="c-eval__mark c-eval__mark--a">◎</span><span class="c-eval__text">入居率99.6%</span></div>
+                                            <div class="c-eval">
+                                                <span class="c-eval__mark c-eval__mark--a">◎</span>
+                                                <span class="c-eval__text">入居率99.6%<br><span class="u-fz-xs u-text-muted">（2025年10月時点）</span></span>
+                                            </div>
                                         </td>
                                         <td>
-                                            <div class="c-eval"><span class="c-eval__mark c-eval__mark--a">◎</span><span class="c-eval__text">最大<span class="u-text-cv u-font-bold">5万円分</span></span></div>
+                                            <div class="c-eval">
+                                                <span class="c-eval__mark c-eval__mark--a">◎</span>
+                                                <span class="c-eval__text">初回WEB面談参加で<br>PayPayポイント<br><span class="u-text-cv u-font-bold">5万円分</span>プレゼント<span class="u-fz-xs u-text-muted">※1</span></span>
+                                            </div>
                                         </td>
                                         <td>
-                                            <div class="c-eval"><span class="c-eval__mark c-eval__mark--a">◎</span><span class="c-eval__text">アプリで簡単管理</span></div>
+                                            <div class="c-eval">
+                                                <span class="c-eval__mark c-eval__mark--a">◎</span>
+                                                <span class="c-eval__text">アプリで簡単管理<span class="u-fz-xs u-text-muted">※2</span></span>
+                                            </div>
                                         </td>
                                         <td>
-                                            <div class="c-eval"><span class="c-eval__mark c-eval__mark--a">◎</span><span class="c-eval__text">1万円〜</span></div>
+                                            <div class="c-eval">
+                                                <span class="c-eval__mark c-eval__mark--a">◎</span>
+                                                <span class="c-eval__text">1万円〜<span class="u-fz-xs u-text-muted">※3</span></span>
+                                            </div>
                                         </td>
                                         <td>
-                                            <a href="..." class="c-btn-table" data-company="renosy">公式サイト</a>
+                                            <div class="c-eval">
+                                                <span class="c-eval__mark c-eval__mark--a">◎</span>
+                                                <span class="c-eval__text">不動産投資売上No.1<span class="u-fz-xs u-text-muted">※4</span><br>東証グロース市場上場</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="https://h.accesstrade.net/sp/cc?rk=0100prm100om8y" target="_blank" rel="noopener sponsored" class="c-btn-table" data-company="renosy" loading="lazy">
+                                                公式サイト
+                                                <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="c-btn-table__icon" loading="lazy">
+                                            </a>
                                         </td>
                                     </tr>
                                     </tbody>
                             </table>
                         </div>
-                        <div class="c-table-wrapper__fade">
+                        <div class="c-table-expand__fade">
                             <button type="button" class="c-btn-expand" id="btnExpand">＋ すべて見る</button>
                         </div>
                     </div>
-                    <p class="u-fz-xs u-text-muted u-mt-sm">※1）付与条件あり。※2）一部オーナー様の判断を要する場合があります。</p>
+                    <p class="u-fz-xs u-text-muted u-mt-sm">
+                        <br>※1）付与条件あり。<br>※2）一部オーナー様のご判断を要する場合があります。<br>※3）本プランはローンのご利用を前提としております。返済額、家賃収入、各手数料等、支出と収入との差額について弊社実績から算出。物件やご契約プラン等により異なり、フルローンの場合、別途初期費用として10万円/件が必要です。<br>※4）東京商工リサーチによる不動産投資の売上実績（2025年3月調べ）
+                    </p>
                 </section>
 
                 <section>
