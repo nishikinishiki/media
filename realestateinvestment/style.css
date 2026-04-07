@@ -34,6 +34,7 @@
     --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12); /* しっかり浮いた影 */
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -836,65 +837,70 @@ th.sticky-col {
 }
 
 /* バッジ */
-.rank-badge {
+.table-medal-pos {
     position: absolute;
-    top: -5px;
-    left: -13px;
-    z-index: 2;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: var(--white);
-    font-weight: 700;
-    box-shadow: var(--shadow-md);
+    top: -10px;
+    left: -14px; /* メダルが少し大きくなったため、はみ出し具合を微調整 */
 }
-
-.rank-1-bg { background: var(--gold); }
-.rank-2-bg { background: var(--silver); }
-.rank-3-bg { background: var(--bronze); }
-.rank-4-bg { background: var(--default); }
 
 .highlight-text { color: var(--red); font-weight: 600; }
 
 .annotation-text {
-    font-size: 8px;
-    color: var(--slate-400);
+    font-size: 10px;
+    color: var(--slate-500);
     margin-left: 0.25rem;
 }
 
 .annotation-mark {
     font-size: 8px;
-    color: var(--slate-500);
+    color: var(--slate-600);
     vertical-align: super;
     margin-left: 2px;
 }
 
-/* --- 評価記号（◎、〇、△）のスタイル --- */
-.eval-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    line-height: 1.2;
-}
-
-.eval-mark {
-    font-size: 1.5rem; 
-}
-
-/* 各記号の色設定 */
-.eval-a { color: var(--red); }       /* ◎の色 */
-.eval-b { color: var(--orange); }    /* 〇の色（星と同じゴールド系） */
-.eval-c { color: var(--slate-400); } /* △の色 */
-
-.eval-text {
+/* --- 評価記号（◎、〇、△、✕）の自動出力スタイル --- */
+td[data-eval] {
     font-size: 0.7rem;
     color: var(--slate-700);
+    line-height: 1.3;
+    vertical-align: middle;
+    text-align: center;
+}
+
+td[data-eval]::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 4px auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* ◎ (赤: var(--red) = #ef4444) */
+td[data-eval="a"]::before { 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='%23ef4444' stroke-width='8'/%3E%3Ccircle cx='50' cy='50' r='22' fill='none' stroke='%23ef4444' stroke-width='8'/%3E%3C/svg%3E"); 
+}
+
+/* 〇 (オレンジ: var(--orange) = #f59e0b) */
+td[data-eval="b"]::before { 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='%23f59e0b' stroke-width='8'/%3E%3C/svg%3E"); 
+}
+
+/* △ (グレー: var(--slate-400) = #94a3b8) */
+td[data-eval="c"]::before { 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5 L95 90 L5 90 Z' fill='none' stroke='%2394a3b8' stroke-width='8' stroke-linejoin='round'/%3E%3C/svg%3E"); 
+}
+
+/* ✕ (グレー: var(--slate-400) = #94a3b8) */
+td[data-eval="d"]::before { 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10 L90 90 M90 10 L10 90' fill='none' stroke='%2394a3b8' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E"); 
+}
+
+/* - (薄いグレー: var(--slate-300) = #cbd5e1) */
+td[data-eval="e"]::before { 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 50 L80 50' fill='none' stroke='%23cbd5e1' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E"); 
 }
 
 /* --- 比較表内のロゴ画像スタイル（改修箇所） --- */
@@ -989,6 +995,25 @@ th.sticky-col {
     align-items: center;
     background: var(--rank-theme);
 }
+/* =========================================
+   SVGメダル画像配置用クラス
+   ========================================= */
+.medal-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    z-index: 10;
+}
+
+/* ランキング表の中での配置位置 */
+.table-medal-pos {
+    position: absolute;
+    top: -14px;
+    left: -13px;
+}
+
 
 /* ランク定義 */
 .rank-1 {
@@ -1076,6 +1101,7 @@ th.sticky-col {
     text-decoration: underline;
     text-decoration-color: var(--yellow);
     text-underline-offset: 4px;
+    text-align: center;
 }
 
 .check-list {
