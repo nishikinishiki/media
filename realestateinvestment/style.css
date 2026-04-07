@@ -21,10 +21,6 @@
     --grey-200:#ddd;
     --blue-350: #b7dbfd;
     --blue-600: #3b82f6;
-    --gold: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-    --silver: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
-    --bronze: linear-gradient(135deg, #dca77c 0%, #9a6032 100%);
-    --default: linear-gradient(135deg, #4775ea 0%, var(--primary-blue) 100%);
     --article-line-height: 1.8;
     --article-font-size: 1.05rem;
     --article-spacing: 1.5rem;
@@ -970,31 +966,6 @@ td[data-eval="e"]::before {
 }
 
 
-/* Ranking Detail Cards */
-.rank-card {
-    border-radius: 0.5rem;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow-lg);
-    border: 2px solid transparent;
-    --rank-theme: var(--slate-200);
-}
-
-/* --- 詳細カード内のバナー画像 --- */
-.rank-card-banner-img {
-    display: block;
-    width: 90%;
-    margin: 10px auto; /* 上下のマージンと左右中央寄せ */
-}
-
-.rank-card-header {
-    padding: 1rem 1.5rem;
-    color: var(--white);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--rank-theme);
-}
 /* =========================================
    SVGメダル画像配置用クラス
    ========================================= */
@@ -1002,7 +973,7 @@ td[data-eval="e"]::before {
     display: inline-block;
     vertical-align: middle;
     width: 28px;
-    height: 28px;
+    height: 32px;
     object-fit: contain;
     z-index: 10;
 }
@@ -1010,43 +981,76 @@ td[data-eval="e"]::before {
 /* ランキング表の中での配置位置 */
 .table-medal-pos {
     position: absolute;
-    top: -14px;
-    left: -13px;
+    top: -12px;
+    left: -15px;
+}
+
+/* Ranking Detail Cards */
+.rank-card {
+    background-color: var(--white);
+    border: 1px solid var(--slate-200); /* 枠線を統一 */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    contain: content; /* レンダリング範囲を限定して表示を高速化 */
+}
+
+/* --- 詳細カード内のバナー画像 --- */
+.rank-card-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.rank-card-header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 0.75rem 1rem 0.75rem 3.5rem; /* メダル分の左余白 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.card-medal-pos {
+    position: absolute;
+    left: 0.5rem;
+    top: 53%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 40px;
+}
+
+.banner-wrapper {
+    width: 100%;
+    aspect-ratio: 1200 / 630; /* バナーの比率に合わせる */
+    background-color: var(--slate-50);
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* スマホ表示の最適化 */
+@media (max-width: 768px) {
+    .rank-card-header {
+        padding-left: 3rem;
+    }
+    .rank-card-company-name {
+        font-size: 1rem;
+    }
+    .rank-card-body {
+        padding: 1rem;
+    }
 }
 
 
 /* ランク定義 */
-.rank-1 {
-    --rank-theme: var(--gold);
-    background: 
-      linear-gradient(#fff, #fff) padding-box,
-      var(--gold) border-box; 
-}
-
-.rank-2 {
-    --rank-theme: var(--silver);
-    background: 
-      linear-gradient(#fff, #fff) padding-box,
-      var(--silver) border-box; 
-}
-
-.rank-3 {
-    --rank-theme: var(--bronze);
-    background: 
-      linear-gradient(#fff, #fff) padding-box,
-      var(--bronze) border-box; 
-}
-
-.rank-4 {
-    --rank-theme: var(--default);
-    background: 
-      linear-gradient(#fff, #fff) padding-box,
-      var(--default) border-box; 
-}
-
 .rank-label { font-weight: 700; letter-spacing: 0.1em; font-size: 1.125rem; }
-.rating-label { font-size: 0.875rem; }
-
+.rating-label { 
+    font-size: 0.875rem;
+    color: var(--orange);
+}
 .rank-card-body { padding: 1.5rem; }
 
 @media (max-width: 768px) {
