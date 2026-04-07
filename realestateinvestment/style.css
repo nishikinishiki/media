@@ -1675,7 +1675,7 @@ details[open] .faq-question {
     }
 
     .logo-ticker-list li {
-        padding: 0px 10px; /* ロゴ間の余白 */
+        padding: 0px 12px; /* ロゴ間の余白 */
         flex-shrink: 0;
     }
 
