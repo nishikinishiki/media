@@ -63,6 +63,11 @@ a {
     margin: 0 auto;
     padding: 0 0.75rem;
 }
+@media (max-width: 768px) {
+    .max-w-6xl {
+        padding:0px 8px;
+    }
+}
 
 /* Header */
 .header {
@@ -134,7 +139,7 @@ a {
     align-items: center;
     padding: 0.5rem 0.75rem; /* 上下の余白と、スマホ端寄せ防ぐための左右余白 */
     font-size: 0.75rem;      /* 既存の小さい文字サイズに合わせる */
-    color: var(--slate-600); /* 青背景に馴染む既存のカラー変数 */
+    color: var(--slate-900); /* 青背景に馴染む既存のカラー変数 */
 }
 
 @media (max-width: 768px) {
@@ -143,7 +148,7 @@ a {
         padding-right: 0;
     }
     .hero-meta-info {
-        font-size: 0.625rem;
+        font-size: 0.65rem;
         padding: 0.25rem 0.75rem;
     }
 }
@@ -351,9 +356,6 @@ a {
         border-right: 6px solid transparent;
         border-left: 6px solid transparent;
     }
-    .detail-section-text {
-        font-size: 0.875rem;
-    }
 }
 
 /* =========================================
@@ -445,7 +447,7 @@ a {
 }
 @media (max-width: 768px) {
     .comment-title {
-        font-size: 15px;
+        font-size: 16px;
         padding-bottom: 4px;
         margin-bottom: 12px;
         line-height: 1.5;
@@ -464,7 +466,7 @@ a {
         height: 7px;
     }
     .comment-text {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 1.5;
     }
 }
@@ -842,8 +844,8 @@ th.sticky-col {
 .highlight-text { color: var(--red); font-weight: 600; }
 
 .annotation-text {
-    font-size: 10px;
-    color: var(--slate-500);
+    font-size: 10.25px;
+    color: var(--slate-600);
     margin-left: 0.25rem;
 }
 
@@ -1046,7 +1048,11 @@ td[data-eval="e"]::before {
 
 
 /* ランク定義 */
-.rank-label { font-weight: 700; letter-spacing: 0.1em; font-size: 1.125rem; }
+.rank-label { 
+    font-weight: 700; 
+    letter-spacing: 0.1em; 
+    font-size: 20px; 
+}
 .rating-label { 
     font-size: 0.875rem;
     color: var(--orange);
@@ -1125,7 +1131,7 @@ td[data-eval="e"]::before {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0 40px 0;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     border: 1px solid var(--grey-200);
 }
 .company-info-table th {
@@ -1152,6 +1158,7 @@ td[data-eval="e"]::before {
     border-radius: 0.75rem;
     box-shadow: var(--shadow-lg);
     transition: 0.2s;
+    font-size: 18.5px;
 }
 
 .btn-cta:hover {
