@@ -1159,7 +1159,7 @@ td[data-eval="e"]::before {
     border-radius: 0.75rem;
     box-shadow: var(--shadow-lg);
     transition: 0.2s;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .btn-cta:hover {
@@ -1169,9 +1169,9 @@ td[data-eval="e"]::before {
 
 .btn-cta .external-icon {
     position: static;
-    width: 30px;
-    height: 30px;
-    margin-left: 0.5rem;
+    width: 32px;
+    height: 32px;
+    margin-left: 2px;
 }
 
 /* =========================================
