@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSU 税金概算シミュレーター</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { font-size: 1.5em; text-align: center; color: #2c3e50; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="number"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 4px; font-size: 1.1em; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #2980b9; }
+        .result-box { margin-top: 25px; padding: 20px; background-color: #e8f6f3; border-left: 5px solid #1abc9c; border-radius: 4px; display: none; }
+        .result-item { margin-bottom: 10px; font-size: 1.1em; }
+        .result-value { font-weight: bold; color: #e74c3c; font-size: 1.2em; }
+        .note { font-size: 0.85em; color: #7f8c8d; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>RSU 税金概算シミュレーター</h1>
+    <p style="font-size: 0.9em; text-align: center; color: #555;">現在の年収とRSUの付与条件を入力すると、RSUにかかる概算の税金（所得税＋住民税）と実質の手残り額を計算します。</p>
+
+    <div class="form-group">
+        <label for="baseSalary">現在の基本年収（万円）</label>
+        <input type="number" id="baseSalary" placeholder="例: 1000" value="1000">
+    </div>
+    <div class="form-group">
+        <label for="shares">今回権利確定(Vest)する株数（株）</label>
+        <input type="number" id="shares" placeholder="例: 100" value="100">
+    </div>
+    <div class="form-group">
+        <label for="stockPrice">権利確定時の株価（ドル）</label>
+        <input type="number" id="stockPrice" placeholder="例: 150" value="150">
+    </div>
+    <div class="form-group">
+        <label for="exchangeRate">為替レート（円/ドル）</label>
+        <input type="number" id="exchangeRate" placeholder="例: 150" value="150">
+    </div>
+
+    <button onclick="calculateTax()">概算を計算する</button>
+
+    <div id="resultBox" class="result-box">
+        <div class="result-item">RSUによる追加所得（額面）: <br><span class="result-value" id="resRsuIncome">0円</span></div>
+        <div class="result-item">RSUにかかる税金（所得税+住民税）: <br><span class="result-value" id="resAdditionalTax">0円</span></div>
+        <hr style="border-top: 1px solid #ccc;">
+        <div class="result-item">実質の手残り額: <br><span class="result-value" style="color: #27ae60; font-size: 1.5em;" id="resNetIncome">0円</span></div>
+        <div class="result-item" style="font-size: 0.9em;">(実質税率: <span id="resTaxRate">0%</span>)</div>
+    </div>
+
+    <div class="note">
+        ※このシミュレーションは概算です。給与所得控除、基礎控除(48万円)、社会保険料控除(概算値)のみを考慮し、配偶者控除やふるさと納税などは含んでいません。復興特別所得税も含みます。正確な税額は必ず税理士や確定申告ソフト等でご確認ください。
+    </div>
+</div>
+
+<script>
+    // 給与所得控除の計算
+    function getEmploymentDeduction(income) {
+        if (income <= 1625000) return 550000;
+        if (income <= 1800000) return income * 0.4 - 100000;
+        if (income <= 3600000) return income * 0.3 + 80000;
+        if (income <= 6600000) return income * 0.2 + 440000;
+        if (income <= 8500000) return income * 0.1 + 1100000;
+        return 1950000; // 上限
+    }
+
+    // 所得税の計算（速算表）
+    function getIncomeTax(taxableIncome) {
+        if (taxableIncome <= 0) return 0;
+        let tax = 0;
+        if (taxableIncome <= 1950000) tax = taxableIncome * 0.05;
+        else if (taxableIncome <= 3300000) tax = taxableIncome * 0.10 - 97500;
+        else if (taxableIncome <= 6950000) tax = taxableIncome * 0.20 - 427500;
+        else if (taxableIncome <= 8999000) tax = taxableIncome * 0.23 - 636000;
+        else if (taxableIncome <= 17999000) tax = taxableIncome * 0.33 - 1536000;
+        else if (taxableIncome <= 39999000) tax = taxableIncome * 0.40 - 2796000;
+        else tax = taxableIncome * 0.45 - 4796000;
+        
+        return tax * 1.021; // 復興特別所得税2.1%を加算
+    }
+
+    function calculateTax() {
+        const baseSalary = Number(document.getElementById('baseSalary').value) * 10000;
+        const shares = Number(document.getElementById('shares').value);
+        const stockPrice = Number(document.getElementById('stockPrice').value);
+        const exchangeRate = Number(document.getElementById('exchangeRate').value);
+
+        if(!baseSalary || !shares || !stockPrice || !exchangeRate) {
+            alert("すべての項目を正しく入力してください。");
+            return;
+        }
+
+        // RSUの円換算額（給与所得として加算される額）
+        const rsuIncome = shares * stockPrice * exchangeRate;
+        const totalIncome = baseSalary + rsuIncome;
+
+        // 社会保険料の概算（上限を考慮しつつ基本給の約15%として簡易計算）
+        const socialInsuranceBase = Math.min(baseSalary * 0.15, 1500000); 
+        const socialInsuranceTotal = Math.min(totalIncome * 0.15, 1500000); // RSUは賞与扱いとして上限にかかることが多い
+
+        // 基本年収のみの場合の税金
+        const empDeductionBase = getEmploymentDeduction(baseSalary);
+        const taxableBase = Math.max(0, baseSalary - empDeductionBase - socialInsuranceBase - 480000); // 48万は基礎控除
+        const incomeTaxBase = getIncomeTax(taxableBase);
+        const residentTaxBase = taxableBase * 0.10; // 住民税10%
+        const totalTaxBase = incomeTaxBase + residentTaxBase;
+
+        // RSUを含めた総年収の場合の税金
+        const empDeductionTotal = getEmploymentDeduction(totalIncome);
+        const taxableTotal = Math.max(0, totalIncome - empDeductionTotal - socialInsuranceTotal - 480000);
+        const incomeTaxTotal = getIncomeTax(taxableTotal);
+        const residentTaxTotal = taxableTotal * 0.10;
+        const totalTaxTotal = incomeTaxTotal + residentTaxTotal;
+
+        // RSUによって「増えた」税金
+        const additionalTax = totalTaxTotal - totalTaxBase;
+        
+        // 手残り額
+        const netIncome = rsuIncome - additionalTax;
+        
+        // 実質税率
+        const taxRate = (additionalTax / rsuIncome) * 100;
+
+        // 結果の表示
+        document.getElementById('resRsuIncome').innerText = Math.round(rsuIncome).toLocaleString() + "円";
+        document.getElementById('resAdditionalTax').innerText = Math.round(additionalTax).toLocaleString() + "円";
+        document.getElementById('resNetIncome').innerText = Math.round(netIncome).toLocaleString() + "円";
+        document.getElementById('resTaxRate').innerText = taxRate.toFixed(1) + "%";
+
+        document.getElementById('resultBox').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

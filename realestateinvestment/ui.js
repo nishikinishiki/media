@@ -15,6 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- 3. 目次展開（article-toc） ---
+    const tocWrapper = document.getElementById('tocExpandWrapper');
+    const tocBtn = document.getElementById('btnTocExpand');
+
+    if (tocWrapper && tocBtn) {
+        tocBtn.addEventListener('click', function() {
+            requestAnimationFrame(() => {
+                const isOpen = tocWrapper.classList.toggle('is-open');
+                tocBtn.textContent = isOpen ? '× 閉じる' : '＋ すべて見る';
+            });
+        });
+    }
+
     // --- 2. 口コミスライダー ---
     const sliders = document.querySelectorAll('.review-slider');
 

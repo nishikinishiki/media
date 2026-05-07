@@ -8,7 +8,8 @@
     --yellow: #ffcc5d;       
     --marker-yellow: #ffff66; /* 蛍光ペンなど */
     --red: #ef4444;          
-    --red-hover: #dc2626;    
+    --red-hover: #dc2626;  
+    --red-text: #ee1e3d;  
     --orange: #f59e0b;       
     --orange-text: #f50;
     --white: #ffffff;
@@ -600,7 +601,7 @@ a {
 .top3-desc {
     font-size: var(--fz-13);
     color: var(--slate-600);
-    border-left: 3px solid var(--red);
+    border-left: 3px solid var(--red-text);
     padding-left: 8px;
     line-height: 1.4;
 }
@@ -625,10 +626,11 @@ a {
 
 @media (min-width: 1024px) {
     .sidebar .section-title-band {
+        font-size: var(--fz-22);
         background-color: transparent;
         color: var(--slate-700);
         text-align: left;
-        padding: 0 0 8px 0;
+        padding: 0 0 3px 0;
         border-radius: 0;
         margin-top: 0;
         margin-bottom: 16px;
@@ -642,7 +644,7 @@ a {
 
     .sticky-card {
         position: sticky;
-        top: 32px;
+        top: 15px;
         z-index: 10;
     }
 }
@@ -788,7 +790,10 @@ th.sticky-col {
     left: -13px;
 }
 
-.highlight-text { color: var(--red); font-weight: 600; }
+.highlight-text { 
+    color: var(--red-text); 
+    font-weight: 600; 
+}
 
 .annotation-text {
     font-size: var(--fz-10);
@@ -1161,7 +1166,7 @@ td[data-eval="e"]::before {
 
 .disclaimer { 
     margin-bottom: 16px;
-    font-size: var(--fz-8);
+    font-size: var(--fz-10);
 }
 
 .footer-links {
@@ -1301,6 +1306,7 @@ td[data-eval="e"]::before {
     border-radius: 4px;
     overflow: hidden;
     background-color: var(--slate-50);
+    border: 1px solid var(--grey-200);
 }
 
 .column-img-wrap img {
@@ -1502,7 +1508,7 @@ td[data-eval="e"]::before {
 }
 
 /* =========================================
-   記事ページ専用コンポーネント (article.html)
+   コラム記事専用パーツ（パンくず・ヘッダー・目次）
    ========================================= */
 
 /* --- パンくずリスト --- */
@@ -1525,7 +1531,7 @@ td[data-eval="e"]::before {
 }
 .breadcrumbs li a {
     text-decoration: underline;
-    text-decoration-color: var(--slate-250);
+    text-decoration-color: var(--grey-200);
 }
 .breadcrumbs li a:hover {
     color: var(--accent-blue);
@@ -1536,60 +1542,70 @@ td[data-eval="e"]::before {
     color: var(--slate-400);
     font-size: var(--fz-10);
 }
+@media (max-width: 768px) {
+    .breadcrumbs {
+        font-size: var(--fz-10);
+    }
+}
 
-/* --- 記事ヘッダー --- */
+/* --- 記事ヘッダー (ファーストビュー) --- */
 .article-header {
     margin-bottom: 40px;
 }
-.article-tags {
+.article-meta-top {
     display: flex;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: flex-end;
     margin-bottom: 16px;
     flex-wrap: wrap;
+    gap: 12px;
 }
-/* 既存の .column-tag を流用しますが、記事内用に少し調整したい場合は上書き不要でそのまま使えます */
-
-.article-meta {
+.article-dates {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     font-size: var(--fz-12);
     color: var(--slate-600);
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--grey-200);
 }
-
-/* --- 監修者ボックス (E-E-A-T) --- */
-.article-supervisor-box {
+.article-main-title {
+    font-size: var(--fz-28);
+    font-weight: 700;
+    color: var(--slate-700);
+    line-height: 1.4;
+    margin-bottom: 24px;
+}
+.article-supervisor-wrap {
     background-color: var(--slate-50);
     border: 1px solid var(--grey-200);
     border-radius: 8px;
     padding: 16px;
     margin-bottom: 24px;
+    display: inline-block; /* 中身の幅に合わせる */
 }
 .supervisor-label {
+    display: block;
     font-size: var(--fz-12);
     font-weight: 700;
     color: var(--primary-blue);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
-.article-supervisor-box .profile-flex {
-    margin-bottom: 0; /* 既存クラスの余白をリセット */
+.article-supervisor-wrap .profile-flex {
+    margin-bottom: 0; /* 既存クラスの余白を打ち消し */
 }
-
 .article-eyecatch {
     width: 100%;
     height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     border-radius: 12px;
-    margin-bottom: 16px;
+    border: 1px solid var(--grey-200);
 }
 
-/* --- 目次 (TOC) --- */
+/* --- 目次 --- */
 .article-toc {
     background-color: var(--grey-300);
     border-radius: 8px;
     padding: 24px;
-    margin: 32px 0 48px 0;
+    margin: 0 0 48px 0;
 }
 .toc-title {
     font-size: var(--fz-18);
@@ -1603,90 +1619,53 @@ td[data-eval="e"]::before {
     gap: 8px;
 }
 .toc-title::before {
-    content: "📋"; /* アイコンはお好みでSVGに変更可 */
+    content: "📋";
 }
 .article-toc ol {
     margin: 0;
     padding-left: 24px;
     color: var(--primary-blue);
     font-weight: 700;
-    font-size: var(--fz-15);
+    font-size: var(--fz-14);
     line-height: 1.8;
 }
 .article-toc ol ol {
     font-weight: normal;
-    font-size: var(--fz-14);
-    margin-top: 8px;
-    margin-bottom: 8px;
     color: var(--slate-700);
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
 .article-toc a {
-    text-decoration: none;
-    color: inherit;
-    transition: 0.2s;
+    transition: color 0.2s;
 }
 .article-toc a:hover {
-    text-decoration: underline;
     color: var(--accent-blue);
+    text-decoration: underline;
 }
 
-/* --- 装飾ボックス（ポイント・注意） --- */
-.box-point, .box-warn {
-    padding: 20px 24px;
-    border-radius: 8px;
-    margin: 32px 0;
-}
-.box-point {
-    background-color: var(--slate-50);
-    border: 2px solid var(--accent-blue);
-}
-.box-warn {
-    background-color: #fff1f2; /* 薄い赤（一時的直書き、必要ならrootへ） */
-    border: 2px solid var(--red);
-}
-.box-title {
-    font-size: var(--fz-18);
-    font-weight: 700;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.box-point .box-title { color: var(--accent-blue); }
-.box-warn .box-title { color: var(--red); }
-
-.box-title::before {
-    content: "💡";
-}
-.box-warn .box-title::before {
-    content: "⚠️";
-}
-.box-point p, .box-warn p {
-    margin-bottom: 0; /* ボックス内テキストの余白リセット */
-    font-size: var(--fz-15);
+/* (補足: 記事本文エリアの下余白調整) */
+.article-content-area {
+    margin-bottom: 64px;
 }
 
-/* --- 記事内CTAボックス --- */
-.article-cta-box {
-    background-color: var(--slate-50);
-    border: 1px solid var(--grey-200);
-    border-radius: 12px;
-    padding: 32px 24px;
-    margin-top: 48px;
-    text-align: center;
+/* --- 目次専用の展開制御 --- */
+.article-toc.table-expand-wrapper {
+    max-height: 250px; /* 目次は250px（およそ4-5項目分）で制限 */
+    padding-bottom: 0; /* フェードとボタンが入るため下余白を調整 */
 }
-.cta-box-title {
-    font-size: var(--fz-22);
-    color: var(--primary-blue);
-    font-weight: 700;
-    margin-bottom: 16px;
-    line-height: 1.4;
+
+.article-toc.table-expand-wrapper.is-open {
+    max-height: 1000px; /* 展開時の最大高さ */
 }
-.cta-box-text {
-    font-size: var(--fz-15);
-    color: var(--slate-700);
-    margin-bottom: 24px;
+
+/* 展開中の目次内のフェード位置調整 */
+.article-toc.table-expand-wrapper.is-open .expand-fade {
+    margin-top: 16px;
 }
+
+/* =========================================
+   FAQ（よくある質問）セクション用
+   ========================================= */
 
 .faq-list {
     display: flex;
@@ -1866,4 +1845,85 @@ details[open] .faq-question {
     .logo-ticker-wrapper {
         display: none;
     }
+}
+
+/* =========================================
+   コラム一覧（アーカイブ）ページ用
+   ========================================= */
+
+/* --- 記事一覧グリッド --- */
+.archive-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* スマホは1列 */
+    gap: 24px;
+    margin-bottom: 48px;
+}
+@media (min-width: 768px) {
+    .archive-grid {
+        grid-template-columns: repeat(2, 1fr); /* PCは2列 */
+        gap: 32px;
+    }
+}
+
+.archive-item {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+.archive-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.archive-img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--slate-50);
+    overflow: hidden;
+    border-bottom: 1px solid var(--grey-200);
+}
+.archive-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.archive-item:hover .archive-img-wrap img {
+    transform: scale(1.05); /* ホバー時に画像を少しズーム */
+}
+
+.archive-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.archive-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.archive-date {
+    font-size: var(--fz-12);
+    color: var(--slate-600);
+}
+
+.archive-title {
+    font-size: var(--fz-16);
+    font-weight: 700;
+    color: var(--slate-700);
+    line-height: 1.5;
+    margin: 0;
+    /* 3行を超えたら省略する */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
