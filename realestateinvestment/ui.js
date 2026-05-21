@@ -130,4 +130,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         });
     });
+
+    // --- 4. 追従CTA（フローティングバナー）の表示・閉じる制御 ---
+    const floatingBanner = document.getElementById('floatingBanner');
+    const triggerSection = document.querySelector('.hero');
+    const btnFloatingClose = document.getElementById('btnFloatingClose');
+    let isFloatingClosedManually = false; // 手動で閉じられたかを管理するフラグ
+
+    if (floatingBanner && triggerSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // すでに手動で閉じられている場合は処理をスキップ
+                if (isFloatingClosedManually) return;
+
+                if (!entry.isIntersecting) {
+                    floatingBanner.classList.add('is-visible');
+                } else {
+                    floatingBanner.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: 0 
+        });
+
+        observer.observe(triggerSection);
+    }
+
+    // ✕ボタンをクリックした時の処理
+    if (floatingBanner && btnFloatingClose) {
+        btnFloatingClose.addEventListener('click', () => {
+            isFloatingClosedManually = true; // フラグをオンにする
+            floatingBanner.classList.remove('is-visible');
+        });
+    }
 });

@@ -1927,3 +1927,95 @@ details[open] .faq-question {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+/* =========================================
+   追従CTA（フローティングバナー）
+   ========================================= */
+.floating-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: color-mix(in srgb, var(--slate-600) 60%, transparent);
+    z-index: 999;
+    padding: 12px 16px;
+    text-align: center;
+    /* 初期状態は下に隠す */
+    transform: translateY(100%);
+    opacity: 0;
+    line-height: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, visibility 0.4s;
+}
+
+/* 表示用のクラス */
+.floating-banner.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* PC等で中央寄せされるバナー画像と✕ボタンの基準となるコンテナ */
+.floating-banner-inner {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 670px; /* 画像の最大幅に合わせる */
+    margin: 0 auto;
+    text-align: left; /* ✕ボタンを左上に配置するための基準位置 */
+    vertical-align: bottom;
+}
+
+.floating-banner a {
+    display: block;
+    width: 100%;
+}
+
+.floating-banner img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+/* ✕（閉じる）ボタンのスタイル */
+.floating-close-btn {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    z-index: 1000;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--slate-700);
+    color: var(--white);
+    border: 1px solid var(--grey-200);
+    font-size: var(--fz-18);
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.floating-close-btn:hover {
+    background-color: var(--slate-600);
+    transform: scale(1.1);
+}
+
+/* スマホ表示の調整 */
+@media (max-width: 768px) {
+    .floating-banner {
+        padding: 8px;
+    }
+    
+    /* スマホ画面端でのボタン見切れを防ぐため、少し内側に寄せる */
+    .floating-close-btn {
+        top: 4px;
+        left: 4px;
+    }
+}
