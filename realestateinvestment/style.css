@@ -28,6 +28,7 @@
     --blue-100: #dbeafe;      /* アイコン背景など */
     --blue-350: #b7dbfd;
     --blue-600: #3b82f6;
+    --blue-800: #011F47;
 
     /* --- 2. Typography (px Scale) --- */
     --fz-8: 8px;   /* 免責事項・注釈マーク */
@@ -941,7 +942,7 @@ td[data-eval="e"]::before {
 .rank-card-header {
     background-color: var(--grey-300);
     color: var(--slate-600);
-    padding: 12px 16px 12px 56px;
+    padding: 12px 24px 12px 68px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -950,7 +951,7 @@ td[data-eval="e"]::before {
 
 .card-medal-pos {
     position: absolute;
-    left: 8px;
+    left: 22px;
     top: 53%;
     transform: translateY(-50%);
     width: 36px;
@@ -960,16 +961,44 @@ td[data-eval="e"]::before {
 .rank-label { 
     font-weight: 700; 
     letter-spacing: 0.1em; 
-    font-size: var(--fz-24); 
+    font-size: var(--fz-28); 
+    color: var(--blue-800);
 }
 .rating-label { 
-    font-size: var(--fz-14);
+    font-size: var(--fz-18);
+    font-weight: 700;
     color: var(--orange);
 }
-.rank-card-body { padding: 24px; }
+.rank-card-body { 
+    padding: 24px; 
+}
 
 @media (max-width: 768px) {
-    .rank-card-body { padding: 16px; }
+    
+    .rank-card-header {
+        padding: 12px 16px 12px 56px;
+    }    
+    .card-medal-pos {
+        left: 8px;
+    }
+    .rank-label {
+        font-size: var(--fz-24);
+    }
+    .rating-label { 
+        font-size: var(--fz-14);
+    }
+    .rank-card-body { 
+        padding: 16px;
+    }
+
+    .rank-card-header.is-long-name {
+        padding: 12px 12px 12px 50px;
+    }
+
+    .rank-card-header.is-long-name .rank-label {
+        font-size: var(--fz-22);
+        letter-spacing: 0em;
+    }
 }
 
 .company-layout {
@@ -1193,7 +1222,7 @@ td[data-eval="e"]::before {
 
 @media (min-width: 1024px) {
     .review-item {
-        flex: 0 0 calc((100% - 32px) / 3); 
+        flex: 0 0 calc((100% - 32px) / 2); 
     }
 }
 
@@ -1243,6 +1272,127 @@ td[data-eval="e"]::before {
 .dot.active {
     background-color: var(--accent-blue);
     transform: scale(1.2);
+}
+/* =========================================
+   FAQ（よくある質問）セクション用
+   ========================================= */
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    border: 1px solid var(--grey-200);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--white);
+    transition: box-shadow 0.2s;
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    font-size: var(--fz-16);
+    font-weight: 700;
+    color: var(--slate-600);
+    cursor: pointer;
+    background-color: var(--grey-300);
+    transition: background-color 0.2s;
+    list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none; 
+}
+
+.faq-question:hover {
+    background-color: var(--grey-200);
+}
+
+.faq-question-text {
+    flex: 1;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+}
+
+.q-icon {
+    color: var(--orange-text);
+    font-size: var(--fz-18);
+    margin-right: 8px;
+    font-weight: 900;
+}
+
+.faq-toggle-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-left: 16px;
+    flex-shrink: 0;
+}
+
+.faq-toggle-icon::before,
+.faq-toggle-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--slate-700);
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.faq-toggle-icon::before {
+    width: 14px;
+    height: 2px;
+}
+
+.faq-toggle-icon::after {
+    width: 2px;
+    height: 14px;
+}
+
+details[open] .faq-toggle-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 0;
+}
+
+details[open] .faq-question {
+    background-color: var(--slate-100);
+    border-bottom: 1px dashed var(--grey-200);
+}
+
+.faq-answer {
+    padding: 20px 16px;
+    font-size: var(--fz-14);
+    line-height: 1.8;
+    color: var(--slate-700);
+    background-color: var(--white);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .faq-question {
+        font-size: var(--fz-14);
+        padding: 14px;
+    }
+    .faq-answer {
+        font-size: var(--fz-13);
+        padding: 16px 14px;
+    }
 }
 
 /* =========================================
