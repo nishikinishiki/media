@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- 4. 追従CTA（フローティングバナー）の表示・閉じる制御 ---
     const floatingBanner = document.getElementById('floatingBanner');
-    const triggerSection = document.querySelector('.hero-main-img'); // 目印となるセクション（ここではヒーロー画像）
+    const triggerSection = document.querySelector('.hero');
     const btnFloatingClose = document.getElementById('btnFloatingClose');
     let isFloatingClosedManually = false; // 手動で閉じられたかを管理するフラグ
 

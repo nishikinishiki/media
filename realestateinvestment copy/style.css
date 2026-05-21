@@ -125,25 +125,18 @@ a {
 /* ===============
    ファーストビュー
    =============== */
-
 .hero {
-    padding: 0;
+    padding-bottom: 16px;
     text-align: center;
     overflow: hidden;
-}
-
-.hero-main-img {
-    width: 100%;
-    display: block;
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--slate-100);
 }
 
 .meta-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
+    padding: 8px 0px;
+    margin-bottom: 16px;
     font-size: var(--fz-13);
     color: var(--slate-700);
     border-bottom: 1px solid var(--slate-100);
@@ -152,10 +145,7 @@ a {
 @media (max-width: 768px) {
     .meta-info {
         font-size: var(--fz-10);
-        padding: 4px 8px;
-    }
-    .hero-main-img {
-        margin-bottom: 0px;
+        padding: 4px 0px;
     }
 }
 
@@ -1356,46 +1346,45 @@ td[data-eval="e"]::before {
 /* ==============
    ロゴティッカー
    ============== */
-@media (max-width: 768px) {
-    .logo-ticker-wrapper {
-        background-color: var(--white);
-        padding: 10px 0px 40px 0px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .logo-ticker {
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .logo-ticker-track {
-        display: flex;
-        width: max-content;
-        animation: ticker 30s linear infinite;
-    }
-
-    .logo-ticker-list {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .logo-ticker-list li {
-        padding: 0px 12px;
-        flex-shrink: 0;
-    }
-
-    .logo-ticker-list img {
-        height: 20px; 
-        width: auto;
-        object-fit: contain;
-    }
+.logo-ticker-wrapper {
+    background-color: var(--white);
+    padding: 10px 0px 40px 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.logo-ticker {
+    width: 100%;
+    overflow: hidden;
+}
+
+.logo-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 30s linear infinite;
+}
+
+.logo-ticker-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logo-ticker-list li {
+    padding: 0px 12px;
+    flex-shrink: 0;
+}
+
+.logo-ticker-list img {
+    height: 20px; 
+    width: auto;
+    object-fit: contain;
+}
+
 
 @keyframes ticker {
     0% { transform: translateX(0); }
@@ -1407,93 +1396,12 @@ td[data-eval="e"]::before {
         animation-play-state: paused;
     }
 }
-
+/* 
 @media (min-width: 769px) {
     .logo-ticker-wrapper {
         display: none;
     }
-}
-
-/* =========================================
-   コラム一覧（アーカイブ）ページ用
-   ========================================= */
-
-/* --- 記事一覧グリッド --- */
-.archive-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* スマホは1列 */
-    gap: 24px;
-    margin-bottom: 48px;
-}
-@media (min-width: 768px) {
-    .archive-grid {
-        grid-template-columns: repeat(2, 1fr); /* PCは2列 */
-        gap: 32px;
-    }
-}
-
-.archive-item {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--white);
-    border: 1px solid var(--grey-200);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
-    text-decoration: none;
-}
-.archive-item:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
-}
-
-.archive-img-wrap {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background-color: var(--slate-50);
-    overflow: hidden;
-    border-bottom: 1px solid var(--grey-200);
-}
-.archive-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-.archive-item:hover .archive-img-wrap img {
-    transform: scale(1.05); /* ホバー時に画像を少しズーム */
-}
-
-.archive-info {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.archive-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-.archive-date {
-    font-size: var(--fz-12);
-    color: var(--slate-600);
-}
-
-.archive-title {
-    font-size: var(--fz-16);
-    font-weight: 700;
-    color: var(--slate-700);
-    line-height: 1.5;
-    margin: 0;
-    /* 3行を超えたら省略する */
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+} */
 
 /* =========================================
    追従CTA（フローティングバナー）
@@ -1507,7 +1415,6 @@ td[data-eval="e"]::before {
     z-index: 999;
     padding: 12px 16px;
     text-align: center;
-    /* 初期状態は下に隠す */
     transform: translateY(100%);
     opacity: 0;
     line-height: 0;
@@ -1515,14 +1422,12 @@ td[data-eval="e"]::before {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, visibility 0.4s;
 }
 
-/* 表示用のクラス */
 .floating-banner.is-visible {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
 }
 
-/* PC等で中央寄せされるバナー画像と✕ボタンの基準となるコンテナ */
 .floating-banner-inner {
     position: relative;
     display: inline-block;
@@ -1547,7 +1452,6 @@ td[data-eval="e"]::before {
     border-radius: 8px;
 }
 
-/* ✕（閉じる）ボタンのスタイル */
 .floating-close-btn {
     position: absolute;
     top: -8px;
@@ -1574,13 +1478,10 @@ td[data-eval="e"]::before {
     transform: scale(1.1);
 }
 
-/* スマホ表示の調整 */
 @media (max-width: 768px) {
     .floating-banner {
         padding: 8px;
     }
-    
-    /* スマホ画面端でのボタン見切れを防ぐため、少し内側に寄せる */
     .floating-close-btn {
         top: 4px;
         left: 4px;
