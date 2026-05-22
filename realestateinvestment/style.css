@@ -991,6 +991,7 @@ td[data-eval="e"]::before {
     color: var(--orange);
 }
 .stars {
+    font-size: var(--fz-14);
     color: var(--orange);
     letter-spacing: -0.1em;
 }
@@ -1013,12 +1014,10 @@ td[data-eval="e"]::before {
         font-size: var(--fz-16);
     }
     .rank-card-body { 
-        padding: 16px;
+        padding: 30px 16px 36px;
     }
 
-    .rank-card-header.is-long-name {
-        padding: 12px 6px 12px 50px;
-    }
+
 
     .rank-card-header.is-long-name .rating-label {
         font-size: var(--fz-14);
@@ -1028,17 +1027,6 @@ td[data-eval="e"]::before {
         font-size: var(--fz-22);
         letter-spacing: 0em;
     }
-}
-
-.company-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin: 10px 0 40px 0;
-}
-
-@media (min-width: 1024px) {
-    .company-layout { flex-direction: row; }
 }
 
 .company-logo {
@@ -1064,32 +1052,6 @@ td[data-eval="e"]::before {
     .company-logo {
         display: none;
     }
-    .company-layout {
-        gap: 0;
-    }
-}
-
-.company-catchphrase {
-    color: var(--primary-blue);
-    font-size: var(--fz-20);
-    margin: 8px 0;
-    text-decoration: underline;
-    text-decoration-color: var(--yellow);
-    text-underline-offset: 4px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.check-list {
-    list-style: none;
-    font-size: var(--fz-16);
-}
-
-.check-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 4px;
 }
 
 .company-info-table {
@@ -1922,4 +1884,109 @@ details[open] .faq-question {
 /* 展開中の目次内のフェード位置調整 */
 .article-toc.table-expand-wrapper.is-open .expand-fade {
     margin-top: 16px;
+}
+
+
+/* =============
+   企業のポイント
+   ============= */
+.company-feature-block {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 36px;
+    align-items: stretch; /* 高さを揃える */
+}
+
+/* 左側：バナー画像 */
+.feature-banner {
+    flex: 0 0 40%;
+    max-width: 200px;
+}
+
+.feature-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--grey-200);
+}
+
+/* 右側：ポイントセクション */
+.feature-points {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.point-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.point-badge {
+    background-color: var(--red-text);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 900;
+    padding: 3px 12px; /* 上下のパディングを微調整 */
+    border-radius: 9999px;
+    display: inline-flex; /* inline-flexに変更 */
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    line-height: 1; /* 行高による干渉を防止 */
+}
+
+.point-icon {
+    width: 16px;  /* 以前より少し大きく、視認性を確保 */
+    height: 16px;
+    display: block;
+    object-fit: contain;
+}
+
+.point-header-line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--red-text);
+}
+
+.point-main-text {
+    padding: 12px 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--slate-700);
+}
+
+.point-footer-line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--red-text);
+}
+
+.text-red {
+    color: var(--red-text);
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .company-feature-block {
+        flex-direction: row;
+        gap: 12px;
+    }
+    .feature-banner {
+        flex: 0 0 33%;
+    }
+    .point-main-text {
+        font-size: 15px;
+        padding: 8px 0;
+    }
+    .point-badge {
+        font-size: 11px;
+        padding: 2px 8px;
+    }
+    .point-icon {
+        width: 13px;
+        height: 13px;
+    }
 }
