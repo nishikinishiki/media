@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>友達紹介キャンペーン プロトタイプ</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            background: #fff;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #004494;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #666;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        /* フォーム用スタイル */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* シミュレーション用のステータスバー */
+        .status-bar {
+            background: #e2e8f0;
+            padding: 10px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: #475569;
+        }
+
+        .share-mock {
+            background: #e6f7ff;
+            border: 1px solid #91d5ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <div class="status-bar" id="statusBar">
+            現在の画面: <strong>①紹介者メール</strong>
+        </div>
+
+        <div id="view-email">
+            <h2>[メール] J.P.Returnsをお友達に紹介しよう</h2>
+            <p>紹介した人もされた人もえらべるデジタルギフト50,000円分プレゼント</p>
+            <p>弊社サービスをご利用でないご友人、ご兄弟に弊社を紹介してみませんか？<br>
+                紹介された方にもれなく不動産投資10万円OFFクーポンをプレゼントします。<br>
+                さらに紹介された方がWebまたは対面で面談を受けたら、紹介した人とされた人にそれぞれ50,000円分プレゼントします。</p>
+
+            <button class="btn" onclick="goToLP('user_12345')">\ 詳しくはこちら /</button>
+
+            <div class="note">
+                <strong>プレゼント付与条件</strong><br>
+                ・弊社提携ローンをご利用可能な方<br>
+                ・弊社サービスを初めてご利用になる方
+            </div>
+        </div>
+
+        <div id="view-lp" class="hidden">
+            <h2>[キャンペーンLP] J.P.Returnsを紹介</h2>
+            <p>紹介した人もされた人もえらべるデジタルギフト50,000円分プレゼント</p>
+            <p>弊社サービスをご利用でないご友人、ご兄弟に弊社を紹介してみませんか？<br>
+                紹介された方がWebまたは対面で面談を受けていただいたら、紹介した人とされた人にそれぞれ50,000円分プレゼントします。<br>
+                さらに紹介された人がご成約された場合、サプライズプレゼントをお渡しいたします。</p>
+
+            <button class="btn" onclick="showShareModal()">\ お友達に送る /</button>
+
+            <div class="note">
+                <strong>プレゼント付与条件</strong><br>
+                ・弊社提携ローンをご利用可能な方<br>
+                ・弊社サービスを初めてご利用になる方
+            </div>
+
+            <div id="share-modal" class="share-mock hidden">
+                <strong>※以下はLINE等に立ち上がるテキストのシミュレーションです</strong>
+                <textarea id="share-text" rows="7" readonly style="width: 100%; margin-top: 10px; font-size: 0.85rem;"></textarea>
+                <button class="btn" style="background-color: #06c755;" onclick="simulateFriendClick()">被紹介者としてURLをクリックする (テスト)</button>
+            </div>
+        </div>
+
+        <div id="view-form" class="hidden">
+            <h2>[登録フォーム] クーポンを獲得する</h2>
+            <p style="font-size: 0.9rem; color: var(--primary-color);">紹介者ID: <span id="display-ref-id"></span> 経由でのアクセス</p>
+
+            <form id="registerForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label>名前</label>
+                    <input type="text" required placeholder="山田 太郎">
+                </div>
+                <div class="form-group">
+                    <label>フリガナ</label>
+                    <input type="text" required placeholder="ヤマダ タロウ">
+                </div>
+                <div class="form-group">
+                    <label>電話番号</label>
+                    <input type="tel" required placeholder="090-1234-5678">
+                </div>
+                <div class="form-group">
+                    <label>メールアドレス</label>
+                    <input type="email" required placeholder="sample@example.com">
+                </div>
+                <div class="form-group">
+                    <label>年収</label>
+                    <select required>
+                        <option value="">選択してください</option>
+                        <option value="500万未満">500万円未満</option>
+                        <option value="500万-700万">500万円〜700万円未満</option>
+                        <option value="700万-1000万">700万円〜1000万円未満</option>
+                        <option value="1000万以上">1000万円以上</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>年齢</label>
+                    <input type="number" required min="20" max="80" placeholder="30">
+                </div>
+                <div class="form-group">
+                    <label>職業</label>
+                    <select required>
+                        <option value="">選択してください</option>
+                        <option value="会社員">会社員</option>
+                        <option value="公務員">公務員</option>
+                        <option value="自営業">自営業</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>面談希望日時（第一希望）</label>
+                    <input type="datetime-local" required>
+                </div>
+                <div class="form-group">
+                    <label>面談希望日時（第二希望）</label>
+                    <input type="datetime-local">
+                </div>
+                <div class="form-group">
+                    <label>その他（ご要望など）</label>
+                    <textarea rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn">同意して登録する</button>
+            </form>
+        </div>
+
+        <div id="view-success" class="hidden" style="text-align: center;">
+            <h2>登録完了</h2>
+            <p>ご登録ありがとうございます。<br>10万円OFFクーポンを獲得しました！</p>
+            <p>担当者より、面談日時の確定についてご連絡いたします。</p>
+            <button class="btn" style="background-color: #666;" onclick="location.reload()">最初からやり直す</button>
+        </div>
+
+    </div>
+
+    <script>
+        // グローバル変数で紹介者IDを保持
+        let currentReferrerId = '';
+
+        // ビューの切り替え関数
+        function switchView(viewId, statusText) {
+            document.querySelectorAll('.app-container > div[id^="view-"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById(viewId).classList.remove('hidden');
+            document.getElementById('statusBar').innerHTML = `現在の画面: <strong>${statusText}</strong>`;
+        }
+
+        // 1. メールからLPへ遷移
+        function goToLP(referrerId) {
+            currentReferrerId = referrerId;
+            switchView('view-lp', '②キャンペーンLP');
+        }
+
+        // 2. LPで「お友達に送る」を押した際の挙動（シェア用テキスト生成）
+        function showShareModal() {
+            const modal = document.getElementById('share-modal');
+            const textarea = document.getElementById('share-text');
+
+            // 生成される専用URL（仮想）
+            const shareUrl = `https://jp-returns.example.com/register?ref=${currentReferrerId}`;
+
+            // ③ メッセージ付き専用URLのテキスト
+            const text = `お友達がJ.P.Returnsの不動産投資10万円OFFクーポンをプレゼントしました。\n以下の専用フォームから会員登録するとクーポンがもらえます。\nさらに、Webまたは対面で面談を受けると、えらべるデジタルギフト50,000円分をプレゼントします。\n\n▼専用フォームはこちら\n${shareUrl}`;
+
+            textarea.value = text;
+            modal.classList.remove('hidden');
+        }
+
+        // 3. お友達が共有されたURLをクリックした際の挙動（フォームへ遷移）
+        function simulateFriendClick() {
+            document.getElementById('display-ref-id').innerText = currentReferrerId;
+            switchView('view-form', '④被紹介者登録フォーム');
+        }
+
+        // 4. フォーム送信
+        function submitForm(event) {
+            event.preventDefault(); // 実際の画面遷移を防ぐ
+
+            // ※実際の開発ではここで currentReferrerId と共に入力データをAPIへPOSTします
+            console.log(`送信データ - 紹介者ID: ${currentReferrerId}`);
+
+            switchView('view-success', '登録完了');
+        }
+    </script>
+
+</body>
+
+</html>

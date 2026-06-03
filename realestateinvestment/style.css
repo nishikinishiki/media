@@ -270,7 +270,7 @@ a {
 }
 
 .detail-section-text {
-    color: var(--slate-600);
+    color: var(--slate-700);
     margin-bottom: 16px;
     text-align: center;
 }
@@ -971,6 +971,8 @@ td[data-eval="e"]::before {
     padding: 20px;
     border-radius: 8px;
     border: 1px solid var(--grey-200);
+    flex: 0 0 100%;
+    box-sizing: border-box;
 }
 
 .review-header {
@@ -1012,11 +1014,6 @@ td[data-eval="e"]::before {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     gap: 16px;
     padding: 10px 0;
-}
-
-.review-item {
-    flex: 0 0 100%;
-    box-sizing: border-box;
 }
 
 .slider-btn {
@@ -1653,6 +1650,65 @@ details[open] .faq-question {
     margin-top: 16px;
 }
 
+/* =========================================
+   ボタンのキランと光る ＆ 下に押し込まれるエフェクト
+   ========================================= */
+
+@keyframes shine-and-press {
+
+    /* 0% 〜 40% の間で光が通り過ぎる */
+    0% {
+        background-position: 200% center;
+        transform: translateY(0);
+    }
+
+    /* 15%（光がボタンの中央あたりに来た時）で下に下がる */
+    15% {
+        transform: translateY(3px);
+        /* 数値を大きくするとより深く押し込まれます */
+    }
+
+    /* 30%で元の位置に戻る */
+    30% {
+        transform: translateY(0);
+    }
+
+    /* 40%で光が通り抜け完了 */
+    40% {
+        background-position: -100% center;
+    }
+
+    /* 40% 〜 100% までは待機時間 */
+    100% {
+        background-position: -100% center;
+        transform: translateY(0);
+    }
+}
+
+.btn-table,
+.btn-cta {
+    background-color: var(--red);
+
+    /* キラッと光る斜めのグラデーション */
+    background-image: linear-gradient(115deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.3) 45%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(255, 255, 255, 0.3) 55%,
+            transparent 80%);
+
+    background-size: 250% 100%;
+    background-repeat: no-repeat;
+    background-position: 200% center;
+
+    /* 統合したアニメーションを適用（5秒周期） */
+    animation: shine-and-press 4s infinite linear;
+}
+
+.btn-table:hover,
+.btn-cta:hover {
+    background-color: var(--red-hover);
+}
 
 /* =========================================
    Responsive Overrides
@@ -1711,8 +1767,26 @@ details[open] .faq-question {
         border-left: 6px solid transparent;
     }
 
+    .review-item {
+        padding: 18px;
+    }
+
+    .reviewer-comment-box {
+        border-radius: 8px;
+        padding: 14px;
+        margin: 40px 0px;
+    }
+
+    .reviewer-comment-box .detail-section-title {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-bottom: 0;
+        z-index: 2;
+    }
+
     .reviewer-comment-inner {
-        padding: 30px 20px 20px;
+        padding: 30px 15px 20px;
     }
 
     .pickup-body {
