@@ -1,32 +1,24 @@
 // ui.js
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- 1. テーブル展開 ---
-    const wrapper = document.getElementById('tableExpandWrapper');
-    const btn = document.getElementById('btnExpand');
+document.addEventListener('DOMContentLoaded', function () {
 
-    if (wrapper && btn) {
-        btn.addEventListener('click', function() {
-            // Write（DOM変更）のみなので、requestAnimationFrameで安全に処理
-            requestAnimationFrame(() => {
-                const isOpen = wrapper.classList.toggle('is-open');
-                btn.textContent = isOpen ? '× 閉じる' : '＋ すべて見る';
+    // --- 1 & 3. 展開処理の共通化（テーブル・目次） ---
+    const setupExpand = (wrapperId, btnId) => {
+        const wrapper = document.getElementById(wrapperId);
+        const btn = document.getElementById(btnId);
+
+        if (wrapper && btn) {
+            btn.addEventListener('click', () => {
+                requestAnimationFrame(() => {
+                    const isOpen = wrapper.classList.toggle('is-open');
+                    btn.textContent = isOpen ? '× 閉じる' : '＋ すべて見る';
+                });
             });
-        });
-    }
+        }
+    };
 
-    // --- 3. 目次展開（article-toc） ---
-    const tocWrapper = document.getElementById('tocExpandWrapper');
-    const tocBtn = document.getElementById('btnTocExpand');
-
-    if (tocWrapper && tocBtn) {
-        tocBtn.addEventListener('click', function() {
-            requestAnimationFrame(() => {
-                const isOpen = tocWrapper.classList.toggle('is-open');
-                tocBtn.textContent = isOpen ? '× 閉じる' : '＋ すべて見る';
-            });
-        });
-    }
+    // 関数を呼び出すだけで複数のアコーディオンに対応可能
+    setupExpand('tableExpandWrapper', 'btnExpand');
+    setupExpand('tocExpandWrapper', 'btnTocExpand');
 
     // --- 2. 口コミスライダー ---
     const sliders = document.querySelectorAll('.review-slider');
@@ -37,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextBtn = slider.querySelector('.next');
         const prevBtn = slider.querySelector('.prev');
         const dotsContainer = slider.querySelector('.slider-dots');
-        
+
         if (!track || items.length === 0) return;
 
         let currentIndex = 0;
@@ -54,9 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
                 if (i === currentIndex) dot.classList.add('active');
-                dot.addEventListener('click', () => { 
-                    currentIndex = i; 
-                    updateSlider(); 
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlider();
                 });
                 dotsContainer.appendChild(dot);
             }
@@ -70,13 +62,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // ==========================================
             const visibleCount = getVisibleCount();
             const dotCount = Math.ceil(items.length / visibleCount);
-            
+
             if (currentIndex >= dotCount) {
                 currentIndex = Math.max(0, dotCount - 1);
             }
 
             // 強制リフローの原因だった箇所！ DOM変更前に読み取ることで遅延がゼロになります。
-            const itemWidth = items[0].offsetWidth; 
+            const itemWidth = items[0].offsetWidth;
             const gap = 16; // CSSで指定した1rem(16px)
             const moveDistance = (itemWidth + gap) * visibleCount;
 
@@ -92,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // スライダーを動かす
                 track.style.transform = `translateX(-${currentIndex * moveDistance}px)`;
-                
+
                 // ドットのアクティブ状態を更新
                 const dots = dotsContainer.querySelectorAll('.dot');
                 dots.forEach((dot, i) => {
@@ -143,14 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // すでに手動で閉じられている場合は処理をスキップ
                 if (isFloatingClosedManually) return;
 
-                if (!entry.isIntersecting) {
-                    floatingBanner.classList.add('is-visible');
-                } else {
-                    floatingBanner.classList.remove('is-visible');
-                }
+                floatingBanner.classList.toggle('is-visible', !entry.isIntersecting);
             });
         }, {
-            threshold: 0 
+            threshold: 0
         });
 
         observer.observe(triggerSection);
