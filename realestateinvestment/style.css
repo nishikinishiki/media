@@ -10,6 +10,7 @@
     /* 蛍光ペンなど */
     --red: #ef4444;
     --red-hover: #dc2626;
+    --red-shadow: #a11818;
     --red-text: #ee1e3d;
     --orange: #ef9700;
     --orange-text: #f50;
@@ -27,7 +28,6 @@
     --grey-300: #f6f5f2;
 
     --blue-100: #dbeafe;
-    /* アイコン背景など */
     --blue-350: #b7dbfd;
     --blue-600: #3b82f6;
 
@@ -62,6 +62,8 @@
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12);
+    --shadow-cta: 0 4.5px 0 var(--red-shadow);
+    --shadow-cta-pushed: 0 0 0 var(--red-shadow);
 }
 
 * {
@@ -644,17 +646,10 @@ th.sticky-col {
     position: relative;
     width: 120px;
     padding: 6px 16px 6px 6px;
-    box-shadow: var(--shadow-lg);
     transition: 0.2s;
-    background-color: var(--red);
-    color: var(--white);
     border-radius: 4px;
     font-size: var(--fz-13);
     font-weight: 800;
-}
-
-.btn-table:hover {
-    background-color: var(--red-hover);
 }
 
 .external-icon {
@@ -884,19 +879,12 @@ td[data-eval="e"]::before {
     align-items: center;
     text-align: center;
     position: relative;
-    background-color: var(--red);
     color: var(--white);
     font-weight: 700;
     padding: 16px;
     border-radius: 12px;
-    box-shadow: var(--shadow-lg);
     transition: 0.2s;
     font-size: var(--fz-22);
-}
-
-.btn-cta:hover {
-    background-color: var(--red-hover);
-    transform: translateY(-2px);
 }
 
 .btn-cta .external-icon {
@@ -1656,38 +1644,39 @@ details[open] .faq-question {
 
 @keyframes shine-and-press {
 
-    /* 0% 〜 40% の間で光が通り過ぎる */
     0% {
         background-position: 200% center;
-        transform: translateY(0);
     }
 
-    /* 15%（光がボタンの中央あたりに来た時）で下に下がる */
-    15% {
-        transform: translateY(3px);
-        /* 数値を大きくするとより深く押し込まれます */
-    }
-
-    /* 30%で元の位置に戻る */
-    30% {
-        transform: translateY(0);
-    }
-
-    /* 40%で光が通り抜け完了 */
     40% {
         background-position: -100% center;
     }
 
-    /* 40% 〜 100% までは待機時間 */
+    50% {
+        transform: translateY(0);
+        box-shadow: var(--shadow-cta);
+    }
+
+    65% {
+        transform: translateY(4px);
+        box-shadow: var(--shadow-cta-pushed);
+    }
+
+    80% {
+        transform: translateY(0);
+        box-shadow: var(--shadow-cta);
+    }
+
     100% {
         background-position: -100% center;
-        transform: translateY(0);
     }
 }
 
 .btn-table,
 .btn-cta {
     background-color: var(--red);
+    color: var(--white);
+    box-shadow: var(--shadow-cta);
 
     /* キラッと光る斜めのグラデーション */
     background-image: linear-gradient(115deg,
@@ -1701,8 +1690,7 @@ details[open] .faq-question {
     background-repeat: no-repeat;
     background-position: 200% center;
 
-    /* 統合したアニメーションを適用（5秒周期） */
-    animation: shine-and-press 4s infinite linear;
+    animation: shine-and-press 3.5s infinite linear;
 }
 
 .btn-table:hover,
@@ -1844,7 +1832,7 @@ details[open] .faq-question {
     /* ロゴティッカー */
     .logo-ticker-wrapper {
         background-color: var(--white);
-        padding: 10px 0px 40px 0px;
+        padding: 5px 0px 30px 0px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
