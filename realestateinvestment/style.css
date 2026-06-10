@@ -1400,7 +1400,7 @@ details[open] .faq-question {
     position: relative;
     display: inline-block;
     width: 100%;
-    max-width: 670px;
+    max-width: 500px;
     margin: 0 auto;
     text-align: left;
     vertical-align: bottom;
@@ -1445,6 +1445,63 @@ details[open] .faq-question {
 .floating-close-btn:hover {
     background-color: var(--slate-600);
     transform: scale(1.1);
+}
+
+/* =========================================
+   トップへ戻るボタン (PC用)
+   ========================================= */
+.page-top-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 65px;
+    height: 65px;
+    background-color: var(--slate-700);
+    color: var(--white);
+    border: 2px solid var(--grey-200);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+
+    /* 要素を縦並びにして中央に配置 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    /* 初期状態は非表示 */
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, visibility 0.4s, background-color 0.2s;
+}
+
+/* 表示用クラス */
+.page-top-btn.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.page-top-btn:hover {
+    background-color: var(--slate-600);
+    transform: scale(1.1);
+}
+
+/* SVGアイコンの設定 */
+.page-top-icon {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    stroke-width: 2px;
+}
+
+/* TOPの文字設定 */
+.page-top-text {
+    font-size: var(--fz-13);
+    font-weight: 700;
+    line-height: 1;
 }
 
 
@@ -1994,6 +2051,10 @@ details[open] .faq-question {
     .point-icon {
         width: 13px;
         height: 13px;
+    }
+
+    .page-top-btn {
+        display: none !important;
     }
 
 }

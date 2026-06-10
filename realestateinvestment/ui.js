@@ -123,19 +123,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- 4. 追従CTA（フローティングバナー）の表示・閉じる制御 ---
+    // --- 4. 追従CTA & トップへ戻るボタンの表示制御 ---
     const floatingBanner = document.getElementById('floatingBanner');
-    const triggerSection = document.querySelector('.hero-main-img'); // 目印となるセクション（ここではヒーロー画像）
+    const triggerSection = document.querySelector('.hero-main-img'); // 目印となるセクション（ヒーロー画像）
     const btnFloatingClose = document.getElementById('btnFloatingClose');
-    let isFloatingClosedManually = false; // 手動で閉じられたかを管理するフラグ
+    const pageTopBtn = document.getElementById('pageTopBtn'); // 🌟トップへ戻るボタンを取得
+    let isFloatingClosedManually = false;
 
-    if (floatingBanner && triggerSection) {
+    // 🌟 どちらかのボタンが存在し、かつ監視対象があれば実行
+    if ((floatingBanner || pageTopBtn) && triggerSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // すでに手動で閉じられている場合は処理をスキップ
-                if (isFloatingClosedManually) return;
+                const isHidden = !entry.isIntersecting; // 目印が見えなくなったら true
 
-                floatingBanner.classList.toggle('is-visible', !entry.isIntersecting);
+                // フローティングバナーの表示切り替え（手動で閉じていない場合のみ）
+                if (floatingBanner && !isFloatingClosedManually) {
+                    floatingBanner.classList.toggle('is-visible', isHidden);
+                }
+
+                // 🌟 トップへ戻るボタンの表示切り替え（既存の .is-visible を使い回す）
+                if (pageTopBtn) {
+                    pageTopBtn.classList.toggle('is-visible', isHidden);
+                }
             });
         }, {
             threshold: 0
@@ -147,8 +156,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // ✕ボタンをクリックした時の処理
     if (floatingBanner && btnFloatingClose) {
         btnFloatingClose.addEventListener('click', () => {
-            isFloatingClosedManually = true; // フラグをオンにする
+            isFloatingClosedManually = true;
             floatingBanner.classList.remove('is-visible');
+        });
+    }
+
+    // 🌟 トップへ戻るボタンをクリックした時の処理（スムーススクロール）
+    if (pageTopBtn) {
+        pageTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     }
 });
