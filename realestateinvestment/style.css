@@ -372,6 +372,12 @@ a {
     text-align: center;
 }
 
+.pick-strong-text {
+    font-weight: 600;
+    font-size: var(--fz-18);
+    text-align: center;
+}
+
 /* =============
    企業のポイント
    ============= */
@@ -584,6 +590,10 @@ a {
     gap: 8px;
 }
 
+.pickup-body-2 {
+    padding: 18px 34px;
+}
+
 .pickup-body {
     padding: 34px;
 }
@@ -592,6 +602,12 @@ a {
     display: block;
     width: 100%;
     margin: 0 auto;
+}
+
+.pick-img {
+    display: block;
+    width: 100%;
+    margin: 10px auto;
 }
 
 .bear-img {
@@ -696,7 +712,7 @@ a {
 }
 
 .table-container table {
-    min-width: 1020px;
+    min-width: 1100px;
 }
 
 table {
@@ -705,13 +721,6 @@ table {
     border-spacing: 0;
     font-size: var(--fz-13);
     text-align: center;
-}
-
-thead {
-    background-color: var(--grey-300);
-    color: var(--slate-700);
-    font-weight: 700;
-    border-bottom: 1px solid var(--grey-200);
 }
 
 .top-row,
@@ -724,13 +733,12 @@ td {
     padding: 10px;
     border-right: 1px solid var(--grey-200);
     border-bottom: 1px solid var(--grey-200);
-    min-width: 90px;
+    min-width: 100px;
 }
 
-.comparison-section td:nth-child(3),
-.comparison-section td:nth-child(5),
-.comparison-section td:nth-child(6) {
-    white-space: nowrap;
+th {
+    background-color: var(--grey-300);
+    padding: 5px;
 }
 
 .sticky-col {
@@ -741,13 +749,13 @@ td {
     box-shadow: inset -1px 0 0 0 var(--grey-200);
 }
 
-th.sticky-col,
-td.sticky-col {
-    padding: 8px 0px;
-}
-
 th.sticky-col {
     background-color: var(--grey-300);
+}
+
+.comparison-section td:nth-child(4),
+.comparison-section td:nth-child(8) {
+    min-width: 150px;
 }
 
 .company-logo-wrapper {
@@ -810,10 +818,8 @@ th.sticky-col {
 }
 
 td[data-eval] {
-    font-size: var(--fz-13);
-    color: var(--slate-700);
+    font-size: 15px;
     line-height: 1.3;
-    vertical-align: middle;
     text-align: center;
 }
 
@@ -1798,10 +1804,11 @@ details[open] .faq-question {
     align-items: center;
     justify-content: center;
     width: 120px;
-    padding: 6px 16px 6px 6px;
+    padding: 7px 16px 7px 6px;
     border-radius: 6px;
     font-size: var(--fz-13);
     font-weight: 800;
+    line-height: 1.4;
 }
 
 .btn-cta {
@@ -1813,6 +1820,7 @@ details[open] .faq-question {
     border-radius: 12px;
     font-weight: 700;
     font-size: var(--fz-22);
+    line-height: 1.4;
 }
 
 .btn-table,
@@ -1921,7 +1929,11 @@ details[open] .faq-question {
     }
 
     .pickup-body {
-        padding: 24px;
+        padding: 16px;
+    }
+
+    .pickup-body-2 {
+        padding: 16px;
     }
 
     .card-medal-pos {
