@@ -606,6 +606,13 @@ a {
     margin: 0 auto;
 }
 
+.side-img {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--slate-400);
+    margin: 0 auto;
+}
+
 .pick-img {
     display: block;
     width: 100%;
@@ -733,8 +740,9 @@ table {
 th,
 td {
     padding: 10px;
-    border-right: 1px solid var(--grey-200);
-    border-bottom: 1px solid var(--grey-200);
+    border: 1px solid var(--slate-250);
+    /* border-right: 1px solid var(--slate-400);
+    border-bottom: 1px solid var(--slate-400); */
     min-width: 100px;
 }
 
