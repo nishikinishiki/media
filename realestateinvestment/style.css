@@ -552,6 +552,12 @@ a {
     margin-bottom: 50px;
 }
 
+.pickup-text {
+    margin-top: 12px;
+    font-size: var(--fz-16);
+    text-align: center;
+}
+
 .pickup-header {
     background: repeating-linear-gradient(-45deg,
             var(--accent-blue),
@@ -590,12 +596,8 @@ a {
     gap: 8px;
 }
 
-.pickup-body-2 {
-    padding: 18px 34px;
-}
-
 .pickup-body {
-    padding: 34px;
+    padding: 18px 34px;
 }
 
 .pickup-img {
@@ -712,7 +714,7 @@ a {
 }
 
 .table-container table {
-    min-width: 1100px;
+    min-width: 1500px;
 }
 
 table {
@@ -753,8 +755,7 @@ th.sticky-col {
     background-color: var(--grey-300);
 }
 
-.comparison-section td:nth-child(4),
-.comparison-section td:nth-child(8) {
+.comparison-section td:nth-child(3) {
     min-width: 150px;
 }
 
@@ -1929,10 +1930,6 @@ details[open] .faq-question {
     }
 
     .pickup-body {
-        padding: 16px;
-    }
-
-    .pickup-body-2 {
         padding: 16px;
     }
 
