@@ -323,7 +323,7 @@ a {
 }
 
 .btn-cta[data-badge]::after {
-    top: 7px;
+    top: 6px;
     border-width: 6px 6px 0 6px;
     border-color: var(--yellow) transparent transparent transparent;
 }
@@ -1324,6 +1324,12 @@ details[open] .faq-question {
     line-height: 1.2;
 }
 
+.column-text {
+    font-size: var(--fz-18);
+    color: var(--slate-700);
+    line-height: 1.7;
+}
+
 .btn-more {
     display: flex;
     align-items: center;
@@ -1772,6 +1778,18 @@ details[open] .faq-question {
 /* 展開中の目次内のフェード位置調整 */
 .article-toc.table-expand-wrapper.is-open .expand-fade {
     margin-top: 16px;
+}
+
+.article-content-area .section-title-band[data-badge] {
+    padding: 8px;
+    margin: 50px 0px 15px;
+    font-size: var(--fz-24);
+}
+
+.article-content-area .section-title-band {
+    padding: 8px;
+    margin: 50px 0px 15px;
+    font-size: var(--fz-24);
 }
 
 /* =========================================
