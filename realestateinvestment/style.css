@@ -259,7 +259,7 @@ a {
     text-align: center;
     padding: 16px;
     border-radius: 4px;
-    margin: 30px 0;
+    margin: 50px 0 30px;
     font-size: var(--fz-28);
     font-weight: 700;
     display: block;
@@ -549,7 +549,7 @@ a {
     border-radius: 12px;
     border: 1px solid var(--accent-blue);
     overflow: hidden;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .pickup-text {
@@ -580,7 +580,7 @@ a {
     border-radius: 12px;
     border: 1px solid var(--yellow);
     overflow: hidden;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .pickup-header-2 {
@@ -617,11 +617,18 @@ a {
     display: block;
     width: 100%;
     margin: 10px auto;
+    border: 1px solid var(--slate-400);
+}
+
+.pick-img-2 {
+    display: block;
+    width: 100%;
 }
 
 .bear-img {
-    display: block;
-    width: 100%;
+    align-items: center;
+    width: 85%;
+    margin-left: 40px;
 }
 
 .top3-list {
@@ -1956,7 +1963,7 @@ details[open] .faq-question {
     }
 
     .pickup-body {
-        padding: 16px;
+        padding: 14px;
     }
 
     .card-medal-pos {
@@ -1972,7 +1979,7 @@ details[open] .faq-question {
     }
 
     .rank-card-body {
-        padding: 30px 16px 36px;
+        padding: 30px 12px 36px;
     }
 
     .rank-card-header-2 {
