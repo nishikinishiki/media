@@ -170,4 +170,42 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+
+    // --- 指定した要素をクリックで中央へスムーススクロール（共通化） ---
+    // 中央へスクロールさせる共通関数
+    function smoothScrollTo(element) {
+        if (element) {
+            // スクロール位置を計算（要素のY座標 ＋ 現在のスクロール量 － 上部の余白）
+            const offset = 80; // 上部に空けたい余白のピクセル数（好みで調整してください）
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+            const targetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // スクロールを発火させる要素と、スクロール対象要素の定義
+    const scrollTriggers = [
+        {
+            selector: '.pickup-header',
+            // pickup-headerの場合は、親の.pickup-card全体をスクロール対象にする
+            getTarget: (el) => el.closest('.pickup-card')
+        },
+        {
+            selector: '.section-title-band',
+            getTarget: (el) => el
+        }
+    ];
+
+    // 定義に基づいて一括でクリックイベントを登録
+    scrollTriggers.forEach(({ selector, getTarget }) => {
+        document.querySelectorAll(selector).forEach(trigger => {
+            trigger.addEventListener('click', function () {
+                smoothScrollTo(getTarget(this));
+            });
+        });
+    });
 });
