@@ -210,27 +210,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // --- タブ切り替え機能 ---
-    const tabs = document.querySelectorAll('.ranking-tab');
-    const tabContents = document.querySelectorAll('.tab-content');
+    // --- ランキング比較表 タブ切り替え機能（1テーブル列切り替え方式） ---
+    const rankingTabs = document.querySelectorAll('.ranking-tab');
+    const comparisonTable = document.getElementById('comparisonTable');
 
-    if (tabs.length > 0 && tabContents.length > 0) {
-        tabs.forEach(tab => {
+    if (rankingTabs.length > 0 && comparisonTable) {
+        rankingTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const targetId = tab.getAttribute('data-tab-target');
                 if (!targetId) return;
 
-                // 1. 全てのタブとコンテンツの状態をリセット
-                tabs.forEach(t => t.classList.remove('is-active'));
-                tabContents.forEach(c => c.classList.remove('is-active'));
+                // 全てのタブのアクティブ状態をリセット
+                rankingTabs.forEach(t => t.classList.remove('is-active'));
 
-                // 2. 選択されたタブをアクティブ化
+                // クリックされたタブをアクティブ化
                 tab.classList.add('is-active');
 
-                // 3. 対象のコンテンツをアクティブ化して表示
-                const targetContent = document.querySelector(`.tab-content[data-tab-content="${targetId}"]`);
-                if (targetContent) {
-                    targetContent.classList.add('is-active');
+                // テーブルの表示列を切り替え（クラスのトグル）
+                if (targetId === 'company') {
+                    comparisonTable.classList.add('show-company');
+                } else {
+                    comparisonTable.classList.remove('show-company');
                 }
             });
         });

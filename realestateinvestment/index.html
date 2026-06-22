@@ -109,6 +109,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- イントロ -->
                 <!-- <section class="intro-section">
                     <h2 class="section-title section-title-band" data-badge="初心者必見">不動産投資をする上での3つの前提</h2>
@@ -147,27 +148,43 @@
                         </p>
                     </div>
                 </section> -->
-                <!-- 比較表 -->
+
+
+                <!-- ランキング表 -->
                 <section id="ranking" class="comparison-section">
                     <h2 class="section-title section-title-band" data-badge="おすすめの"> TOP5社の徹底比較表 </h2>
-                    <img src="/realestateinvestment/images/materials/260528_比較サイト_クマ.jpg" alt="比較表コメント" width="796" height="574" class="bear-img" loading="lazy">
+
+                    <div class="ranking-tabs">
+                        <button type="button" class="ranking-tab is-active" data-tab-target="service">サービス</button>
+                        <button type="button" class="ranking-tab" data-tab-target="company">会社概要</button>
+                    </div>
                     <div class="table-expand-wrapper" id="tableExpandWrapper">
                         <div class="table-container">
-                            <table>
-                                <tr>
-                                    <th class="sticky-col">会社名</th>
-                                    <th>総合評価</th>
-                                    <th>面談特典</th>
-                                    <th>入居率</th>
-                                    <th>管理のしやすさ</th>
-                                    <th>初期投資額</th>
-                                    <th>主要物件タイプ</th>
-                                    <th>物件エリア</th>
-                                    <th>管理戸数</th>
-                                    <th>会社規模</th>
-                                    <th>特徴</th>
-                                    <th>公式サイト</th>
-                                </tr>
+                            <table id="comparisonTable">
+                                <thead>
+                                    <tr>
+                                        <th class="sticky-col">会社名</th>
+                                        <th class="col-group-service">総合評価</th>
+                                        <th class="col-group-service">面談特典</th>
+                                        <th class="col-group-service">入居率</th>
+                                        <th class="col-group-service">管理のしやすさ</th>
+                                        <th class="col-group-service">初期投資額</th>
+                                        <th class="col-group-service">主要物件タイプ</th>
+                                        <th class="col-group-service">物件エリア</th>
+                                        <th class="col-group-service">管理戸数</th>
+                                        <th class="col-group-service">会社規模</th>
+                                        <th class="col-group-service">特徴</th>
+                                        <th class="col-group-company">運営会社</th>
+                                        <th class="col-group-company">代表者</th>
+                                        <th class="col-group-company">所在地</th>
+                                        <th class="col-group-company">設立日</th>
+                                        <th class="col-group-company">免許番号</th>
+                                        <th class="col-group-company">資本金</th>
+                                        <th class="col-group-company">従業員数</th>
+                                        <th class="col-group-company">売上高</th>
+                                        <th class="col-group-company">市場情報</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr class="top-row">
                                         <td class="sticky-col">
@@ -178,22 +195,27 @@
                                             <a href="https://h.accesstrade.net/sp/cc?rk=0100q40e00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="renosy"> リノシー <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
                                             </a>
                                         </td>
-                                        <td><span class="strong-red-text">98</span> 点</td>
-                                        <td data-eval="a">WEB面談参加で<br><span class="marker-yellow">PayPayポイント<br><span class="highlight-text">5万円分</span></span>プレゼント<span class="annotation-mark">※1</span></td>
-                                        <td data-eval="a">99.6%<br><span class="annotation-mark">（2025年10月時点）</span>
-                                        </td>
-                                        <td data-eval="a">アプリで<br>簡単管理<span class="annotation-mark">※2</span></td>
-                                        <td data-eval="a">1万円〜<span class="annotation-mark">※3</span></td>
-                                        <td data-eval="a">【区分/一棟】新築・中古マンション、新築・中古アパート、オフィス、戸建て</td>
-                                        <td data-eval="a">東京23区/川崎/横浜/大阪/神戸/京都/福岡/海外</td>
-                                        <td data-eval="a">38,110戸<br><span class="annotation-mark">2025年4月末時点。</span></td>
-                                        <td data-eval="a">東証グロース市場上場</td>
-                                        <td data-eval="a">不動産投資売上No.1<span class="annotation-mark">※4</span></td>
-                                        <td>
-                                            <a href="https://h.accesstrade.net/sp/cc?rk=0100q40e00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="renosy" loading="lazy"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                            </a>
-                                        </td>
+                                        <td class="col-group-service"><span class="strong-red-text">98</span> 点</td>
+                                        <td class="col-group-service" data-eval="a">WEB面談参加で<br><span class="marker-yellow">PayPayポイント<br><span class="highlight-text">5万円分</span></span>プレゼント<span class="annotation-mark">※1</span></td>
+                                        <td class="col-group-service" data-eval="a">99.6%<br><span class="annotation-mark">（2025年10月時点）</span></td>
+                                        <td class="col-group-service" data-eval="a">アプリで<br>簡単管理<span class="annotation-mark">※2</span></td>
+                                        <td class="col-group-service" data-eval="a">1万円〜<span class="annotation-mark">※3</span></td>
+                                        <td class="col-group-service" data-eval="a">【区分/一棟】新築・中古マンション、新築・中古アパート、オフィス、戸建て</td>
+                                        <td class="col-group-service" data-eval="a">東京23区/川崎/横浜/大阪/神戸/京都/福岡/海外</td>
+                                        <td class="col-group-service" data-eval="a">38,110戸<br><span class="annotation-mark">2025年4月末時点。</span></td>
+                                        <td class="col-group-service" data-eval="a">東証グロース市場上場</td>
+                                        <td class="col-group-service" data-eval="a">不動産投資売上No.1<span class="annotation-mark">※4</span></td>
+                                        <td class="col-group-company">株式会社GA technologies</td>
+                                        <td class="col-group-company">樋口龍</td>
+                                        <td class="col-group-company">東京都港区六本木3-2-1<br>住友不動産六本木グランドタワー40F</td>
+                                        <td class="col-group-company">2013年3月</td>
+                                        <td class="col-group-company">国土交通大臣（2）第9135号</td>
+                                        <td class="col-group-company">99億3,810万1,016円<br><span class="annotation-mark">※2025年10月末時点</span></td>
+                                        <td class="col-group-company">1,665人<br><span class="annotation-mark">※2025年10月末時点</span></td>
+                                        <td class="col-group-company">2,489億<br><span class="annotation-mark">※2025年10月末時点</span></td>
+                                        <td class="col-group-company">東証グロース 3491</td>
                                     </tr>
+
                                     <tr>
                                         <td class="sticky-col">
                                             <div class="company-logo-wrapper">
@@ -203,22 +225,27 @@
                                             <a href="https://chatbot.jpreturns.com/ebook_aff/" target="_blank" rel="noopener sponsored" class="btn-table" data-company="jpreturns"> JPリターンズ <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
                                             </a>
                                         </td>
-                                        <td><span class="strong-red-text">95</span> 点</td>
-                                        <td data-eval="a">WEB面談で<br><span class="marker-yellow">えらべるデジタルギフト<span class="highlight-text">最大5万円分</span><br>プレゼント</span><span class="annotation-mark">※1</span></td>
-                                        <td data-eval="a">99.98%<br><span class="annotation-mark">（2025年度実績）</span>
-                                        </td>
-                                        <td data-eval="a">家賃滞納率0%<br>設備保証プラン有！</td>
-                                        <td data-eval="b">10万円〜</td>
-                                        <td data-eval="a">中古マンション、一棟アパート、リノベーションマンション</td>
-                                        <td data-eval="a">東京都心エリア/川崎/横浜/大阪/神戸/京都/福岡</td>
-                                        <td data-eval="a">7,711戸<br><span class="annotation-mark">2026年3月時点。</span></td>
-                                        <td data-eval="a">創業24年</td>
-                                        <td data-eval="a">家賃平均5,726円UPの<br>資産価値が高い物件が豊富！</td>
-                                        <td>
-                                            <a href="https://chatbot.jpreturns.com/ebook_aff/" target="_blank" rel="noopener sponsored" class="btn-table" data-company="jpreturns"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                            </a>
-                                        </td>
+                                        <td class="col-group-service"><span class="strong-red-text">95</span> 点</td>
+                                        <td class="col-group-service" data-eval="a">WEB面談で<br><span class="marker-yellow">えらべるデジタルギフト<span class="highlight-text">最大5万円分</span><br>プレゼント</span><span class="annotation-mark">※1</span></td>
+                                        <td class="col-group-service" data-eval="a">99.98%<br><span class="annotation-mark">（2025年度実績）</span></td>
+                                        <td class="col-group-service" data-eval="a">家賃滞納率0%<br>設備保証プラン有！</td>
+                                        <td class="col-group-service" data-eval="b">10万円〜</td>
+                                        <td class="col-group-service" data-eval="a">中古マンション、一棟アパート、リノベーションマンション</td>
+                                        <td class="col-group-service" data-eval="a">東京都心エリア/川崎/横浜/大阪/神戸/京都/福岡</td>
+                                        <td class="col-group-service" data-eval="a">7,711戸<br><span class="annotation-mark">2026年3月時点。</span></td>
+                                        <td class="col-group-service" data-eval="a">創業24年</td>
+                                        <td class="col-group-service" data-eval="a">家賃平均5,726円UPの<br>資産価値が高い物件が豊富！</td>
+                                        <td class="col-group-company">J.P.RETURNS株式会社</td>
+                                        <td class="col-group-company">江馬由将</td>
+                                        <td class="col-group-company">東京都千代田区丸の内2-6-1 丸の内パークビルディング23階</td>
+                                        <td class="col-group-company">平成14年11月</td>
+                                        <td class="col-group-company">国土交通大臣（1）第10826号</td>
+                                        <td class="col-group-company">9,000万円</td>
+                                        <td class="col-group-company">200人<br><span class="annotation-mark">※2026年3月末時点</span></td>
+                                        <td class="col-group-company">516億<br><span class="annotation-mark">※2025年度</span></td>
+                                        <td class="col-group-company">未上場</td>
                                     </tr>
+
                                     <tr>
                                         <td class="sticky-col">
                                             <div class="company-logo-wrapper">
@@ -228,22 +255,27 @@
                                             <a href="https://h.accesstrade.net/sp/cc?rk=0100oblq00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="propertyagent"> プロパティ<br class="sp-only">エージェント <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
                                             </a>
                                         </td>
-                                        <td><span class="strong-text">92</span> 点</td>
-                                        <td data-eval="a">面談参加で<br><span class="marker-yellow">選べるギフト券<br><span class="highlight-text">5万円分</span>プレゼント</span><span class="annotation-mark">※1</span></td>
-                                        <td data-eval="a">99.76%<br><span class="annotation-mark">（2026年5月時点）</span>
-                                        </td>
-                                        <td data-eval="b">管理手数料<br>永年無料プラン有り</td>
-                                        <td data-eval="b">10万円〜</td>
-                                        <td data-eval="a">区分マンション・新築物件・中古物件・都心物件</td>
-                                        <td data-eval="b">東京の超高稼働エリア</td>
-                                        <td data-eval="a">6,351戸<br><span class="annotation-mark">2026年5月時点。</span></td>
-                                        <td data-eval="a">東証プライム上場<br>グループ企業</td>
-                                        <td data-eval="b">累計相談者数5万人超え</td>
-                                        <td>
-                                            <a href="https://h.accesstrade.net/sp/cc?rk=0100oblq00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="propertyagent"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                            </a>
-                                        </td>
+                                        <td class="col-group-service"><span class="strong-text">92</span> 点</td>
+                                        <td class="col-group-service" data-eval="a">面談参加で<br><span class="marker-yellow">選べるギフト券<br><span class="highlight-text">5万円分</span>プレゼント</span><span class="annotation-mark">※1</span></td>
+                                        <td class="col-group-service" data-eval="a">99.76%<br><span class="annotation-mark">（2026年5月時点）</span></td>
+                                        <td class="col-group-service" data-eval="b">管理手数料<br>永年無料プラン有り</td>
+                                        <td class="col-group-service" data-eval="b">10万円〜</td>
+                                        <td class="col-group-service" data-eval="a">区分マンション・新築物件・中古物件・都心物件</td>
+                                        <td class="col-group-service" data-eval="b">東京の超高稼働エリア</td>
+                                        <td class="col-group-service" data-eval="a">6,351戸<br><span class="annotation-mark">2026年5月時点。</span></td>
+                                        <td class="col-group-service" data-eval="a">東証プライム上場<br>グループ企業</td>
+                                        <td class="col-group-service" data-eval="b">累計相談者数5万人超え</td>
+                                        <td class="col-group-company">プロパティエージェント株式会社</td>
+                                        <td class="col-group-company">中西聖</td>
+                                        <td class="col-group-company">東京都新宿区西新宿6-5-1<br>新宿アイランドタワー41階</td>
+                                        <td class="col-group-company">2004年2月</td>
+                                        <td class="col-group-company">東京都知事（5）第83227号</td>
+                                        <td class="col-group-company">1億円</td>
+                                        <td class="col-group-company">147人<br><span class="annotation-mark">※2023年3月時点</span></td>
+                                        <td class="col-group-company">ー</td>
+                                        <td class="col-group-company">親会社ミガロホールディングス株式会社<br>（東証プライム市場 証券コード5535）</td>
                                     </tr>
+
                                     <tr>
                                         <td class="sticky-col">
                                             <div class="company-logo-wrapper">
@@ -253,22 +285,27 @@
                                             <a href="https://t.afi-b.com/visit.php?a=U15232u-R496920S&p=I9694096" target="_blank" rel="noopener sponsored" class="btn-table" data-company="vertex"> ベルテックス <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
                                             </a>
                                         </td>
-                                        <td><span class="strong-text">89</span> 点</td>
-                                        <td data-eval="c">セミナー参加で<br>不動産投資の<br>お役立ち資料プレゼント</td>
-                                        <td data-eval="b">99.5%<br><span class="annotation-mark">（2024年11月時点）</span>
-                                        </td>
-                                        <td data-eval="b">管理手数料<br>777円/月<span class="annotation-mark">※7</span></td>
-                                        <td data-eval="a">1万円〜</td>
-                                        <td data-eval="a">区分一棟・新築中古</td>
-                                        <td data-eval="b">首都圏の物件に特化</td>
-                                        <td data-eval="e">非公表</td>
-                                        <td data-eval="b">従業員数231名</td>
-                                        <td data-eval="b">金利1%台<br>のローンも可能</td>
-                                        <td>
-                                            <a href="https://t.afi-b.com/visit.php?a=U15232u-R496920S&p=I9694096" target="_blank" rel="noopener sponsored" class="btn-table" data-company="vertex"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                            </a>
-                                        </td>
+                                        <td class="col-group-service"><span class="strong-text">89</span> 点</td>
+                                        <td class="col-group-service" data-eval="c">セミナー参加で<br>不動産投資の<br>お役立ち資料プレゼント</td>
+                                        <td class="col-group-service" data-eval="b">99.5%<br><span class="annotation-mark">（2024年11月時点）</span></td>
+                                        <td class="col-group-service" data-eval="b">管理手数料<br>777円/月<span class="annotation-mark">※7</span></td>
+                                        <td class="col-group-service" data-eval="a">1万円〜</td>
+                                        <td class="col-group-service" data-eval="a">区分一棟・新築中古</td>
+                                        <td class="col-group-service" data-eval="b">首都圏の物件に特化</td>
+                                        <td class="col-group-service" data-eval="e">非公表</td>
+                                        <td class="col-group-service" data-eval="b">従業員数231名</td>
+                                        <td class="col-group-service" data-eval="b">金利1%台<br>のローンも可能</td>
+                                        <td class="col-group-company">株式会社ベルテックス</td>
+                                        <td class="col-group-company">梶尾祐司</td>
+                                        <td class="col-group-company">東京都新宿区西新宿6-8-1<br>住友不動産新宿オークタワー9階</td>
+                                        <td class="col-group-company">2010年12月</td>
+                                        <td class="col-group-company">国土交通大臣（1）第9910号</td>
+                                        <td class="col-group-company">1億円</td>
+                                        <td class="col-group-company">231人<br><span class="annotation-mark">※2025年11月末時点</span></td>
+                                        <td class="col-group-company">200億以上<br><span class="annotation-mark">※2025年度</span></td>
+                                        <td class="col-group-company">未上場</td>
                                     </tr>
+
                                     <tr>
                                         <td class="sticky-col">
                                             <div class="company-logo-wrapper">
@@ -278,20 +315,25 @@
                                             <a href="https://px.a8.net/svt/ejp?a8mat=4AVAC9+8NDQ5U+4SNA+5YJRM" target="_blank" rel="noopener sponsored" class="btn-table" data-company="fundrop"> ファンドロップ <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
                                             </a>
                                         </td>
-                                        <td><span class="strong-text">80</span> 点</td>
-                                        <td data-eval="e">なし<br>※面談不要</td>
-                                        <td data-eval="e">該当なし</td>
-                                        <td data-eval="a">完全お任せ<br>スマホで運用可能</td>
-                                        <td data-eval="a">1万円〜</td>
-                                        <td data-eval="b">区分中古</td>
-                                        <td data-eval="b">東京・神奈川など</td>
-                                        <td data-eval="e">該当なし</td>
-                                        <td data-eval="b">2013年創業のベンチャー企業</td>
-                                        <td data-eval="b">ローン不要で<br>手軽に始められる</td>
-                                        <td>
-                                            <a href="https://px.a8.net/svt/ejp?a8mat=4AVAC9+8NDQ5U+4SNA+5YJRM" target="_blank" rel="noopener sponsored" class="btn-table" data-company="fundrop"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                            </a>
-                                        </td>
+                                        <td class="col-group-service"><span class="strong-text">80</span> 点</td>
+                                        <td class="col-group-service" data-eval="e">なし<br>※面談不要</td>
+                                        <td class="col-group-service" data-eval="e">該当なし</td>
+                                        <td class="col-group-service" data-eval="a">完全お任せ<br>スマホで運用可能</td>
+                                        <td class="col-group-service" data-eval="a">1万円〜</td>
+                                        <td class="col-group-service" data-eval="b">区分中古</td>
+                                        <td class="col-group-service" data-eval="b">東京・神奈川など</td>
+                                        <td class="col-group-service" data-eval="e">該当なし</td>
+                                        <td class="col-group-service" data-eval="b">2013年創業のベンチャー企業</td>
+                                        <td class="col-group-service" data-eval="b">ローン不要で<br>手軽に始められる</td>
+                                        <td class="col-group-company">ONE DROP INVESTMENT 株式会社</td>
+                                        <td class="col-group-company">井筒 秀樹</td>
+                                        <td class="col-group-company">東京都港区六本木1-6-1<br>泉ガーデンタワー37階</td>
+                                        <td class="col-group-company">平成25年1月4日</td>
+                                        <td class="col-group-company">該当なし</td>
+                                        <td class="col-group-company">1億円</td>
+                                        <td class="col-group-company">非公開</td>
+                                        <td class="col-group-company">非公開</td>
+                                        <td class="col-group-company">未上場</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -306,207 +348,6 @@
                     </p>
                 </section>
 
-                <!-- <section id="ranking" class="comparison-section">
-                    <h2 class="section-title section-title-band" data-badge="おすすめの"> TOP5社の徹底比較表 </h2>
-                    <img src="/realestateinvestment/images/materials/260528_比較サイト_クマ.jpg" alt="比較表コメント" width="796" height="574" class="bear-img" loading="lazy">
-
-                    <div class="ranking-tabs">
-                        <button type="button" class="ranking-tab is-active" data-tab-target="service">サービス</button>
-                        <button type="button" class="ranking-tab" data-tab-target="company">会社概要</button>
-                    </div>
-                    <div class="table-expand-wrapper" id="tableExpandWrapper">
-
-                        <div class="tab-content is-active" data-tab-content="service">
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="sticky-col">会社名</th>
-                                            <th>総合評価</th>
-                                            <th>面談特典</th>
-                                            <th>入居率</th>
-                                            <th>管理のしやすさ</th>
-                                            <th>初期投資額</th>
-                                            <th>主要物件タイプ</th>
-                                            <th>物件エリア</th>
-                                            <th>管理戸数</th>
-                                            <th>会社規模</th>
-                                            <th>特徴</th>
-                                            <th>公式サイト</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="top-row">
-                                            <td class="sticky-col">
-                                                <div class="company-logo-wrapper">
-                                                    <img src="/realestateinvestment/images/materials/medal-1.svg" alt="1位" width="28" height="32" class="medal-icon table-medal-pos" decoding="async">
-                                                    <img src="/realestateinvestment/images/logos/renosy_logo.svg" alt="リノシー ロゴ" width="300" height="54" class="company-logo-img" loading="lazy">
-                                                </div>
-                                                <a href="https://h.accesstrade.net/sp/cc?rk=0100q40e00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="renosy"> リノシー <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                            <td><span class="strong-red-text">98</span> 点</td>
-                                            <td data-eval="a">WEB面談参加で<br><span class="marker-yellow">PayPayポイント<br><span class="highlight-text">5万円分</span></span>プレゼント<span class="annotation-mark">※1</span></td>
-                                            <td data-eval="a">99.6%<br><span class="annotation-mark">（2025年10月時点）</span>
-                                            </td>
-                                            <td data-eval="a">アプリで<br>簡単管理<span class="annotation-mark">※2</span></td>
-                                            <td data-eval="a">1万円〜<span class="annotation-mark">※3</span></td>
-                                            <td data-eval="a">【区分/一棟】新築・中古マンション、新築・中古アパート、オフィス、戸建て</td>
-                                            <td data-eval="a">東京23区/川崎/横浜/大阪/神戸/京都/福岡/海外</td>
-                                            <td data-eval="a">38,110戸<br><span class="annotation-mark">2025年4月末時点。</span></td>
-                                            <td data-eval="a">東証グロース市場上場</td>
-                                            <td data-eval="a">不動産投資売上No.1<span class="annotation-mark">※4</span></td>
-                                            <td>
-                                                <a href="https://h.accesstrade.net/sp/cc?rk=0100q40e00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="renosy" loading="lazy"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sticky-col">
-                                                <div class="company-logo-wrapper">
-                                                    <img src="/realestateinvestment/images/materials/medal-2.svg" alt="2位" width="28" height="32" class="medal-icon table-medal-pos" decoding="async">
-                                                    <img src="/realestateinvestment/images/logos/jpreturns_logo.svg" alt="JPリターンズ ロゴ" width="140" height="18" class="company-logo-img" loading="lazy">
-                                                </div>
-                                                <a href="https://chatbot.jpreturns.com/ebook_aff/" target="_blank" rel="noopener sponsored" class="btn-table" data-company="jpreturns"> JPリターンズ <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                            <td><span class="strong-red-text">95</span> 点</td>
-                                            <td data-eval="a">WEB面談で<br><span class="marker-yellow">えらべるデジタルギフト<span class="highlight-text">最大5万円分</span><br>プレゼント</span><span class="annotation-mark">※1</span></td>
-                                            <td data-eval="a">99.98%<br><span class="annotation-mark">（2025年度実績）</span>
-                                            </td>
-                                            <td data-eval="a">家賃滞納率0%<br>設備保証プラン有！</td>
-                                            <td data-eval="b">10万円〜</td>
-                                            <td data-eval="a">中古マンション、一棟アパート、リノベーションマンション</td>
-                                            <td data-eval="a">東京都心エリア/川崎/横浜/大阪/神戸/京都/福岡</td>
-                                            <td data-eval="a">7,711戸<br><span class="annotation-mark">2026年3月時点。</span></td>
-                                            <td data-eval="a">創業24年</td>
-                                            <td data-eval="a">家賃平均5,726円UPの<br>資産価値が高い物件が豊富！</td>
-                                            <td>
-                                                <a href="https://chatbot.jpreturns.com/ebook_aff/" target="_blank" rel="noopener sponsored" class="btn-table" data-company="jpreturns"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sticky-col">
-                                                <div class="company-logo-wrapper">
-                                                    <img src="/realestateinvestment/images/materials/medal-3.svg" alt="3位" width="28" height="32" class="medal-icon table-medal-pos" decoding="async">
-                                                    <img src="/realestateinvestment/images/logos/propertyagent_logo.svg" alt="プロパティエージェント ロゴ" width="141" height="39" class="company-logo-img" loading="lazy">
-                                                </div>
-                                                <a href="https://h.accesstrade.net/sp/cc?rk=0100oblq00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="propertyagent"> プロパティ<br class="sp-only">エージェント <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                            <td><span class="strong-text">92</span> 点</td>
-                                            <td data-eval="a">面談参加で<br><span class="marker-yellow">選べるギフト券<br><span class="highlight-text">5万円分</span>プレゼント</span><span class="annotation-mark">※1</span></td>
-                                            <td data-eval="a">99.76%<br><span class="annotation-mark">（2026年5月時点）</span>
-                                            </td>
-                                            <td data-eval="b">管理手数料<br>永年無料プラン有り</td>
-                                            <td data-eval="b">10万円〜</td>
-                                            <td data-eval="a">区分マンション・新築物件・中古物件・都心物件</td>
-                                            <td data-eval="b">東京の超高稼働エリア</td>
-                                            <td data-eval="a">6,351戸<br><span class="annotation-mark">2026年5月時点。</span></td>
-                                            <td data-eval="a">東証プライム上場<br>グループ企業</td>
-                                            <td data-eval="b">累計相談者数5万人超え</td>
-                                            <td>
-                                                <a href="https://h.accesstrade.net/sp/cc?rk=0100oblq00om8y" target="_blank" rel="noopener sponsored" class="btn-table" data-company="propertyagent"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sticky-col">
-                                                <div class="company-logo-wrapper">
-                                                    <img src="/realestateinvestment/images/materials/medal-4.svg" alt="4位" width="28" height="32" class="medal-icon table-medal-pos" decoding="async">
-                                                    <img src="/realestateinvestment/images/logos/vertex_logo.svg" alt="ベルテックス ロゴ" width="477" height="116" class="company-logo-img" loading="lazy">
-                                                </div>
-                                                <a href="https://t.afi-b.com/visit.php?a=U15232u-R496920S&p=I9694096" target="_blank" rel="noopener sponsored" class="btn-table" data-company="vertex"> ベルテックス <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                            <td><span class="strong-text">89</span> 点</td>
-                                            <td data-eval="c">セミナー参加で<br>不動産投資の<br>お役立ち資料プレゼント</td>
-                                            <td data-eval="b">99.5%<br><span class="annotation-mark">（2024年11月時点）</span>
-                                            </td>
-                                            <td data-eval="b">管理手数料<br>777円/月<span class="annotation-mark">※7</span></td>
-                                            <td data-eval="a">1万円〜</td>
-                                            <td data-eval="a">区分一棟・新築中古</td>
-                                            <td data-eval="b">首都圏の物件に特化</td>
-                                            <td data-eval="e">非公表</td>
-                                            <td data-eval="b">従業員数231名</td>
-                                            <td data-eval="b">金利1%台<br>のローンも可能</td>
-                                            <td>
-                                                <a href="https://t.afi-b.com/visit.php?a=U15232u-R496920S&p=I9694096" target="_blank" rel="noopener sponsored" class="btn-table" data-company="vertex"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sticky-col">
-                                                <div class="company-logo-wrapper">
-                                                    <img src="/realestateinvestment/images/materials/medal-5.svg" alt="5位" width="28" height="32" class="medal-icon table-medal-pos" decoding="async">
-                                                    <img src="/realestateinvestment/images/logos/fundrop_logo.svg" alt="ファンドロップ ロゴ" width="300" height="64" class="company-logo-img" loading="lazy">
-                                                </div>
-                                                <a href="https://px.a8.net/svt/ejp?a8mat=4AVAC9+8NDQ5U+4SNA+5YJRM" target="_blank" rel="noopener sponsored" class="btn-table" data-company="fundrop"> ファンドロップ <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                            <td><span class="strong-text">80</span> 点</td>
-                                            <td data-eval="e">なし<br>※面談不要</td>
-                                            <td data-eval="e">該当なし</td>
-                                            <td data-eval="a">完全お任せ<br>スマホで運用可能</td>
-                                            <td data-eval="a">1万円〜</td>
-                                            <td data-eval="b">区分中古</td>
-                                            <td data-eval="b">東京・神奈川など</td>
-                                            <td data-eval="e">該当なし</td>
-                                            <td data-eval="b">2013年創業のベンチャー企業</td>
-                                            <td data-eval="b">ローン不要で<br>手軽に始められる</td>
-                                            <td>
-                                                <a href="https://px.a8.net/svt/ejp?a8mat=4AVAC9+8NDQ5U+4SNA+5YJRM" target="_blank" rel="noopener sponsored" class="btn-table" data-company="fundrop"> 公式サイト <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="tab-content" data-tab-content="company">
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr class="top-row">
-                                            <th class="sticky-col">会社名</th>
-                                            <th>運営会社</th>
-                                            <th>設立</th>
-                                            <th>資本金</th>
-                                            <th>従業員数</th>
-                                            <th>免許番号</th>
-                                            <th>市場情報</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="sticky-col">
-                                                <div class="company-logo-wrapper">
-                                                    <img src="/realestateinvestment/images/materials/medal-1.svg" alt="1位" width="28" height="32" class="medal-icon table-medal-pos" decoding="async">
-                                                    <img src="/realestateinvestment/images/logos/renosy_logo.svg" alt="リノシー" width="120" height="30" class="company-logo-img" loading="lazy">
-                                                </div>
-                                                <span class="strong-text">リノシー</span>
-                                            </td>
-                                            <td>※ここに運営会社を追加</td>
-                                            <td>※ここに設立を追加</td>
-                                            <td>※ここに資本金を追加</td>
-                                            <td>※ここに従業員数を追加</td>
-                                            <td>※ここに免許番号を追加</td>
-                                            <td>※ここに市場情報を追加</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="expand-fade">
-                            <button type="button" class="btn-expand" id="btnExpand">＋ すべて見る</button>
-                        </div>
-                    </div>
-                    <p class="annotation-text">
-                        ※1）付与条件あり。<br>※2）一部オーナー様のご判断を要する場合があります。<br>※3）本プランはローンのご利用を前提としております。返済額、家賃収入、各手数料等、支出と収入との差額について弊社実績から算出。物件やご契約プラン等により異なり、フルローンの場合、別途初期費用として10万円/件が必要です。<br>※4）東京商工リサーチによる不動産投資の売上実績（2025年3月調べ）<br>※7）2024年5月時点の集金代行サービスの月額費用。<br>※8）不動産経済研究所調べ<br>
-                        ※）点数及びランキングの順位は客観的な顧客満足度や利回り等の単一の指標のみで決定されたものではありません。提供するサービスの独自性やユーザー様への有用性に加え、提携企業からの広告報酬額の多寡、キャンペーン実施の有無、当サイトにおける過去の申込実績等の「広告的要素」を総合的に考慮し、当サイト独自の判断に基づき順位付けを行っております。
-                    </p>
-                </section> -->
                 <!-- 詳細 -->
                 <section>
                     <h2 class="section-title section-title-band" data-badge="詳しく解説！"> 不動産投資会社ランキング </h2>
@@ -538,7 +379,7 @@
                                 </div>
                             </div>
                             <div class="cta-container">
-                                <a href="https://h.accesstrade.net/sp/cc?rk=0100q40e00om8y" target="_blank" rel="noopener sponsored" class="btn-cta" data-company="renosy" data-badge="WEB面談完了でPayPayポイント5万円分!"> リノシーの詳細を見る <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
+                                <a href="https://h.accesstrade.net/sp/cc?rk=0100q40e00om8y" target="_blank" rel="noopener sponsored" class="btn-cta" data-company="renosy" data-badge="WEB面談完了でPayPayポイント5万円分!"> WEB面談を申し込む <img src="/realestateinvestment/images/materials/external-link.svg" alt="別タブ" class="external-icon" loading="lazy">
                                 </a>
                                 <br>
                             </div>
@@ -1088,7 +929,7 @@
                                 </tr>
                                 <tr>
                                     <th>従業員数</th>
-                                    <td>217人<br><span class="annotation-mark">※2024年11月末日現在</span></td>
+                                    <td>231人<br><span class="annotation-mark">※2025年11月時点</span></td>
                                 </tr>
                             </table>
                             <div class="cta-container">
@@ -1184,6 +1025,7 @@
                         </div>
                     </article>
                 </section>
+
                 <!-- FAQ -->
                 <section id="faq" class="faq-container">
                     <h2 class="section-title-band"> 不動産投資のよくある質問 </h2>
@@ -1229,6 +1071,7 @@
 
                 </section>
             </main>
+
             <!-- sidebar -->
             <aside class="sidebar">
                 <div class="column-widget">
@@ -1312,8 +1155,10 @@
                     </div>
                 </div>
             </aside>
+
         </div>
     </div>
+
     <footer class="footer">
         <p class="disclaimer"> 【免責事項】<br>当サイトは情報提供を目的としており、投資の勧誘や推奨を目的としたものではありません。内容の正確性や再現性を保証するものではなく、投資の最終判断は必ずご自身の責任において行ってください。 </p>
         <div class="footer-links">
@@ -1322,6 +1167,7 @@
             <a href="/survey-methodology/">調査概要</a>
         </div> © 2026 節税.net All Rights Reserved.
     </footer>
+
     <div id="floatingBanner" class="floating-banner">
         <div class="floating-banner-inner">
             <button type="button" id="btnFloatingClose" class="floating-close-btn" aria-label="閉じる">&times;</button>
@@ -1330,14 +1176,14 @@
             </a>
         </div>
     </div>
-    <div id="floatingBanner" class="floating-banner">
-    </div>
+
     <button type="button" id="pageTopBtn" class="page-top-btn" aria-label="トップへ戻る">
         <svg class="page-top-icon" viewBox="4 7 16 10" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
         <span class="page-top-text">TOP</span>
     </button>
+
     <script src="/realestateinvestment/tracking.js" defer></script>
     <script src="/realestateinvestment/ui.js" defer></script>
 </body>

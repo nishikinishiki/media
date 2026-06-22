@@ -374,6 +374,7 @@ a {
 
 .pick-strong-text {
     font-weight: 600;
+    margin-bottom: 8px;
     font-size: var(--fz-18);
     text-align: center;
 }
@@ -616,19 +617,13 @@ a {
 .pick-img {
     display: block;
     width: 100%;
-    margin: 10px auto;
+    margin-bottom: 10px;
     border: 1px solid var(--slate-400);
 }
 
 .pick-img-2 {
     display: block;
     width: 100%;
-}
-
-.bear-img {
-    align-items: center;
-    width: 85%;
-    margin-left: 40px;
 }
 
 .top3-list {
@@ -728,7 +723,7 @@ a {
 }
 
 .table-container table {
-    min-width: 1500px;
+    min-width: 1300px;
 }
 
 table {
@@ -764,6 +759,9 @@ th {
     z-index: 20;
     background-color: var(--white);
     box-shadow: inset -1px 0 0 0 var(--grey-200);
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
 }
 
 th.sticky-col {
@@ -1886,23 +1884,19 @@ details[open] .faq-question {
 /* =========================================
    タブ切り替えUI
    ========================================= */
-/* タブのラッパー */
 .ranking-tabs {
     display: flex;
     gap: 8px;
     margin-bottom: 16px;
-    border-bottom: 1px solid var(--slate-250);
+    border-bottom: 2px solid var(--accent-blue);
 }
 
-/* 各タブボタン */
 .ranking-tab {
     flex: 1;
     background-color: var(--grey-300);
-    /* 非アクティブ時のグレー */
     color: var(--slate-600);
     border: none;
-    padding: 16px 8px 26px 8px;
-    /* V字アイコンのための下余白 */
+    padding: 14px 8px 24px 8px;
     font-size: var(--fz-16);
     font-weight: 700;
     cursor: pointer;
@@ -1919,51 +1913,72 @@ details[open] .faq-question {
     background-color: var(--slate-250);
 }
 
-/* アクティブ状態のタブ */
 .ranking-tab.is-active {
-    background-color: var(--slate-300);
-    /* 既存の青系薄色背景 */
-    color: var(--primary-blue);
+    background-color: var(--accent-blue);
+    color: var(--white);
 }
 
-/* アクティブなタブの下向きV字アイコン（CSSで描画） */
+/* 選択されたタブの下向き矢印 */
 .ranking-tab.is-active::after {
     content: "";
     position: absolute;
     bottom: 8px;
-    width: 10px;
-    height: 10px;
-    border-bottom: 3px solid var(--primary-blue);
-    border-right: 3px solid var(--primary-blue);
+    width: 8px;
+    height: 8px;
+    border-bottom: 3px solid var(--white);
+    border-right: 3px solid var(--white);
     transform: rotate(45deg);
 }
 
-/* タブコンテンツの表示・非表示 */
-.tab-content {
-    display: none;
+/* --- タブ切り替え時のガタつき防止 --- */
+/* 1. 行のベースとなる高さを指定（実質的に最小高さとして機能します） */
+#comparisonTable tbody tr {
+    height: 160px;
+    /* ※実際のサービス側の最大高さに合わせて数値を微調整してください */
 }
 
-.tab-content.is-active {
-    display: block;
-    animation: fadeIn 0.4s ease-in-out;
+/* 2. セル内のコンテンツの縦位置を揃える */
+#comparisonTable tbody th,
+#comparisonTable tbody td {
+    vertical-align: middle;
+    /* 上揃えにしたい場合は top に変更してください */
 }
 
-/* スマホ用レスポンシブ調整 */
+/* スマホ表示時等の微調整（必要に応じて） */
 @media (max-width: 768px) {
+    #comparisonTable tbody tr {
+        height: 150px;
+    }
+
     .ranking-tabs {
         gap: 4px;
     }
 
     .ranking-tab {
         font-size: var(--fz-14);
-        padding: 12px 4px 22px 4px;
+        padding: 12px 4px 20px 4px;
     }
 
     .ranking-tab.is-active::after {
         bottom: 6px;
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
     }
+}
+
+/* --- テーブル内タブ切り替え（アニメーションなし） --- */
+/* 初期状態：serviceを表示、companyを非表示 */
+#comparisonTable .col-group-company {
+    display: none;
+}
+
+/* companyアクティブ時：companyを表示、serviceを非表示 */
+#comparisonTable.show-company .col-group-service {
+    display: none;
+}
+
+#comparisonTable.show-company .col-group-company {
+    display: table-cell;
 }
 
 /* =========================================
