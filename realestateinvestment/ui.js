@@ -208,4 +208,31 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+
+
+    // --- タブ切り替え機能 ---
+    const tabs = document.querySelectorAll('.ranking-tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    if (tabs.length > 0 && tabContents.length > 0) {
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetId = tab.getAttribute('data-tab-target');
+                if (!targetId) return;
+
+                // 1. 全てのタブとコンテンツの状態をリセット
+                tabs.forEach(t => t.classList.remove('is-active'));
+                tabContents.forEach(c => c.classList.remove('is-active'));
+
+                // 2. 選択されたタブをアクティブ化
+                tab.classList.add('is-active');
+
+                // 3. 対象のコンテンツをアクティブ化して表示
+                const targetContent = document.querySelector(`.tab-content[data-tab-content="${targetId}"]`);
+                if (targetContent) {
+                    targetContent.classList.add('is-active');
+                }
+            });
+        });
+    }
 });

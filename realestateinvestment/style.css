@@ -888,7 +888,7 @@ td[data-eval="e"]::before {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 140px;
+    height: 100px;
     background: linear-gradient(to bottom, rgba(201, 11, 11, 0) 0%, rgba(255, 255, 255, 1) 80%);
     display: flex;
     align-items: flex-end;
@@ -1881,6 +1881,89 @@ details[open] .faq-question {
 .btn-table:hover,
 .btn-cta:hover {
     background-color: var(--red-hover);
+}
+
+/* =========================================
+   タブ切り替えUI
+   ========================================= */
+/* タブのラッパー */
+.ranking-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--slate-250);
+}
+
+/* 各タブボタン */
+.ranking-tab {
+    flex: 1;
+    background-color: var(--grey-300);
+    /* 非アクティブ時のグレー */
+    color: var(--slate-600);
+    border: none;
+    padding: 16px 8px 26px 8px;
+    /* V字アイコンのための下余白 */
+    font-size: var(--fz-16);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: background-color 0.2s, color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ranking-tab:hover {
+    background-color: var(--slate-250);
+}
+
+/* アクティブ状態のタブ */
+.ranking-tab.is-active {
+    background-color: var(--slate-300);
+    /* 既存の青系薄色背景 */
+    color: var(--primary-blue);
+}
+
+/* アクティブなタブの下向きV字アイコン（CSSで描画） */
+.ranking-tab.is-active::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    width: 10px;
+    height: 10px;
+    border-bottom: 3px solid var(--primary-blue);
+    border-right: 3px solid var(--primary-blue);
+    transform: rotate(45deg);
+}
+
+/* タブコンテンツの表示・非表示 */
+.tab-content {
+    display: none;
+}
+
+.tab-content.is-active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* スマホ用レスポンシブ調整 */
+@media (max-width: 768px) {
+    .ranking-tabs {
+        gap: 4px;
+    }
+
+    .ranking-tab {
+        font-size: var(--fz-14);
+        padding: 12px 4px 22px 4px;
+    }
+
+    .ranking-tab.is-active::after {
+        bottom: 6px;
+        width: 8px;
+        height: 8px;
+    }
 }
 
 /* =========================================
