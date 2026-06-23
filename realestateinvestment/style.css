@@ -1887,7 +1887,7 @@ details[open] .faq-question {
 .ranking-tabs {
     display: flex;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     border-bottom: 2px solid var(--accent-blue);
 }
 
@@ -2112,7 +2112,7 @@ details[open] .faq-question {
     /* ロゴティッカー */
     .logo-ticker-wrapper {
         background-color: var(--white);
-        padding: 5px 0px 30px 0px;
+        padding: 5px 0px 25px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
