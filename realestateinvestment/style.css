@@ -873,7 +873,6 @@ td[data-eval="e"]::before {
     max-height: 550px;
     overflow: hidden;
     transition: max-height 0.1s;
-    margin-bottom: 12px;
 }
 
 .table-expand-wrapper.is-open {
